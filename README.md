@@ -5,9 +5,9 @@ This was a quick hack to work with Node.js.  Criticism/Suggestions/Patches/PullR
 
 # Status
 APIs implemented:
-- Geocoding
-- Directions
-- Elevation
+* Geocoding
+* Directions
+* Elevation
 
 # Usage
 	var gm = require('googlemaps');
