@@ -24,5 +24,5 @@ APIs implemented:
 Both examples print:
 	{"status":"OK","results":[{"types":["postal_code"],"formatted_address":"Chicago, IL 60695, USA"...
 
-Please refer to the code and the (Google Maps API docs)[http://code.google.com/apis/maps/documentation/webservices/index.html] for further information on the required input parameters.
+Please refer to the code and the [Google Maps API docs](http://code.google.com/apis/maps/documentation/webservices/index.html) for further information on the required input parameters.
 
