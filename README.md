@@ -14,7 +14,7 @@ TODO:
 
 * [Places](http://code.google.com/apis/maps/documentation/places/)
 * [Static Maps](http://code.google.com/apis/maps/documentation/staticmaps/)
-* [Tests for everything](./tree/master/test/) (using [vows](http://vowsjs.org/))
+* [Tests for everything](http://github.com/moshen/node-googlemaps/tree/master/test/) (using [vows](http://vowsjs.org/))
 
 # Usage
 	var gm = require('googlemaps');
@@ -38,5 +38,5 @@ All callbacks are expected to follow:
     function(error, results)
 Where the error returned is an Error object.
 
-Please refer to the code, [tests](./tree/master/test/) and the [Google Maps API docs](http://code.google.com/apis/maps/documentation/webservices/index.html) for further usage information.
+Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/master/test/) and the [Google Maps API docs](http://code.google.com/apis/maps/documentation/webservices/index.html) for further usage information.
 
