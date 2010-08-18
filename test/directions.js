@@ -3,7 +3,7 @@ var vows = require('vows'),
 	gm = require('../lib/googlemaps');
 
 vows.describe('directions').addBatch({
-	'Simple Directions': {
+	'Simple Directions (From: Madison, Wi To: Chicago, Il)': {
 		topic: function(){
 			gm.directions('Madison , Wi, USA', 'Chicago, Il, USA' , this.callback , 'false');
 		},
