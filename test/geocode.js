@@ -11,8 +11,8 @@ vows.describe('geocode').addBatch({
 			assert.equal(result.status , 'OK');
 		},
 		'returns the expected lat/lng for Chicago': function(err, result){
-			assert.equal(result.results[0].geometry.location.lat , 41.850033);
-			assert.equal(result.results[0].geometry.location.lng , -87.6500523);
+			assert.equal(result.results[0].geometry.location.lat , 41.8781136);
+			assert.equal(result.results[0].geometry.location.lng , -87.6297982);
 		}
 	}
 }).export(module);
