@@ -9,10 +9,6 @@
 			"url": "http://github.com/moshen/node-googlemaps"
 		}
 	],
-	"directories": {
-		"tests": "test",
-		"lib": "lib"
-	},
 	"engines": {
 		"node": ">=0.1.104"
 	}
