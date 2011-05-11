@@ -18,7 +18,7 @@ APIs implemented:
 * [Geocoding](http://code.google.com/apis/maps/documentation/geocoding/)
 * [Directions](http://code.google.com/apis/maps/documentation/directions/)
 * [Elevation](http://code.google.com/apis/maps/documentation/elevation/)
-* [Places](http://code.google.com/apis/maps/documentation/places/)
+* [Places](http://code.google.com/apis/maps/documentation/places/) (thx [evnm](https://github.com/evnm))
 
 TODO:
 
