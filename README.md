@@ -18,10 +18,10 @@ APIs implemented:
 * [Geocoding](http://code.google.com/apis/maps/documentation/geocoding/)
 * [Directions](http://code.google.com/apis/maps/documentation/directions/)
 * [Elevation](http://code.google.com/apis/maps/documentation/elevation/)
+* [Places](http://code.google.com/apis/maps/documentation/places/)
 
 TODO:
 
-* [Places](http://code.google.com/apis/maps/documentation/places/)
 * [Static Maps](http://code.google.com/apis/maps/documentation/staticmaps/)
 * [Tests for everything](http://github.com/moshen/node-googlemaps/tree/master/test/) (using [vows](http://vowsjs.org/))
 
