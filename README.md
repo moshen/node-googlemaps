@@ -19,6 +19,7 @@ APIs implemented:
 * [Directions](http://code.google.com/apis/maps/documentation/directions/)
 * [Elevation](http://code.google.com/apis/maps/documentation/elevation/)
 * [Places](http://code.google.com/apis/maps/documentation/places/) (thx [evnm](https://github.com/evnm))
+* [Distance Matrix](http://code.google.com/apis/maps/documentation/distancematrix/) (thx [duncanm](https://github.com/duncanm))
 
 TODO:
 
