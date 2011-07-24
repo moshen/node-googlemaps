@@ -11,7 +11,7 @@ vows.describe('elevationFromLocations').addBatch({
 			assert.equal(result.status , 'OK');
 		},
 		'returns the expected elevation for Chicago': function(err, result){
-			assert.equal(result.results[0].elevation , 178.6981049);
+			assert.equal(result.results[0].elevation , 178.6981048583984);
 		}
 	}
 }).export(module);
@@ -43,7 +43,7 @@ vows.describe('elevationFromPath').addBatch({
 			assert.equal(result.results.length , 10);
 		},
 		'returns the expected elevation for Chicago': function(err, result){
-			assert.equal(result.results[9].elevation , 178.6981049);
+			assert.equal(result.results[9].elevation , 178.6981048583984);
 		}
 	}
 }).export(module);
