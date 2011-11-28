@@ -1,5 +1,6 @@
 var assert = require('assert'),
-	gm = require('../lib/googlemaps');
+	gm = require('../lib/googlemaps'),
+	sys = require('sys');
 
 //vows.describe().addBatch({
 //	
@@ -27,6 +28,6 @@ paths = [
 	}
 ]
 
-gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, function(error, results) {
-	console.log(results);
+gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, function(results) {
+	sys.puts(JSON.stringify(results));
 }, 'roadmap', markers, styles);
