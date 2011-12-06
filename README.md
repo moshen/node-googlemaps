@@ -91,7 +91,8 @@ Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/
 
 # Contributors
 
-* [evnm](https://github.com/evnm)
-* [duncanm](https://github.com/duncanm)
-* [sugendran](https://github.com/sugendran)
+[![evnm](https://secure.gravatar.com/avatar/2a8171b6c385b865e30bf070cf588329?s=50)](https://github.com/evnm)
+[![duncanm](https://secure.gravatar.com/avatar/7310945bafb21aa68b18d61d8b9d2d61?s=50)](https://github.com/duncanm)
+[![sugendran](https://secure.gravatar.com/avatar/3228aae57c1dc3f657bbc64c26c97b77?s=50)](https://github.com/sugendran)
+[![JoshSmith](https://secure.gravatar.com/avatar/b07d5a5f2e75633b2085142250a6762b?s=50)](https://github.com/JoshSmith)
 
