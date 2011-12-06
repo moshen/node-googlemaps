@@ -10,8 +10,12 @@ vows.describe('reverseGeocode').addBatch({
 		'returns as a valid request': function(err, result){
 			assert.equal(result.status , 'OK');
 		},
-		'returns expected name (Chicago)': function(err, result){
-			assert.equal(result.results[0].address_components[1].long_name , 'Chicago')
+		// For some reason the location of "Chicago" is constantly changing
+		//   according to Google.  I thought that it would be a constant I could
+		//   rely on for these tests.  If I have to change it one more time,
+		//   I'm going to just comment them all out.
+		'returns expected name (Pilsen)': function(err, result){
+			assert.equal(result.results[0].address_components[1].long_name , 'Pilsen')
 		}
 	}
 }).export(module);
