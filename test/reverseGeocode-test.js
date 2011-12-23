@@ -15,7 +15,10 @@ vows.describe('reverseGeocode').addBatch({
 		//   rely on for these tests.  If I have to change it one more time,
 		//   I'm going to just comment them all out.
 		'returns expected name (Pilsen)': function(err, result){
-			assert.equal(result.results[0].address_components[1].long_name , 'Pilsen')
+			var locality = result.results[0].address_components.filter(function(el) {
+				return el.types.indexOf('locality') !== -1;
+			})[0];
+			assert.equal(locality.long_name , 'Chicago')
 		}
 	}
 }).export(module);
