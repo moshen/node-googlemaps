@@ -53,7 +53,7 @@ vows.describe('staticmaps').addBatch({
 			'returns the expected static map PNG data': function(err, data){
 				var md5 = crypto.createHash('md5');
 				md5.update(data);
-				assert.equal(md5.digest('hex') , 'e1c4533cd8f676f2aef58d7a28d9f773');
+				assert.equal(md5.digest('hex') , 'b601ca9a90ec103b95e13595b7e04e71');
 			}
 		}
 	}
