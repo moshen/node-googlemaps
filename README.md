@@ -22,6 +22,7 @@ APIs implemented:
 * [Place Details](https://code.google.com/apis/maps/documentation/places/#PlaceDetails)
 * [Distance Matrix](http://code.google.com/apis/maps/documentation/distancematrix/)
 * [Static Maps](http://code.google.com/apis/maps/documentation/staticmaps/)
+* [Street View](http://code.google.com/apis/maps/documentation/streetview/)
 
 TODO:
 

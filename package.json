@@ -1,6 +1,6 @@
 {
   "name": "googlemaps",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "./lib/googlemaps",
   "description": "A simple way to query the Google Maps API from Node.js",
   "keywords": [
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/moshen/node-googlemaps"
+    "url": "http://github.com/mediarain/node-googlemaps"
   },
   "devDependencies": {
     "vows": "*"
