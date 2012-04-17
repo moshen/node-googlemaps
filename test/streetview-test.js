@@ -75,6 +75,7 @@ vows.describe('streetview').addBatch({
       },
       'returns the expected street view URL': function(result){
         assert.equal(result , "http://maps.googleapis.com/maps/api/streetview?size=600x300&location=56.960654%2C-2.201815&sensor=false&client=clientID&signature=W-iU4lapSK7yN2qDCDXwW-GKoIo=");
+        gm.clearBusinessSpecificParameters();
       }
     }
 	}
