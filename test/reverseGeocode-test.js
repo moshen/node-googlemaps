@@ -8,6 +8,7 @@ vows.describe('reverseGeocode').addBatch({
 			gm.reverseGeocode('41.850033,-87.6500523' , this.callback , 'false' , 'en')
 		},
 		'returns as a valid request': function(err, result){
+      if (err) throw err;
 			assert.equal(result.status , 'OK');
 		},
 		// For some reason the location of "Chicago" is constantly changing
