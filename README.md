@@ -81,6 +81,19 @@ You will get a map like:
 
 ![Some Map](http://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=%7Ccolor%3Ared%7Clabel%3AA%7Cicon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7Cshadow%3Afalse%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&style=%7Cfeature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&path=weight%3A5%7Ccolor%3A0x0000ff%7C41.139817%2C-77.454439%7C41.138621%2C-77.451596&sensor=false)
 
+# Configuration
+
+To set the configuration you call `gm.config(key, value)` or `gm.config({key: value, .....})`
+
+### Useful Configuration Options
+
+`proxy` - set a proxy for http requests
+`stagger-time` - defaults to 200ms - stagger async call times when multiple requests are required
+`encode-polylines` - defaults to true - encodes polylines to the shorter Google format.
+`google-client-id` - used for setting business specific parameters
+`google-private-key`- used for setting business specific parameters
+
+
 All the googlemaps functions follow this scheme:
     function(required, callback, optional)
 
@@ -96,4 +109,7 @@ Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/
 [![duncanm](https://secure.gravatar.com/avatar/7310945bafb21aa68b18d61d8b9d2d61?s=50)](https://github.com/duncanm)
 [![sugendran](https://secure.gravatar.com/avatar/3228aae57c1dc3f657bbc64c26c97b77?s=50)](https://github.com/sugendran)
 [![JoshSmith](https://secure.gravatar.com/avatar/b07d5a5f2e75633b2085142250a6762b?s=50)](https://github.com/JoshSmith)
+[![grobot](https://secure.gravatar.com/avatar/ba3313effc329919b09bca67827bdf10?s=50)](https://github.com/grobot)
+[![regality](https://secure.gravatar.com/avatar/fe513a9e239cebde58187721d67b7505?s=50)](https://github.com/regality)
+[![spatical](https://secure.gravatar.com/avatar/a7c5765a4a4dfbf697f728bd75223641?s=50)](https://github.com/spatical)
 
