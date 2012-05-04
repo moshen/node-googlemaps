@@ -13,7 +13,7 @@ vows.describe('elevationFromLocations').addBatch({
 		'returns the expected elevation for Chicago': function(err, result){
       assert.notEqual(result.results, false);
       assert.notEqual(result.results.length, 0);
-			assert.equal(result.results[0].elevation , 178.6981048583984);
+			assert.equal(Math.round(result.results[0].elevation) , 179);
 		}
 	}
 }).export(module);
@@ -48,7 +48,7 @@ vows.describe('elevationFromPath').addBatch({
 		'returns the expected elevation for Chicago': function(err, result){
       if (err) throw err;
       if (!result || !result.results || !result.results.length) return;
-			assert.equal(result.results[9].elevation , 178.6981048583984);
+			assert.equal(Math.round(result.results[9].elevation) , 179);
 		}
 	}
 }).export(module);
@@ -95,6 +95,7 @@ var tooLongCount = tooLongForGoogle.split("|").length;
 vows.describe('elevationFromPath when path is too long').addBatch({
 	'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
 		topic: function(){
+      gm.config('encode-polylines', false);
 			gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
 		},
 		'returns as a valid request': function(err, result){
@@ -102,6 +103,7 @@ vows.describe('elevationFromPath when path is too long').addBatch({
 		},
 		'returns the expected number of samples': function(err, result){
 			assert.equal(result.results.length , tooLongCount);
+      gm.config('encode-polylines', true);
 		}
 	}
 }).export(module);
