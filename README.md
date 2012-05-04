@@ -88,11 +88,16 @@ To set the configuration you call `gm.config(key, value)` or `gm.config({key: va
 ### Useful Configuration Options
 
 `proxy` - set a proxy for http requests
+
 `stagger-time` - defaults to 200ms - stagger async call times when multiple requests are required
+
 `encode-polylines` - defaults to true - encodes polylines to the shorter Google format.
+
 `google-client-id` - used for setting business specific parameters
+
 `google-private-key`- used for setting business specific parameters
 
+-------------
 
 All the googlemaps functions follow this scheme:
     function(required, callback, optional)
