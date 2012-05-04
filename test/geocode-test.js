@@ -19,15 +19,17 @@ vows.describe('geocode').addBatch({
       topic: function(options){
         // Using the signature example clientID and private key for testing,
         // http://code.google.com/apis/maps/documentation/business/webservices.html#signature_examples
-        gm.setBusinessSpecificParameters('clientID','vNIXE0xscrmjlyV-12Nj_BvUPaw=');
+        gm.config('google-client-id','clientID')
+        gm.config('google-private-key', 'vNIXE0xscrmjlyV-12Nj_BvUPaw=');
         return gm.geocode('Chicago , Il , USA', false, false);
       },
       'returns the expected street view URL': function(result){
         assert.equal(result , "http://maps.googleapis.com/maps/api/geocode/json?address=Chicago%20%2C%20Il%20%2C%20USA&sensor=false&client=clientID&signature=m9bKYBws8BKuAO2mRf0sZWKlyPQ=");
-        gm.clearBusinessSpecificParameters();
+        gm.config('google-client-id', null);
+        gm.config('google-private-key',  null);
       }
     }
-    
+
 	}
 }).export(module);
 
