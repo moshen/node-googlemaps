@@ -1,26 +1,27 @@
 var vows = require('vows'),
-	assert = require('assert'),
-	gm = require('../lib/googlemaps');
+  assert = require('assert'),
+  gm = require('../lib/googlemaps');
 
 vows.describe('reverseGeocode').addBatch({
-	'Simple reverse geocode (41.850033 , -87.6500523)': {
-		topic: function(){
-			gm.reverseGeocode('41.850033,-87.6500523' , this.callback , 'false' , 'en')
-		},
-		'returns as a valid request': function(err, result){
-			assert.equal(result.status , 'OK');
-		},
-		// For some reason the location of "Chicago" is constantly changing
-		//   according to Google.  I thought that it would be a constant I could
-		//   rely on for these tests.  If I have to change it one more time,
-		//   I'm going to just comment them all out.
-		'returns expected name (Pilsen)': function(err, result){
-			var locality = result.results[0].address_components.filter(function(el) {
-				return el.types.indexOf('locality') !== -1;
-			})[0];
-			assert.equal(locality.long_name , 'Chicago')
-		}
-	}
+  'Simple reverse geocode (41.850033 , -87.6500523)': {
+    topic: function(){
+      gm.reverseGeocode('41.850033,-87.6500523' , this.callback , 'false' , 'en')
+    },
+    'returns as a valid request': function(err, result){
+      if (err) throw err;
+      assert.equal(result.status , 'OK');
+    },
+    // For some reason the location of "Chicago" is constantly changing
+    //   according to Google.  I thought that it would be a constant I could
+    //   rely on for these tests.  If I have to change it one more time,
+    //   I'm going to just comment them all out.
+    'returns expected name (Pilsen)': function(err, result){
+      var locality = result.results[0].address_components.filter(function(el) {
+        return el.types.indexOf('locality') !== -1;
+      })[0];
+      assert.equal(locality.long_name , 'Chicago')
+    }
+  }
 }).export(module);
 
 /* Reverse geocode query results
@@ -1016,3 +1017,5 @@ vows.describe('reverseGeocode').addBatch({
    ]
 }
 */
+
+// vim: set expandtab sw=2:

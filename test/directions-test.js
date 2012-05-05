@@ -1,21 +1,21 @@
 var vows = require('vows'),
-	assert = require('assert'),
-	gm = require('../lib/googlemaps');
+  assert = require('assert'),
+  gm = require('../lib/googlemaps');
 
 vows.describe('directions').addBatch({
-	'Simple Directions (From: Madison, Wi To: Chicago, Il)': {
-		topic: function(){
-			gm.directions('Madison , Wi, USA', 'Chicago, Il, USA' , this.callback , 'false');
-		},
-		'returns as a valid request': function(err, result){
-			assert.ifError(err);
-			assert.equal(result.status, 'OK');
-		},
-		'returns expected lat/lng for Chicago': function(err, result){
-			assert.equal(result.routes[0].legs[0].steps[0].end_location.lat , 43.07330000000001);
-			assert.equal(result.routes[0].legs[0].steps[0].end_location.lng , -89.40240000000001);
-		}
-	}
+  'Simple Directions (From: Madison, Wi To: Chicago, Il)': {
+    topic: function(){
+      gm.directions('Madison , Wi, USA', 'Chicago, Il, USA' , this.callback , 'false');
+    },
+    'returns as a valid request': function(err, result){
+      assert.ifError(err);
+      assert.equal(result.status, 'OK');
+    },
+    'returns expected lat/lng for Chicago': function(err, result){
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat , 43.07330000000001);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng , -89.40240000000001);
+    }
+  }
 }).export(module);
 
 /* Directions result
@@ -447,3 +447,5 @@ vows.describe('directions').addBatch({
    ]
 }
 */
+
+// vim: set expandtab sw=2:
