@@ -1,19 +1,19 @@
 var vows = require('vows'),
-	assert = require('assert'),
-	gm = require('../lib/googlemaps');
+  assert = require('assert'),
+  gm = require('../lib/googlemaps');
 
 vows.describe('geocode').addBatch({
-	'Simple geocode (Chicago)': {
-		topic: function(){
-			gm.geocode('Chicago , Il , USA', this.callback, 'false');
-		},
-		'returns as a valid request': function(err, result){
-			assert.equal(result.status , 'OK');
-		},
-		'returns the expected lat/lng for Chicago': function(err, result){
-			assert.equal(result.results[0].geometry.location.lat , 41.8781136);
-			assert.equal(result.results[0].geometry.location.lng , -87.6297982);
-		},
+  'Simple geocode (Chicago)': {
+    topic: function(){
+      gm.geocode('Chicago , Il , USA', this.callback, 'false');
+    },
+    'returns as a valid request': function(err, result){
+      assert.equal(result.status , 'OK');
+    },
+    'returns the expected lat/lng for Chicago': function(err, result){
+      assert.equal(result.results[0].geometry.location.lat , 41.8781136);
+      assert.equal(result.results[0].geometry.location.lng , -87.6297982);
+    },
 
     'Business Parameters URL': {
       topic: function(options){
@@ -30,7 +30,7 @@ vows.describe('geocode').addBatch({
       }
     }
 
-	}
+  }
 }).export(module);
 
 
@@ -109,3 +109,5 @@ vows.describe('geocode').addBatch({
    ]
 }
 */
+
+// vim: set expandtab sw=2:

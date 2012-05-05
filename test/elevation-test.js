@@ -1,21 +1,21 @@
 var vows = require('vows'),
-	assert = require('assert'),
-	gm = require('../lib/googlemaps');
+  assert = require('assert'),
+  gm = require('../lib/googlemaps');
 
 vows.describe('elevationFromLocations').addBatch({
-	'Simple elevationFromLocations request (41.850033,-87.6500523)': {
-		topic: function(){
-			gm.elevationFromLocations('41.850033,-87.6500523', this.callback, 'false');
-		},
-		'returns as a valid request': function(err, result){
-			assert.equal(result.status , 'OK');
-		},
-		'returns the expected elevation for Chicago': function(err, result){
+  'Simple elevationFromLocations request (41.850033,-87.6500523)': {
+    topic: function(){
+      gm.elevationFromLocations('41.850033,-87.6500523', this.callback, 'false');
+    },
+    'returns as a valid request': function(err, result){
+      assert.equal(result.status , 'OK');
+    },
+    'returns the expected elevation for Chicago': function(err, result){
       assert.notEqual(result.results, false);
       assert.notEqual(result.results.length, 0);
-			assert.equal(Math.round(result.results[0].elevation) , 179);
-		}
-	}
+      assert.equal(Math.round(result.results[0].elevation) , 179);
+    }
+  }
 }).export(module);
 
 /* Elevation from location query results
@@ -34,23 +34,23 @@ vows.describe('elevationFromLocations').addBatch({
 */
 
 vows.describe('elevationFromPath').addBatch({
-	'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
-		topic: function(){
-			gm.elevationFromPath('43.07333,-89.4026|41.850033,-87.6500523', '10', this.callback, 'false');
-		},
-		'returns as a valid request': function(err, result){
-			assert.equal(result.status , 'OK');
-		},
-		'returns the expected number of samples': function(err, result){
-			assert.notEqual(result.results, false);
-			assert.equal(result.results.length , 10);
-		},
-		'returns the expected elevation for Chicago': function(err, result){
+  'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
+    topic: function(){
+      gm.elevationFromPath('43.07333,-89.4026|41.850033,-87.6500523', '10', this.callback, 'false');
+    },
+    'returns as a valid request': function(err, result){
+      assert.equal(result.status , 'OK');
+    },
+    'returns the expected number of samples': function(err, result){
+      assert.notEqual(result.results, false);
+      assert.equal(result.results.length , 10);
+    },
+    'returns the expected elevation for Chicago': function(err, result){
       if (err) throw err;
       if (!result || !result.results || !result.results.length) return;
-			assert.equal(Math.round(result.results[9].elevation) , 179);
-		}
-	}
+      assert.equal(Math.round(result.results[9].elevation) , 179);
+    }
+  }
 }).export(module);
 
 var tooLongForGoogle =
@@ -93,19 +93,19 @@ var tooLongForGoogle =
 var tooLongCount = tooLongForGoogle.split("|").length;
 
 vows.describe('elevationFromPath when path is too long').addBatch({
-	'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
-		topic: function(){
+  'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
+    topic: function(){
       gm.config('encode-polylines', false);
-			gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
-		},
-		'returns as a valid request': function(err, result){
-			assert.equal(result.status , 'OK');
-		},
-		'returns the expected number of samples': function(err, result){
-			assert.equal(result.results.length , tooLongCount);
+      gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
+    },
+    'returns as a valid request': function(err, result){
+      assert.equal(result.status , 'OK');
+    },
+    'returns the expected number of samples': function(err, result){
+      assert.equal(result.results.length , tooLongCount);
       gm.config('encode-polylines', true);
-		}
-	}
+    }
+  }
 }).export(module);
 
 /* Elevation from path query results
@@ -185,3 +185,5 @@ vows.describe('elevationFromPath when path is too long').addBatch({
    ]
 }
 */
+
+// vim: set expandtab sw=2:

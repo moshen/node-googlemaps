@@ -1,6 +1,6 @@
 var vows = require('vows'),
-	assert = require('assert'),
-	gm = require('../lib/googlemaps');
+  assert = require('assert'),
+  gm = require('../lib/googlemaps');
 
 vows.describe('createEncodedPolylneFromSingleLatLng').addBatch({
   'Single point passed to createEncodedPolyline (38.5,-120.2)': {
@@ -25,3 +25,5 @@ vows.describe('createEncodedPolylineMupltipleLatLngs').addBatch({
     }
   }
 }).export(module);
+
+// vim: set expandtab sw=2:
