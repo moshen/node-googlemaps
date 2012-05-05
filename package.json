@@ -3,9 +3,15 @@
   "version": "0.1.7",
   "main": "./lib/googlemaps",
   "description": "A simple way to query the Google Maps API from Node.js",
+  "author": {
+    "name": "Colin Kennedy",
+    "email": "moshen.colin@gmail.com",
+    "url": "http://moshen.net"
+  },
   "keywords": [
     "map",
     "geo",
+    "google",
     "api"
   ],
   "repository": {
