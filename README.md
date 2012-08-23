@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/moshen/node-googlemaps.png)](http://travis-ci.org/moshen/node-googlemaps)
 # Google Maps API for Node.js
 A simple way to query the Google Maps API from Node.js
 
