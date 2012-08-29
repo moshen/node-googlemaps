@@ -7,14 +7,20 @@ vows.describe('geocode').addBatch({
     topic: function(){
       gm.geocode('64111', this.callback, 'false');
     },
-    'can convert to state': function(err, result){
+    'can convert zip to state': function(err, result){
       gm.convert(result, 'state', function(data){
         assert.equal(data , 'Missouri');
       })
     },
-    'can convert to country': function(err, result){
+    'can convert zip to country': function(err, result){
       gm.convert(result, 'country', function(data){
         assert.equal(data , 'United States');
+      })
+    },
+    'can convert zip to geo': function(err, result){
+      gm.convert(result, 'geo', function(data){
+        assert.equal(data.lat , '39.0587452');
+        assert.equal(data.lng , '-94.5985613');
       })
     }
   }
