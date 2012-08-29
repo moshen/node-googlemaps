@@ -34,6 +34,8 @@ vows.describe('geocode').addBatch({
 }).export(module);
 
 
+
+
 /*  Geocode query results
 {
    "status":"OK",
