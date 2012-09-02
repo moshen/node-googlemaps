@@ -1,6 +1,5 @@
 var vows = require('vows'),
   assert = require('assert'),
-  crypto = require('crypto'),
   gm = require('../lib/googlemaps');
 
 vows.describe('staticmaps').addBatch({
@@ -52,8 +51,9 @@ vows.describe('staticmaps').addBatch({
         gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', this.callback, false, 'roadmap', options.markers, options.styles, options.paths);
       },
       'returns the expected static map PNG data': function(err, data){
-        var pos = data.indexOf('PNG');
-        assert.notEqual(pos, -1);
+        // Look for the PNG header only
+        var buf = new Buffer(data, 'binary');
+        assert.equal('89504e47', buf.toString('hex').substr(0,8));
       }
     }
   }
