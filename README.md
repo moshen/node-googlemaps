@@ -97,6 +97,16 @@ To set the configuration you call `gm.config(key, value)` or `gm.config({key: va
 
 `google-private-key`- used for setting business specific parameters
 
+# Utilities
+
+Retrieving a JSON blob from google maps can sometimes be a bit messy if you're trying to convert data on the fly. You can use the convert method to change the blob into a goeocode, city, zip, county, state, or country.
+
+    gm.geocode('64111', function(err,data){
+        gm.utils.convert(data, 'state', function(result){
+            util.puts(JSON.stringify(data));
+        });
+    });
+
 -------------
 
 All the googlemaps functions follow this scheme:
