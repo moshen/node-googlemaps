@@ -1,6 +1,6 @@
 {
   "name": "googlemaps",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "./lib/googlemaps",
   "description": "A simple way to query the Google Maps API from Node.js",
   "author": {
