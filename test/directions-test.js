@@ -12,8 +12,8 @@ vows.describe('directions').addBatch({
       assert.equal(result.status, 'OK');
     },
     'returns expected lat/lng for Chicago': function(err, result){
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat , 43.07330000000001);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng , -89.40240000000001);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(3) , 43.073);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(3) , -89.402);
     }
   }
 }).export(module);
