@@ -6,7 +6,7 @@ This has become a fairly complete api.  Criticism/Suggestions/Patches/PullReq's 
 # Installation
 ### Installing npm (node package manager)
 
-    curl http://npmjs.org/install.sh | sh
+    curl https://npmjs.org/install.sh | sh
 
 ### Installing googlemaps
 
