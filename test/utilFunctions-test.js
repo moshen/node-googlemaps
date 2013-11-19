@@ -25,22 +25,10 @@ vows.describe('checkAndConvertPoint').addBatch({
       assert.equal(result, '41.874929479660025,-87.62077331542969');
     }
   },
-  'Using incorrect lat/lng input (an object)': {
-    topic: function(){
-      try{
-        return [gm.checkAndConvertPoint({'lat': 41.874929479660025, 'lng': -87.62077331542969}), false];
-      }catch(e){
-        return [e, true];
-      }
-    },
-    'an exception was caught': function(result){
-      assert.ok(result[1]);
-    },
-    'exception caught is an Error': function(result){
-      assert.instanceOf(result[0], Error);
-    },
-    'error thrown was checkAndConvertPoint\'s error': function(result){
-      assert.ok(result[0].message.search('checkAndConvertPoint') > 0);
+  'Using a lat/lng point as an object': {
+    topic: gm.checkAndConvertPoint({ lat: 41.874929479660025, lng: -87.62077331542969 }),
+    'result is equal to expected string value': function(result){
+      assert.equal(result, '41.874929479660025,-87.62077331542969');
     }
   }
 }).export(module);
