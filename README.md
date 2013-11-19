@@ -23,6 +23,7 @@ APIs implemented:
 * [Distance Matrix](http://code.google.com/apis/maps/documentation/distancematrix/)
 * [Static Maps](http://code.google.com/apis/maps/documentation/staticmaps/)
 * [Street View](http://code.google.com/apis/maps/documentation/streetview/)
+* [Time Zone](https://developers.google.com/maps/documentation/timezone/)
 
 TODO:
 
@@ -117,4 +118,5 @@ Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/
 [![grobot](https://secure.gravatar.com/avatar/ba3313effc329919b09bca67827bdf10?s=50)](https://github.com/grobot)
 [![regality](https://secure.gravatar.com/avatar/fe513a9e239cebde58187721d67b7505?s=50)](https://github.com/regality)
 [![spatical](https://secure.gravatar.com/avatar/a7c5765a4a4dfbf697f728bd75223641?s=50)](https://github.com/spatical)
+[![SocalNick](https://secure.gravatar.com/avatar/28b2ad43a18f0f12eb69affd3767aa11?s=50)](https://github.com/socalnick)
 
