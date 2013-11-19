@@ -19,7 +19,8 @@
     "url": "http://github.com/moshen/node-googlemaps"
   },
   "devDependencies": {
-    "vows": "*"
+    "vows": "*",
+    "nock": "~0.23.0"
   },
   "engines": {
     "node": ">=0.3.6"
