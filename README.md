@@ -93,9 +93,11 @@ To set the configuration you call `gm.config(key, value)` or `gm.config({key: va
 
 `encode-polylines` - defaults to true - encodes polylines to the shorter Google format.
 
-`google-client-id` - used for setting business specific parameters
+`google-client-id` - Google Business account client ID
 
-`google-private-key`- used for setting business specific parameters
+`google-private-key`- Request signing key for Google Business accounts. Base64.
+
+`key` - Application or account key for non-Business accounts.
 
 -------------
 
