@@ -5,7 +5,7 @@ var vows = require('vows'),
 vows.describe('errors').addBatch({
   'No connection': {
     topic: function(options) {
-      gm.config('proxy', 'http://no-valid-proxy.com');
+      gm.config('proxy', 'http://127.0.0.1:49151');
       gm.geocode('Hamburg', this.callback);
 
       // reset the proxy
@@ -15,8 +15,8 @@ vows.describe('errors').addBatch({
       assert.isUndefined(result);
       assert.isObject(err);
     },
-    'returns the error code ENOTFOUND': function(err, result) {
-      assert.equal(err.code, 'ENOTFOUND');
+    'returns the error code ECONNREFUSED': function(err, result) {
+      assert.equal(err.code, 'ECONNREFUSED');
     }
   },
 
