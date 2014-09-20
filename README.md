@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/moshen/node-googlemaps.svg)](https://travis-ci.org/moshen/node-googlemaps.svg)
+[![Build Status](https://travis-ci.org/moshen/node-googlemaps.svg)](https://travis-ci.org/moshen/node-googlemaps)
 
 # Google Maps API for Node.js
 A simple way to query the Google Maps API from Node.js
