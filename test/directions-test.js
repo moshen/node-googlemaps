@@ -5,7 +5,7 @@ var vows = require('vows'),
 vows.describe('directions').addBatch({
   'Simple Directions (From: Madison, Wi To: Chicago, Il)': {
     topic: function(){
-      gm.directions('Madison , Wi, USA', 'Chicago, Il, USA' , this.callback , 'false');
+      gm.directions('Madison , Wi, USA', 'Chicago, Il, USA' , this.callback , {sensor: 'false'});
     },
     'returns as a valid request': function(err, result){
       assert.ifError(err);
