@@ -28,5 +28,8 @@
   "dependencies": {
     "request": "~2.44.*",
     "waitress": ">=0.0.2"
+  },
+  "scripts": {
+    "test": "vows test/*.js --spec"
   }
 }

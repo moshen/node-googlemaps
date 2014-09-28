@@ -1,28 +1,11 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../lib/googlemaps'),
-  gm = new GoogleMapsAPI();
-
-vows.describe('elevationFromLocations').addBatch({
-  'Simple elevationFromLocations request (41.850033,-87.6500523)': {
-    topic: function(){
-      gm.elevationFromLocations('41.850033,-87.6500523', this.callback, 'false');
-    },
-    'returns as a valid request': function(err, result){
-      assert.equal(result.status , 'OK');
-    },
-    'returns the expected elevation for Chicago': function(err, result){
-      assert.notEqual(result.results, false);
-      assert.notEqual(result.results.length, 0);
-      assert.equal(Math.round(result.results[0].elevation) , 179);
-    }
-  }
-}).export(module);
-
+  GoogleMapsAPI = require('../lib/googlemaps');
 
 vows.describe('elevationFromPath').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
+      var gm = new GoogleMapsAPI();
       gm.elevationFromPath('43.07333,-89.4026|41.850033,-87.6500523', '10', this.callback, 'false');
     },
     'returns as a valid request': function(err, result){
@@ -39,6 +22,7 @@ vows.describe('elevationFromPath').addBatch({
     }
   }
 }).export(module);
+
 
 var tooLongForGoogle =
   "42.233167,-71.475141|42.231813,-71.477802|42.2325,-71.479332|42.235003,-71.478509|42.23663,-71.476585|42.236069,-71.474188|42.234782,-71.47375|42.233651,-71.472736|42.232583,-71.472161|42.231611,-71.472123|" +
@@ -78,11 +62,11 @@ var tooLongForGoogle =
   "42.240243,-71.470485|42.241359,-71.471879|42.244341,-71.470785|42.244427,-71.470463|42.244427,-71.469455|42.244728,-71.468897|42.24462,-71.468704";
 
 var tooLongCount = tooLongForGoogle.split("|").length;
-var gm = new GoogleMapsAPI({'encode-polylines': false});
 
 vows.describe('elevationFromPath when path is too long').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
+      var gm = new GoogleMapsAPI({'encode-polylines': false});
       gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
     },
     'returns as a valid request': function(err, result){

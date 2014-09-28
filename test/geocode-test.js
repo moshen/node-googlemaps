@@ -2,6 +2,7 @@ var vows = require('vows'),
   assert = require('assert'),
   GoogleMapsAPI = require('../lib/googlemaps');
 
+
 vows.describe('geocode').addBatch({
   'Simple geocode (Chicago)': {
     topic: function(){

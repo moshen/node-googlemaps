@@ -3,9 +3,6 @@ var vows = require('vows'),
   GoogleMapsAPI = require('../lib/googlemaps'),
   gm = new GoogleMapsAPI();
 
-//vows.describe().addBatch({
-//
-//}).export(module);
 
 vows.describe('checkAndConvertPoint').addBatch({
   'Using a lat/lng point as a string': {

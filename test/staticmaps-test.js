@@ -3,6 +3,7 @@ var vows = require('vows'),
   GoogleMapsAPI = require('../lib/googlemaps'),
   gm = new GoogleMapsAPI({'encode-polylines': false});
 
+
 vows.describe('staticmaps').addBatch({
   'Complex static map (Lock Haven, PA)': {
     topic: {
@@ -27,11 +28,12 @@ vows.describe('staticmaps').addBatch({
           [ '41.139817,-77.454439', '41.138621,-77.451596' ]
         }
       ]
-    },
+    }
+    ,
 
-    'URL': {
+    URL: {
       topic: function(options){
-        return gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', this.callback, false, 'roadmap', options.markers, options.styles, options.paths);
+        return gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, false, 'roadmap', options.markers, options.styles, options.paths);
       },
       'returns the expected static map URL': function(result){
         assert.equal(result , "http://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20" +
@@ -43,10 +45,12 @@ vows.describe('staticmaps').addBatch({
                               "%3A5%7Ccolor%3A0x0000ff%7C41.139817%2C-77.454439%7C41.138621%2C-77.451596&s" +
                               "ensor=false");
       }
-    },
+    }
+    ,
 
     'PNG data': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', this.callback, false, 'roadmap', options.markers, options.styles, options.paths);
       },
       'returns the expected static map PNG data': function(err, data){

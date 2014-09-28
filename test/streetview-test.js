@@ -1,7 +1,7 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../lib/googlemaps'),
-  gm = new GoogleMapsAPI({'encode-polylines': true});
+  GoogleMapsAPI = require('../lib/googlemaps');
+
 
 function checkJPEGHeader(err, data){
   // Look for the JPEG header only
@@ -14,6 +14,7 @@ vows.describe('streetview').addBatch({
 
     'Simple Parameters URL': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         return gm.streetView('600x300', '56.960654,-2.201815', false);
       },
       'returns the expected street view URL': function(result){
@@ -23,6 +24,7 @@ vows.describe('streetview').addBatch({
 
     'Simple Parameters Image data (jpeg)': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         gm.streetView('600x300', '56.960654,-2.201815', this.callback);
       },
       'returns the expected Street View Image data': checkJPEGHeader
@@ -30,6 +32,7 @@ vows.describe('streetview').addBatch({
 
     'With Optonal Parameters URL': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         return gm.streetView('600x300', '56.960654,-2.201815', false, false, "250", "90", "-10");
       },
       'returns the expected street view URL': function(result){
@@ -39,6 +42,7 @@ vows.describe('streetview').addBatch({
 
     'With Optonal Parameters Image data (jpeg)': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         gm.streetView('600x300', '56.960654,-2.201815', this.callback, false, "250", "90", "-10");
       },
       'returns the expected Street View Image data': checkJPEGHeader
@@ -46,6 +50,7 @@ vows.describe('streetview').addBatch({
 
     'With invalid Parameters URL': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         return gm.streetView('600x300', '56.960654,-2.201815', false, false, "9999", "9999", "9999");
       },
       'returns the expected street view URL': function(result){
@@ -55,6 +60,7 @@ vows.describe('streetview').addBatch({
 
     'With invalid Parameters Image data (jpeg)': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         gm.streetView('600x300', '56.960654,-2.201815', this.callback, false, "9999", "9999", "9999");
       },
       'returns the expected Street View Image data': checkJPEGHeader
@@ -62,6 +68,7 @@ vows.describe('streetview').addBatch({
 
     'Business Parameters URL': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': true});
         var gm = new GoogleMapsAPI({
           'google-client-id': 'clientID',
           'google-private-key': 'vNIXE0xscrmjlyV-12Nj_BvUPaw='

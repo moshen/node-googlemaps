@@ -1,11 +1,12 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../lib/googlemaps'),
-  gm = new GoogleMapsAPI();
+  GoogleMapsAPI = require('../lib/googlemaps');
+
 
 vows.describe('reverseGeocode').addBatch({
   'Simple reverse geocode (41.850033 , -87.6500523)': {
     topic: function(){
+      var gm = new GoogleMapsAPI();
       gm.reverseGeocode('41.850033,-87.6500523' , this.callback , 'false' , 'en')
     },
     'returns as a valid request': function(err, result){

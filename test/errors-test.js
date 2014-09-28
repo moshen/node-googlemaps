@@ -2,12 +2,11 @@ var vows = require('vows'),
   assert = require('assert'),
   GoogleMapsAPI = require('../lib/googlemaps');
 
+
 vows.describe('errors').addBatch({
   'No connection': {
     topic: function(options) {
-      var gm = new GoogleMapsAPI({
-        'proxy': 'http://127.0.0.1:49151'
-      });
+      var gm = new GoogleMapsAPI({'proxy': 'http://127.0.0.1:49151'});
       gm.geocode('Hamburg', this.callback);
     },
     'returns an error': function(err, result) {
