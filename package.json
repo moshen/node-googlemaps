@@ -14,6 +14,7 @@
     "google",
     "api"
   ],
+  "main": "lib/googlemaps",
   "repository": {
     "type": "git",
     "url": "http://github.com/moshen/node-googlemaps"
@@ -25,10 +26,7 @@
     "node": ">=0.3.6"
   },
   "dependencies": {
-    "request": "~2.2.9",
+    "request": "~2.44.*",
     "waitress": ">=0.0.2"
-  },
-  "scripts": {
-    "test": "NODE_ENV=test vows test/*.js --spec"
   }
 }

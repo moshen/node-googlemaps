@@ -1,6 +1,7 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../lib/googlemaps'),
+  gm = new GoogleMapsAPI();
 
 vows.describe('reverseGeocode').addBatch({
   'Simple reverse geocode (41.850033 , -87.6500523)': {
@@ -1017,5 +1018,3 @@ vows.describe('reverseGeocode').addBatch({
    ]
 }
 */
-
-// vim: set expandtab sw=2:

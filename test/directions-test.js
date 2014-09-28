@@ -1,6 +1,7 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../lib/googlemaps'),
+  gm = new GoogleMapsAPI();
 
 vows.describe('directions').addBatch({
   'Simple Directions (From: Madison, Wi To: Chicago, Il)': {
@@ -483,5 +484,3 @@ vows.describe('directions').addBatch({
    ]
 }
 */
-
-// vim: set expandtab sw=2:

@@ -1,15 +1,14 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../lib/googlemaps');
 
 vows.describe('errors').addBatch({
   'No connection': {
     topic: function(options) {
-      gm.config('proxy', 'http://127.0.0.1:49151');
+      var gm = new GoogleMapsAPI({
+        'proxy': 'http://127.0.0.1:49151'
+      });
       gm.geocode('Hamburg', this.callback);
-
-      // reset the proxy
-      gm.config('proxy', null);
     },
     'returns an error': function(err, result) {
       assert.isUndefined(result);
@@ -22,13 +21,11 @@ vows.describe('errors').addBatch({
 
   'Wrong Credentials': {
     topic: function(options) {
-      gm.config('google-client-id', 'clientID');
-      gm.config('google-private-key', 'WRONG-KEY');
+      var gm = new GoogleMapsAPI({
+        'google-client-id': 'clientID',
+        'google-private-key': 'WRONG-KEY'
+      });
       gm.geocode('Hamburg', this.callback);
-
-      // reset credentials
-      gm.config('google-client-id', null);
-      gm.config('google-private-key', null);
     },
     'returns the expected street view URL': function(err, data) {
       assert.isUndefined(data);

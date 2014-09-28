@@ -1,6 +1,7 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../lib/googlemaps'),
+  gm = new GoogleMapsAPI();
 
 vows.describe('elevationFromLocations').addBatch({
   'Simple elevationFromLocations request (41.850033,-87.6500523)': {
@@ -91,11 +92,11 @@ var tooLongForGoogle =
   "42.240243,-71.470485|42.241359,-71.471879|42.244341,-71.470785|42.244427,-71.470463|42.244427,-71.469455|42.244728,-71.468897|42.24462,-71.468704";
 
 var tooLongCount = tooLongForGoogle.split("|").length;
+var gm = new GoogleMapsAPI({'encode-polylines': false});
 
 vows.describe('elevationFromPath when path is too long').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
-      gm.config('encode-polylines', false);
       gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
     },
     'returns as a valid request': function(err, result){
@@ -185,5 +186,3 @@ vows.describe('elevationFromPath when path is too long').addBatch({
    ]
 }
 */
-
-// vim: set expandtab sw=2:

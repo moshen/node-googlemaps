@@ -1,6 +1,7 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../lib/googlemaps'),
+  gm = new GoogleMapsAPI({'encode-polylines': false});
 
 vows.describe('staticmaps').addBatch({
   'Complex static map (Lock Haven, PA)': {
@@ -30,9 +31,7 @@ vows.describe('staticmaps').addBatch({
 
     'URL': {
       topic: function(options){
-        gm.config('encode-polylines', false);
-        return gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400',
-                            false, false, 'roadmap', options.markers, options.styles, options.paths);
+        return gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', this.callback, false, 'roadmap', options.markers, options.styles, options.paths);
       },
       'returns the expected static map URL': function(result){
         assert.equal(result , "http://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20" +
@@ -58,5 +57,3 @@ vows.describe('staticmaps').addBatch({
     }
   }
 }).export(module);
-
-// vim: set expandtab sw=2:

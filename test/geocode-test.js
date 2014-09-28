@@ -1,10 +1,11 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../lib/googlemaps');
 
 vows.describe('geocode').addBatch({
   'Simple geocode (Chicago)': {
     topic: function(){
+      var gm = new GoogleMapsAPI();
       gm.geocode('Chicago , Il , USA', this.callback, 'false');
     },
     'returns as a valid request': function(err, result){
@@ -17,16 +18,16 @@ vows.describe('geocode').addBatch({
 
     'Business Parameters URL': {
       topic: function(options){
+        var gm = new GoogleMapsAPI({
+          'google-client-id': 'clientID',
+          'google-private-key': 'vNIXE0xscrmjlyV-12Nj_BvUPaw='
+        });
         // Using the signature example clientID and private key for testing,
         // http://code.google.com/apis/maps/documentation/business/webservices.html#signature_examples
-        gm.config('google-client-id','clientID')
-        gm.config('google-private-key', 'vNIXE0xscrmjlyV-12Nj_BvUPaw=');
         return gm.geocode('Chicago , Il , USA', false, false);
       },
       'returns the expected street view URL': function(result){
         assert.equal(result , "http://maps.googleapis.com/maps/api/geocode/json?address=Chicago%20%2C%20Il%20%2C%20USA&sensor=false&client=clientID&signature=m9bKYBws8BKuAO2mRf0sZWKlyPQ=");
-        gm.config('google-client-id', null);
-        gm.config('google-private-key',  null);
       }
     }
 
@@ -109,5 +110,3 @@ vows.describe('geocode').addBatch({
    ]
 }
 */
-
-// vim: set expandtab sw=2:
