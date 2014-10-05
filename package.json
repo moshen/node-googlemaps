@@ -20,16 +20,19 @@
     "url": "http://github.com/moshen/node-googlemaps"
   },
   "devDependencies": {
-    "vows": "*"
+    "vows": "~0.7.0",
+    "mocha": "~1.21.4",
+    "should": "~4.0.4"
   },
   "engines": {
     "node": ">=0.3.6"
   },
   "dependencies": {
-    "request": "~2.44.*",
+    "request": "~2.44.0",
     "waitress": ">=0.0.2"
   },
   "scripts": {
-    "test": "vows test/*.js --spec"
+    "test": "./node_modules/mocha/bin/mocha test/unit",
+    "integration-test": "vows test/integration/*.js --spec"
   }
 }

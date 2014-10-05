@@ -1,6 +1,6 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../../lib/googlemaps');
 
 vows.describe('directions').addBatch({
   'Simple Directions (From: Madison, Wi To: Chicago, Il)': {
