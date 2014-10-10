@@ -74,7 +74,6 @@ vows.describe('elevationFromPath when path is too long').addBatch({
     },
     'returns the expected number of samples': function(err, result){
       assert.equal(result.results.length , tooLongCount);
-      gm.config('encode-polylines', true);
     }
   }
 }).export(module);

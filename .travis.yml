@@ -7,3 +7,5 @@ node_js:
 notifications:
   email:
     - mosconfabrizio@gmail.com
+
+script: "npm run all-tests"

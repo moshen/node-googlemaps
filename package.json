@@ -1,6 +1,6 @@
 {
   "name": "googlemaps",
-  "version": "0.1.20",
+  "version": "1.0.0",
   "main": "./lib/googlemaps",
   "description": "A simple way to query the Google Maps API from Node.js",
   "author": {
@@ -32,7 +32,8 @@
     "waitress": ">=0.0.2"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/unit",
-    "integration-test": "vows test/integration/*.js --spec"
+    "all-tests": "./node_modules/.bin/mocha test/unit && ./node_modules/.bin/vows test/integration/*.js --spec",
+    "test": "./node_modules/.bin/mocha test/unit",
+    "integration-test": "./node_modules/.bin/vows test/integration/*.js --spec"
   }
 }
