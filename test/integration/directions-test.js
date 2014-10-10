@@ -56,3 +56,24 @@ vows.describe('directions').addBatch({
     }
   }
 }).export(module);
+
+
+vows.describe('directions').addBatch({
+  'Simple Directions (From: Boston,MA to Concord, MA) with waypoints': {
+    topic: function(){
+      var gm = new GoogleMapsAPI();
+      var departureNow = Math.floor((new Date()).getTime()/1000)
+      var waypoints = 'Charlestown,MA|Lexington,MA'
+      gm.directions('Boston, MA, USA', 'Concord, MA, USA' , this.callback , 'false', 'driving', waypoints);
+    },
+    'returns as a valid request': function(err, result){
+      assert.ifError(err);
+      assert.equal(result.status, 'OK');
+    },
+    'returns expected lat/lng for Boston': function(err, result){
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(1), 42.4);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(1), -71.1);
+      // TODO add more checks
+    }
+  }
+}).export(module);
