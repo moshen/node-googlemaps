@@ -5,49 +5,49 @@ var GoogleMapsAPI = require('../../lib/googlemaps');
 
 describe('GoogleMapsAPI constructor', function() {
 
-  describe('failures', function(){
-
-    var invalidRequest = [false, 0, NaN, '', {}, [], new Object, new Date];
-
-    var calls = invalidRequest.map(
-      function(invalid) {
-        return function() {
-          it('should not accept ' + invalid + ' as request', function(){
-            var validConfig = {};
-            (function() { new GoogleMapsAPI( validConfig, invalid ) }).should.throw();
-          });
-        } 
-      }
-    );
-
-    calls.forEach( function(checkCall){
-      checkCall();
-    });
-
-  });
-
   describe('defaults', function() {
 
-    it('should default config if none is passed', function(){
+    it('should default config if none is passed', function() {
       (function() { new GoogleMapsAPI() }).should.not.throw();
       var gmAPI = new GoogleMapsAPI();
       should.exist( gmAPI.config );
     });
 
-    it('should default request if none is passed', function(){
+    it('should default request if none is passed', function() {
       var validConfig = {};
       (function() { new GoogleMapsAPI( validConfig ) }).should.not.throw();
       var gmAPI = new GoogleMapsAPI( validConfig );
       should.exist( gmAPI.request );
+      gmAPI.request.should.be.instanceof(Function);
+    });
+
+    var invalidRequest = [false, 0, NaN, '', {}, [], new Object, new Date];
+    var calls = invalidRequest.map(
+      function(invalid) {
+        return function() {
+          it('should default request if ' + invalid + ' is passed', function() {
+            var validConfig = {};
+            (function() { new GoogleMapsAPI( validConfig, invalid ) }).should.not.throw();
+            var gmAPI = new GoogleMapsAPI( validConfig, invalid )
+            should.exist( gmAPI.request );
+            gmAPI.request.should.be.instanceof(Function);
+          });
+        } 
+      }
+    );
+
+    calls.forEach( function(checkCall) {
+      checkCall();
     });
 
   });
 
   describe('success', function() {
 
-    it('should accept configurations', function(){
+    it('should accept configurations', function() {
 
       var config = {
+        'console-key':        'xxxxxxxxxxxxxxxx',
         'google-client-id':   'test-client-id',
         'stagger-time':       1000,
         'encode-polylines':   false,
@@ -60,6 +60,7 @@ describe('GoogleMapsAPI constructor', function() {
 
       should.exist( gmAPI.config );
 
+      gmAPI.config['console-key'].should.equal( config['console-key'] );
       gmAPI.config['google-client-id'].should.equal( config['google-client-id'] );
       gmAPI.config['stagger-time'].should.equal( config['stagger-time'] );
       gmAPI.config['encode-polylines'].should.equal( config['encode-polylines'] );
@@ -70,14 +71,11 @@ describe('GoogleMapsAPI constructor', function() {
 
     });
 
-    it('should accept any injected request function', function(){
+    it('should accept any injected request function', function() {
 
-      var customRequest = function(){
-        return {
-          get: function(){},
-          post: function(){}
-        };
-      }
+      var customRequest = function(options, callback){
+        return callback(null, {}, "{}");
+      };
 
       var gmAPI = new GoogleMapsAPI( {}, customRequest );
 
@@ -89,9 +87,9 @@ describe('GoogleMapsAPI constructor', function() {
 
   });
 
-  describe('configurations logic', function(){
+  describe('configurations logic', function() {
 
-    it('should not set arbitrary configuration keys', function(){
+    it('should not set arbitrary configuration keys', function() {
 
       var config = {
         'some-random-unaccepted-key': '##'
@@ -104,7 +102,7 @@ describe('GoogleMapsAPI constructor', function() {
 
     });
 
-    it('should base64 encode google-private-key after normalizing', function(){
+    it('should base64 encode google-private-key after normalizing', function() {
 
       var config = {
         'google-private-key': 'test-private_key'
