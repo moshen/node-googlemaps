@@ -2,11 +2,12 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/googlemaps');
 
+var placeDetailsMoskResult = require('../mocks/placeDetails');
 
 var gmAPI;
 
 
-describe('GoogleMapsAPI placeSearch', function() {
+describe('GoogleMapsAPI placeDetails', function() {
 
   before(function() {
     var config = {
@@ -23,7 +24,7 @@ describe('GoogleMapsAPI placeSearch', function() {
       var res = {
         statusCode: 200
       };
-      var data = JSON.stringify([]);
+      var data = JSON.stringify(placeDetailsMoskResult);
       return callback(null, res, data);
     };
 
@@ -41,7 +42,7 @@ describe('GoogleMapsAPI placeSearch', function() {
             var validParams = {
               
             };
-            (function() { gmAPI.placeSearch( validParams, invalid ) }).should.throw();
+            (function() { gmAPI.placeDetails( validParams, invalid ) }).should.throw();
           });
         } 
       }
@@ -72,10 +73,10 @@ describe('GoogleMapsAPI placeSearch', function() {
       var customGmAPI = new GoogleMapsAPI( config, mockRequest );
 
       var params = {};
-      customGmAPI.placeSearch( params, function(err, results) {
+      customGmAPI.placeDetails( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('The placeSearch API requires a console-key. You can add it to the config.');
+        err.message.should.equal('The placeDetails API requires a console-key. You can add it to the config.');
         done();
       });
 
@@ -88,7 +89,7 @@ describe('GoogleMapsAPI placeSearch', function() {
       function(invalid) {
         return function() {
           it('should not accept ' + invalid + ' as params', function(done){
-              gmAPI.placeSearch( invalid, function(err, results) {
+              gmAPI.placeDetails( invalid, function(err, results) {
                 should.not.exist(results);
                 should.exist(err);
                 err.message.should.equal('params must be an object');
@@ -103,48 +104,52 @@ describe('GoogleMapsAPI placeSearch', function() {
       checkCall();
     });
 
-    it('should not accept a call withouth the param location', function(done){
-      var params = {
-        rankby: 'distance'
-      };
+    it('should not accept a call without params.placeid', function(done){
+      var params = {};
 
-      gmAPI.placeSearch( params, function(err, results) {
+      gmAPI.placeDetails( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('param.locaiton is required');
+        err.message.should.equal('params.placeid is required');
         done();
       });      
-    });
-
-    it('should not accept rankby distance without one of keyword, name,types params', function(done){
-
-      var params = {
-        rankby: 'distance',
-        location: 'London'
-      };
-
-      gmAPI.placeSearch( params, function(err, results) {
-        should.not.exist(results);
-        should.exist(err);
-        err.message.should.equal('If rankby=distance is specified, then one or more of keyword, name, or types is required.');
-        done();
-      });
     });
 
   });
 
   describe('success', function() {
 
-    it('should return places', function(done){
+    it('should return the place details', function(done){
 
       var params = {
-        location: 'London'
+        placeid: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
       };
 
-      gmAPI.placeSearch(params, function(err, results){
+      gmAPI.placeDetails(params, function(err, result){
         should.not.exist(err);
-        should.exist(results);
-        results.should.be.instanceof(Array);
+        should.exist(result);
+        result.status.should.equal('OK');
+        result.result.should.have.properties([
+          'address_components',
+          'events',
+          'reviews',
+          'types',
+          'url',
+          'formatted_address',
+          'formatted_phone_number',
+          'geometry',
+          'icon',
+          'id',
+          'international_phone_number',
+          'name',
+          'place_id',
+          'scope',
+          'alt_ids',
+          'rating',
+          'reference',
+          'vicinity',
+          'website'
+        ]);
         done();
       });      
 
