@@ -36,7 +36,7 @@ vows.describe('streetview').addBatch({
         return gm.streetView('600x300', '56.960654,-2.201815', false, false, "250", "90", "-10");
       },
       'returns the expected street view URL': function(result){
-        assert.equal(result , "http://maps.googleapis.com/maps/api/streetview?size=600x300&location=56.960654%2C-2.201815&heading=250&fov=90&pitch=-10&sensor=false");
+        assert.equal(result, "http://maps.googleapis.com/maps/api/streetview?size=600x300&location=56.960654%2C-2.201815&heading=250&fov=90&pitch=-10&sensor=false");
       }
     },
 

@@ -31,14 +31,15 @@ TODO:
 * [Tests for everything](http://github.com/moshen/node-googlemaps/tree/master/test/) (using [vows](http://vowsjs.org/))
 
 # Usage
-    var gm = require('googlemaps');
+    var GoogleMapsAPI = require('googlemaps');
+    var gm = new GoogleMapsAPI()
     var util = require('util');
 
-    gm.reverseGeocode('41.850033,-87.6500523', function(err, data){
+    gm.reverseGeocode({ latlng: '41.850033,-87.6500523' }, function(err, data){
       util.puts(JSON.stringify(data));
     });
 
-    gm.reverseGeocode(gm.checkAndConvertPoint([41.850033, -87.6500523]), function(err, data){
+    gm.reverseGeocode({ latlng: gm.checkAndConvertPoint([41.850033, -87.6500523]) }, function(err, data){
       util.puts(JSON.stringify(data));
     });
 

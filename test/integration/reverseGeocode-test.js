@@ -7,10 +7,9 @@ vows.describe('reverseGeocode').addBatch({
   'Simple reverse geocode (41.850033 , -87.6500523)': {
     topic: function(){
       var gm = new GoogleMapsAPI();
-      gm.reverseGeocode('41.850033,-87.6500523' , this.callback , 'false' , 'en')
+      gm.reverseGeocode({ latlng: '41.850033,-87.6500523', language: 'en' }, this.callback)
     },
     'returns as a valid request': function(err, result){
-      if (err) throw err;
       assert.equal(result.status , 'OK');
     },
     // For some reason the location of "Chicago" is constantly changing according to Google.

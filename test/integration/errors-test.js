@@ -7,7 +7,7 @@ vows.describe('errors').addBatch({
   'No connection': {
     topic: function(options) {
       var gm = new GoogleMapsAPI({'proxy': 'http://127.0.0.1:49151'});
-      gm.geocode('Hamburg', this.callback);
+      gm.geocode({ address: 'Hamburg' }, this.callback);
     },
     'returns an error': function(err, result) {
       assert.isUndefined(result);
@@ -24,7 +24,7 @@ vows.describe('errors').addBatch({
         'google-client-id': 'clientID',
         'google-private-key': 'WRONG-KEY'
       });
-      gm.geocode('Hamburg', this.callback);
+      gm.geocode({ address: 'Hamburg' }, this.callback);
     },
     'returns the expected street view URL': function(err, data) {
       assert.isUndefined(data);

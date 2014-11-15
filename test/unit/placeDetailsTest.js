@@ -11,7 +11,7 @@ describe('GoogleMapsAPI placeDetails', function() {
 
   before(function() {
     var config = {
-      'console-key': 'xxxxxxx',
+      'key': 'xxxxxxx',
       'google-client-id':   'test-client-id',
       'stagger-time':       1000,
       'encode-polylines':   false,
@@ -52,7 +52,7 @@ describe('GoogleMapsAPI placeDetails', function() {
       checkCall();
     });
 
-    it('should not accept calls without console-key', function(done){
+    it('should not accept calls without key', function(done){
       var config = {
         'google-client-id':   'test-client-id',
         'stagger-time':       1000,
@@ -76,7 +76,7 @@ describe('GoogleMapsAPI placeDetails', function() {
       customGmAPI.placeDetails( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('The placeDetails API requires a console-key. You can add it to the config.');
+        err.message.should.equal('The placeDetails API requires a key. You can add it to the config.');
         done();
       });
 

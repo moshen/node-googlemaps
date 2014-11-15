@@ -1,7 +1,6 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../../lib/googlemaps'),
-  gm = new GoogleMapsAPI({'encode-polylines': false});
+  GoogleMapsAPI = require('../../lib/googlemaps');
 
 
 vows.describe('staticmaps').addBatch({
@@ -30,9 +29,9 @@ vows.describe('staticmaps').addBatch({
       ]
     }
     ,
-
     URL: {
       topic: function(options){
+        var gm = new GoogleMapsAPI({'encode-polylines': false});
         return gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, false, 'roadmap', options.markers, options.styles, options.paths);
       },
       'returns the expected static map URL': function(result){
@@ -43,11 +42,11 @@ vows.describe('staticmaps').addBatch({
                               "d%3Dcafe%257C996600%7Cshadow%3Afalse%7C444%20W%20Main%20St%20Lock%20Haven%2" +
                               "C%20PA&style=%7Cfeature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&path=weight" +
                               "%3A5%7Ccolor%3A0x0000ff%7C41.139817%2C-77.454439%7C41.138621%2C-77.451596&s" +
-                              "ensor=false");
+                              "ensor=false"
+        );
       }
     }
     ,
-
     'PNG data': {
       topic: function(options){
         var gm = new GoogleMapsAPI({'encode-polylines': true});

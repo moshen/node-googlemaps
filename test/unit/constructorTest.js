@@ -47,7 +47,7 @@ describe('GoogleMapsAPI constructor', function() {
     it('should accept configurations', function() {
 
       var config = {
-        'console-key':        'xxxxxxxxxxxxxxxx',
+        'key':                'xxxxxxxxxxxxxxxx',
         'google-client-id':   'test-client-id',
         'stagger-time':       1000,
         'encode-polylines':   false,
@@ -60,7 +60,7 @@ describe('GoogleMapsAPI constructor', function() {
 
       should.exist( gmAPI.config );
 
-      gmAPI.config['console-key'].should.equal( config['console-key'] );
+      gmAPI.config['key'].should.equal( config['key'] );
       gmAPI.config['google-client-id'].should.equal( config['google-client-id'] );
       gmAPI.config['stagger-time'].should.equal( config['stagger-time'] );
       gmAPI.config['encode-polylines'].should.equal( config['encode-polylines'] );
