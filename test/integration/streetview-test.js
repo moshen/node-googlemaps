@@ -1,6 +1,6 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../../lib/googlemaps');
+  GoogleMapsAPI = require('../../lib/index');
 
 
 function checkJPEGHeader(err, data){

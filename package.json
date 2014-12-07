@@ -14,7 +14,7 @@
     "google",
     "api"
   ],
-  "main": "lib/googlemaps",
+  "main": "lib/index",
   "repository": {
     "type": "git",
     "url": "http://github.com/moshen/node-googlemaps"

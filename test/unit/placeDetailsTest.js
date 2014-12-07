@@ -1,6 +1,6 @@
 var should = require('should');
 
-var GoogleMapsAPI = require('../../lib/googlemaps');
+var GoogleMapsAPI = require('../../lib/index');
 
 var placeDetailsMoskResult = require('../mocks/placeDetails');
 
@@ -112,7 +112,7 @@ describe('GoogleMapsAPI placeDetails', function() {
         should.exist(err);
         err.message.should.equal('params.placeid is required');
         done();
-      });      
+      });
     });
 
   });
@@ -151,7 +151,7 @@ describe('GoogleMapsAPI placeDetails', function() {
           'website'
         ]);
         done();
-      });      
+      });
 
     });
 

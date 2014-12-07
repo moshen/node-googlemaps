@@ -1,6 +1,6 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../../lib/googlemaps');
+  GoogleMapsAPI = require('../../lib/index');
 
 vows.describe('elevationFromPath').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {

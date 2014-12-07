@@ -1,6 +1,6 @@
 var should = require('should');
 
-var GoogleMapsAPI = require('../../lib/googlemaps');
+var GoogleMapsAPI = require('../../lib/index');
 
 var placeSearchMoskResult = require('../mocks/placeSearch');
 
