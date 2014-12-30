@@ -22,7 +22,6 @@ describe('GoogleMapsAPI distanceMatrix', function() {
 
     var mockRequest = function(options, callback) {
 
-      console.log(options)
       var res = {
         statusCode: 200
       };
@@ -200,7 +199,7 @@ describe('GoogleMapsAPI distanceMatrix', function() {
 
     });
 
-    it('should return the distance matrix with deaprture_date', function(done){
+    it('should return the distance matrix with departure_time', function(done){
 
       var params = {
         origins: 'New York, NY, US|Boston, MA, US',

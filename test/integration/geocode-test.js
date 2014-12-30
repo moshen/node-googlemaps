@@ -1,11 +1,12 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../../lib/index');
+  GoogleMapsAPI = require('../../lib/index'),
+  config = require('../simpleConfig');
 
 vows.describe('geocode').addBatch({
   'Free geocode (Chicago)': {
     topic: function(){
-      var gm = new GoogleMapsAPI();
+      var gm = new GoogleMapsAPI(config);
       gm.geocode({ address: 'Chicago, Il, USA' }, this.callback);
     },
     'returns a valid request': function(err, result){

@@ -52,6 +52,19 @@
       "avoid":          "string",
       "units":          "string",
       "departure_time": "date"
+    },
+    "directions": {
+      "origin":         "string",
+      "destination":    "string",
+      "mode":           "string",
+      "waypoints":      "string",
+      "alternatives":   "boolean",
+      "avoid":          "string",
+      "language":       "string",
+      "region":         "string",
+      "units":          "string",
+      "departure_time": "date",
+      "arrival_time":   "date"
     }
   },
 

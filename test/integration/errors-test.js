@@ -1,12 +1,17 @@
 var vows = require('vows'),
   assert = require('assert'),
-  GoogleMapsAPI = require('../../lib/index');
+  GoogleMapsAPI = require('../../lib/index')
+  config = require('../simpleConfig');
 
 
 vows.describe('errors').addBatch({
   'No connection': {
     topic: function(options) {
-      var gm = new GoogleMapsAPI({'proxy': 'http://127.0.0.1:49151'});
+      devNullConfig = {
+        key: config.key,
+        proxy: 'https://127.0.0.1:49151'
+      }
+      var gm = new GoogleMapsAPI(devNullConfig);
       gm.geocode({ address: 'Hamburg' }, this.callback);
     },
     'returns an error': function(err, result) {
@@ -14,7 +19,7 @@ vows.describe('errors').addBatch({
       assert.isObject(err);
     },
     'returns the error code ECONNREFUSED': function(err, result) {
-      assert.equal(err.code, 'ECONNREFUSED');
+      assert.equal(err.code, 'ECONNRESET');
     }
   },
 
