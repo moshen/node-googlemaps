@@ -3,7 +3,7 @@ var should = require('should');
 var GoogleMapsAPI = require('../../lib/index');
 
 
-describe('GoogleMapsAPI constructor', function() {
+describe('constructor', function() {
 
   describe('defaults', function() {
 

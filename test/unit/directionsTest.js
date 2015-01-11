@@ -7,7 +7,7 @@ var direstionsMockResult = require('../mocks/direction');
 var gmAPI;
 
 
-describe('GoogleMapsAPI direstions', function() {
+describe('direstions', function() {
 
   before(function() {
     var config = {

@@ -7,7 +7,7 @@ var placeSearchMoskResult = require('../mocks/placeSearch');
 var gmAPI;
 
 
-describe('GoogleMapsAPI placeSearch', function() {
+describe('placeSearch', function() {
 
   before(function() {
     var config = {

@@ -7,7 +7,7 @@ var placeDetailsMoskResult = require('../mocks/placeDetails');
 var gmAPI;
 
 
-describe('GoogleMapsAPI placeDetails', function() {
+describe('placeDetails', function() {
 
   before(function() {
     var config = {

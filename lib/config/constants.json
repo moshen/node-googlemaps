@@ -40,7 +40,6 @@
     "reverse-geocode": {
       "latlng":        "string",
       "result_type":   "string",
-      "postal_code":   "string",
       "language":      "string",
       "location_type": "string"
     },

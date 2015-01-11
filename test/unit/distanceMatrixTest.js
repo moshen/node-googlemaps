@@ -7,7 +7,7 @@ var distanceMatrixMockResult = require('../mocks/distanceMatrix');
 var gmAPI;
 
 
-describe('GoogleMapsAPI distanceMatrix', function() {
+describe('distanceMatrix', function() {
 
   before(function() {
     var config = {

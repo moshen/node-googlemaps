@@ -8,7 +8,12 @@ vows.describe('reverseGeocode').addBatch({
   'Simple reverse geocode (41.850033 , -87.6500523)': {
     topic: function(){
       var gm = new GoogleMapsAPI(config);
-      gm.reverseGeocode({ latlng: '41.850033,-87.6500523', language: 'en' }, this.callback)
+      gm.reverseGeocode({
+        latlng: '41.850033,-87.6500523',
+        language: 'en',
+        result_type: 'postal_code',
+        location_type: 'APPROXIMATE'
+      }, this.callback)
     },
     'returns as a valid request': function(err, result){
       assert.equal(result.status , 'OK');
