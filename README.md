@@ -1,117 +1,113 @@
 [![Build Status](https://travis-ci.org/moshen/node-googlemaps.svg)](https://travis-ci.org/moshen/node-googlemaps)
 
-# Google Maps API for Node.js
-A simple way to query the Google Maps API from Node.js
+# Google Maps API for Node.js v1.0
 
-This has become a fairly complete api.  Criticism/Suggestions/Patches/PullReq's welcome.
+This library implements the following APIs in Node.js
 
-# Installation
-### Installing npm (node package manager)
+* [Maps API Web Services](https://developers.google.com/maps/documentation/webservices/)
+* [Google Places API](https://developers.google.com/places/)
+* [Google Maps Image API](https://developers.google.com/maps/documentation/imageapis/)
 
-    curl https://npmjs.org/install.sh | sh
+This library is *NOT COMPATIBLE* with tags < 1.0.0
 
-### Installing googlemaps
+If you want to migrate from version 0.1.X check the WIKI for instructions.
 
-    npm install googlemaps
+### Installation
 
-# Status
-APIs implemented:
+```
+npm install googlemaps
+```
 
-* [Geocoding](http://code.google.com/apis/maps/documentation/geocoding/)
-* [Directions](http://code.google.com/apis/maps/documentation/directions/)
-* [Elevation](http://code.google.com/apis/maps/documentation/elevation/)
-* [Places](http://code.google.com/apis/maps/documentation/places/)
-* [Place Details](https://code.google.com/apis/maps/documentation/places/#PlaceDetails)
-* [Distance Matrix](http://code.google.com/apis/maps/documentation/distancematrix/)
-* [Static Maps](http://code.google.com/apis/maps/documentation/staticmaps/)
-* [Street View](http://code.google.com/apis/maps/documentation/streetview/)
+### What does it cover
+[Maps API Web Services](https://developers.google.com/maps/documentation/webservices/):
 
-TODO:
+* [Directions](https://developers.google.com/maps/documentation/directions/)
+* [Distance matrix](https://developers.google.com/maps/documentation/distancematrix/)
+* [Elevation](https://developers.google.com/maps/documentation/elevation/)
+* [Geocoding and reverse geocoding](https://developers.google.com/maps/documentation/geocoding)
+* [Time zone](https://developers.google.com/maps/documentation/timezone) - NOT IMPLEMENTED YET
 
-* [Tests for everything](http://github.com/moshen/node-googlemaps/tree/master/test/) (using [vows](http://vowsjs.org/))
+[Google Places API](https://developers.google.com/places/) - NOT COMPLETED
 
-# Usage
-    var GoogleMapsAPI = require('googlemaps');
-    var gm = new GoogleMapsAPI()
-    var util = require('util');
+* [Place search](https://developers.google.com/places/documentation/search)
+* [Place details](https://developers.google.com/places/documentation/details)
 
-    gm.reverseGeocode({ latlng: '41.850033,-87.6500523' }, function(err, data){
-      util.puts(JSON.stringify(data));
-    });
+[Google Maps Image API](https://developers.google.com/maps/documentation/imageapis/)
 
-    gm.reverseGeocode({ latlng: gm.checkAndConvertPoint([41.850033, -87.6500523]) }, function(err, data){
-      util.puts(JSON.stringify(data));
-    });
+* [Static maps](https://developers.google.com/maps/documentation/staticmaps/)
+* [Street view](https://developers.google.com/maps/documentation/streetview/)
 
-Both examples print:
-    {"status":"OK","results":[{"types":["postal_code"],"formatted_address":"Chicago, IL 60695, USA"...
-    
-For the Static Maps API, you can pass in all the required parameters as well as markers, styles, and paths using the formats outlined below.
-    
-    markers = [
-    	{ 'location': '300 W Main St Lock Haven, PA' },
-    	{ 'location': '444 W Main St Lock Haven, PA',
-    		'color': 'red',
-    		'label': 'A',
-    		'shadow': 'false',
-    		'icon' : 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=cafe%7C996600'
-    	}
-    ]
 
-    styles = [
-    	{ 'feature': 'road', 'element': 'all', 'rules': 
-    		{ 'hue': '0x00ff00' }
-    	}
-    ]
+### Usage
 
-    paths = [
-    	{ 'color': '0x0000ff', 'weight': '5', 'points': 
-    		[ '41.139817,-77.454439', '41.138621,-77.451596' ]
-    	}
-    ]
+```javascript
+var config = {
+  'key': '<YOUR-KEY>',
+  'google-client-id':   '<YOUR-CLIENT-ID>', //optional
+  'stagger-time':       1000, //optional
+  'encode-polylines':   false,
+  'secure':             true, // use https
+  'proxy':              'http://127.0.0.1:9999', // optional
+  'google-private-key': '<YOUR-PRIVATE-KEY>' // to use maps for Work
+};
 
-    util.puts(gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, false, 'roadmap', markers, styles, paths));
+var gmAPI = new GoogleMapsAPI(config);
 
+var geocodeParams = {
+  "address":    "121, Curtain Road, EC2A 3AD, London UK",
+  "components": "components=country:GB",
+  "bounds":     "55,-1|54,1",
+  "language":   "en",
+  "region":     "uk"
+};
+
+gmAPI.geocode(geocodeParams, function(err, result){
+  console.log(result);
+});
+
+var reverseGeocodeParams = {
+  "latlng":        "51.1245,-0.0523",
+  "result_type":   "postal_code",
+  "language":      "en",
+  "location_type": "APPROXIMATE"
+};
+
+gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
+  console.log(result);
+});
+``` 
+
+Check out [the unit tests](./tree/new-major-version/test/unit/) for more APIs examples.
+
+```javascript
+var gmAPI = new GoogleMapsAPI();
+gmAPI.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, false, 'roadmap', markers, styles, paths);
+```
 This example prints the URL for the Static Map image: "http://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=%7Ccolor%3Ared%7Clabel%3AA%7Cicon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7Cshadow%3Afalse%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&style=%7Cfeature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&path=weight%3A5%7Ccolor%3A0x0000ff%7C41.139817%2C-77.454439%7C41.138621%2C-77.451596&sensor=false"
 
 By giving gm.staticMap an optional callback, you can retreive the static map PNG data:
 
-    util.puts(gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', function(err, data){
+```javascript
+var gmAPI = new GoogleMapsAPI();
+gmAPI.staticMap('444 W Main St Lock Haven PA', 15, '500x400', function(err, data){
       require('fs').writeFileSync('test_map.png', data, 'binary');
-    }, false, 'roadmap', markers, styles, paths));
+    }, false, 'roadmap', markers, styles, paths);
+```
 
 You will get a map like:
 
 ![Some Map](http://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=%7Ccolor%3Ared%7Clabel%3AA%7Cicon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7Cshadow%3Afalse%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&style=%7Cfeature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&path=weight%3A5%7Ccolor%3A0x0000ff%7C41.139817%2C-77.454439%7C41.138621%2C-77.451596&sensor=false)
 
-# Configuration
-
-To set the configuration you call `gm.config(key, value)` or `gm.config({key: value, .....})`
-
-### Useful Configuration Options
-
-`proxy` - set a proxy for http requests
-
-`stagger-time` - defaults to 200ms - stagger async call times when multiple requests are required
-
-`encode-polylines` - defaults to true - encodes polylines to the shorter Google format.
-
-`google-client-id` - used for setting business specific parameters
-
-`google-private-key`- used for setting business specific parameters
-
--------------
-
-All the googlemaps functions follow this scheme:
-    function(required, callback, optional)
-
-All callbacks are expected to follow:
-    function(error, results)
-Where the error returned is an Error object.
+### Further examples
 
 Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/master/test/) and the [Google Maps API docs](http://code.google.com/apis/maps/documentation/webservices/index.html) for further usage information.
 
-# Contributors
+
+### Contributions
+Criticism/Suggestions/Patches/PullRequests are welcome.
+
+
+### Original contributors list
 
 [![evnm](https://secure.gravatar.com/avatar/2a8171b6c385b865e30bf070cf588329?s=50)](https://github.com/evnm)
 [![duncanm](https://secure.gravatar.com/avatar/7310945bafb21aa68b18d61d8b9d2d61?s=50)](https://github.com/duncanm)
