@@ -13,8 +13,8 @@ vows.describe('geocode').addBatch({
       assert.equal(result.status , 'OK');
     },
     'returns the expected lat/lng for Chicago': function(err, result){
-      assert.equal(result.results[0].geometry.location.lat, 41.8781136);
-      assert.equal(result.results[0].geometry.location.lng, -87.6297982);
+      assert.equal(result.results[0].geometry.location.lat.toFixed(2), 41.88);
+      assert.equal(result.results[0].geometry.location.lng.toFixed(2), -87.63);
     }
   },
   'Curtain Road (London, UK)': {
@@ -31,9 +31,9 @@ vows.describe('geocode').addBatch({
     'returns a valid request': function(err, result){
       assert.equal(result.status , 'OK');
     },
-    'returns the expected lat/lng for Chicago': function(err, result){
-      assert.equal(result.results[0].geometry.location.lat, 51.5259924);
-      assert.equal(result.results[0].geometry.location.lng, -0.08037079999999999);
+    'returns the expected lat/lng for London': function(err, result){
+      assert.equal(result.results[0].geometry.location.lat.toFixed(2), 51.53);
+      assert.equal(result.results[0].geometry.location.lng.toFixed(2), -0.08);
     }
   }
 }).export(module);
