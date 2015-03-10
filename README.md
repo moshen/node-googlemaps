@@ -1,16 +1,16 @@
 [![Build Status](https://travis-ci.org/moshen/node-googlemaps.svg)](https://travis-ci.org/moshen/node-googlemaps)
 
-# Google Maps API for Node.js v1.0
+# Google Maps API for Node.js
 
-This library implements the following APIs in Node.js
+This library implements the following Google Maps APIs, and can be also used by Google Maps for Work users.
 
 * [Maps API Web Services](https://developers.google.com/maps/documentation/webservices/)
 * [Google Places API](https://developers.google.com/places/)
 * [Google Maps Image API](https://developers.google.com/maps/documentation/imageapis/)
 
-This library is *NOT COMPATIBLE* with tags < 1.0.0
+This library is **NOT COMPATIBLE** with tags < `1.0.0`
 
-If you want to migrate from version 0.1.X check the WIKI for instructions.
+If you want to migrate from a version older than `1.0.0` check the [WIKI](https://github.com/moshen/node-googlemaps/wiki/Migrate-from-v0.1.20-to-v1.0.x) for instructions.
 
 ### Installation
 
@@ -23,7 +23,7 @@ npm install googlemaps
 
 * [Directions](https://developers.google.com/maps/documentation/directions/)
 * [Distance matrix](https://developers.google.com/maps/documentation/distancematrix/)
-* [Elevation](https://developers.google.com/maps/documentation/elevation/)
+* [Elevation](https://developers.google.com/maps/documentation/elevation/) - TO BE IMPROVED
 * [Geocoding and reverse geocoding](https://developers.google.com/maps/documentation/geocoding)
 * [Time zone](https://developers.google.com/maps/documentation/timezone) - NOT IMPLEMENTED YET
 
@@ -34,8 +34,8 @@ npm install googlemaps
 
 [Google Maps Image API](https://developers.google.com/maps/documentation/imageapis/)
 
-* [Static maps](https://developers.google.com/maps/documentation/staticmaps/)
-* [Street view](https://developers.google.com/maps/documentation/streetview/)
+* [Static maps](https://developers.google.com/maps/documentation/staticmaps/) - TO BE IMPROVED
+* [Street view](https://developers.google.com/maps/documentation/streetview/) - TO BE IMPROVED
 
 
 ### Usage
@@ -44,15 +44,16 @@ npm install googlemaps
 var config = {
   'key': '<YOUR-KEY>',
   'google-client-id':   '<YOUR-CLIENT-ID>', //optional
-  'stagger-time':       1000, //optional
+  'stagger-time':       1000, // for elevationPath
   'encode-polylines':   false,
   'secure':             true, // use https
-  'proxy':              'http://127.0.0.1:9999', // optional
-  'google-private-key': '<YOUR-PRIVATE-KEY>' // to use maps for Work
+  'proxy':              'http://127.0.0.1:9999', // optional, set a proxy for HTTP requests
+  'google-private-key': '<YOUR-PRIVATE-KEY>' // to use Google Maps for Work
 };
 
 var gmAPI = new GoogleMapsAPI(config);
 
+// geocode API
 var geocodeParams = {
   "address":    "121, Curtain Road, EC2A 3AD, London UK",
   "components": "components=country:GB",
@@ -65,6 +66,7 @@ gmAPI.geocode(geocodeParams, function(err, result){
   console.log(result);
 });
 
+// reverse geocode API
 var reverseGeocodeParams = {
   "latlng":        "51.1245,-0.0523",
   "result_type":   "postal_code",
@@ -77,7 +79,7 @@ gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
 });
 ``` 
 
-Check out [the unit tests](./tree/new-major-version/test/unit/) for more APIs examples.
+Check out the [unit tests](./tree/new-major-version/test/unit/) for more APIs examples.
 
 ```javascript
 var gmAPI = new GoogleMapsAPI();
@@ -117,3 +119,7 @@ Criticism/Suggestions/Patches/PullRequests are welcome.
 [![regality](https://secure.gravatar.com/avatar/fe513a9e239cebde58187721d67b7505?s=50)](https://github.com/regality)
 [![spatical](https://secure.gravatar.com/avatar/a7c5765a4a4dfbf697f728bd75223641?s=50)](https://github.com/spatical)
 
+### v1.0.0 maintener 
+[![fabriziomoscon](https://avatars1.githubusercontent.com/u/721890?v=3&u=b5079f5258887f4cc9a6de1cbadee230bca8ecc1&s=50)](https://github.com/fabriziomoscon)
+
+Contributions and new issues are welcome!

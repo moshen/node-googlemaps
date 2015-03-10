@@ -121,4 +121,32 @@ describe('constructor', function() {
 
   });
 
+  describe('non global object', function() {
+
+    it('should not return a singleton', function() {
+
+      var config = {
+        'google-private-key': 'test-private_key'
+      };
+
+      var gmAPI_1 = new GoogleMapsAPI( config );
+
+      var config = {
+        'key': 'xxxxxxx',
+        'google-client-id':   'test-client-id',
+        'stagger-time':       1000,
+        'encode-polylines':   false,
+        'secure':             true,
+        'proxy':              'http://127.0.0.1:9999',
+        'google-private-key': 'test-private-key'
+      };
+
+      var gmAPI_2 = new GoogleMapsAPI( config );
+
+      gmAPI_1.config.should.not.eql( gmAPI_2.config );
+
+    });
+
+  });
+
 });
