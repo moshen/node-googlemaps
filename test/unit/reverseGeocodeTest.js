@@ -102,6 +102,20 @@ describe('reverseGeocode', function() {
       checkCall();
     });
 
+    it('should not accept a call without params.address', function(done){
+      var params = {
+        "result_type":   "postal_code",
+        "language":      "en",
+        "location_type": "APPROXIMATE"
+      };
+
+      gmAPI.reverseGeocode( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('params.latlng is required');
+        done();
+      });
+    });
 
   });
 

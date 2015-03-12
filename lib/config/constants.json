@@ -64,6 +64,11 @@
       "units":          "string",
       "departure_time": "date",
       "arrival_time":   "date"
+    },
+    "elevation": {
+      "locations": "string",
+      "path": "string",
+      "samples": "string"
     }
   },
 

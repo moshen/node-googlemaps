@@ -2,12 +2,12 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/index');
 
-var placeSearchMoskResult = require('../mocks/placeSearch');
+var elevationFromLocationsMoskResult = require('../mocks/elevationFromLocations');
 
 var gmAPI;
 
 
-describe('placeSearch', function() {
+describe('elevationFromLocations', function() {
 
   before(function() {
     var config = {
@@ -24,7 +24,7 @@ describe('placeSearch', function() {
       var res = {
         statusCode: 200
       };
-      var data = JSON.stringify(placeSearchMoskResult);
+      var data = JSON.stringify(elevationFromLocationsMoskResult);
       return callback(null, res, data);
     };
 
@@ -40,9 +40,9 @@ describe('placeSearch', function() {
         return function() {
           it('should not accept ' + invalid + ' as callback', function() {
             var validParams = {
-              
+
             };
-            (function() { gmAPI.placeSearch( validParams, invalid ) }).should.throw();
+            (function() { gmAPI.elevationFromLocations( validParams, invalid ) }).should.throw();
           });
         } 
       }
@@ -51,15 +51,13 @@ describe('placeSearch', function() {
     calls.forEach( function(checkCall){
       checkCall();
     });
-
+    
     it('should not accept calls without key', function(done){
       var config = {
-        'google-client-id':   'test-client-id',
         'stagger-time':       1000,
         'encode-polylines':   false,
         'secure':             true,
-        'proxy':              'http://127.0.0.1:9999',
-        'google-private-key': 'test-private-key'
+        'proxy':              'http://127.0.0.1:9999'
       };
 
       var mockRequest = function(options, callback) {
@@ -73,10 +71,10 @@ describe('placeSearch', function() {
       var customGmAPI = new GoogleMapsAPI( config, mockRequest );
 
       var params = {};
-      customGmAPI.placeSearch( params, function(err, results) {
+      customGmAPI.elevationFromLocations( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('The placeSearch API requires a key. You can add it to the config.');
+        err.message.should.equal('The elevation API requires a key. You can add it to the config.');
         done();
       });
 
@@ -89,7 +87,7 @@ describe('placeSearch', function() {
       function(invalid) {
         return function() {
           it('should not accept ' + invalid + ' as params', function(done){
-              gmAPI.placeSearch( invalid, function(err, results) {
+              gmAPI.elevationFromLocations( invalid, function(err, results) {
                 should.not.exist(results);
                 should.exist(err);
                 err.message.should.equal('params must be an object');
@@ -104,33 +102,19 @@ describe('placeSearch', function() {
       checkCall();
     });
 
-    it('should not accept a call without params.location', function(done){
+    it('should not accept a call without params.locations', function(done){
       var params = {
-        rankby: 'distance'
+
       };
 
-      gmAPI.placeSearch( params, function(err, results) {
+      gmAPI.elevationFromLocations( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('params.location is required');
+        err.message.should.equal('params.locations is required');
         done();
       });
     });
 
-    it('should not accept rankby distance without one of keyword, name,types params', function(done){
-
-      var params = {
-        rankby: 'distance',
-        location: 'London'
-      };
-
-      gmAPI.placeSearch( params, function(err, results) {
-        should.not.exist(results);
-        should.exist(err);
-        err.message.should.equal('If rankby=distance is specified, then one or more of keyword, name, or types is required.');
-        done();
-      });
-    });
 
   });
 
@@ -139,14 +123,17 @@ describe('placeSearch', function() {
     it('should return places', function(done){
 
       var params = {
-        location: 'London'
+        locations: '41.850033,-87.6500523'
       };
 
-      gmAPI.placeSearch(params, function(err, result){
+      gmAPI.elevationFromLocations(params, function(err, result){
         should.not.exist(err);
         should.exist(result);
         result.status.should.equal('OK');
         result.results.should.be.instanceof(Array);
+        should.exist(result.results[0]);
+        result.results[0].should.have.properties(['location', 'elevation']);
+        result.results[0].location.should.have.properties(['lat', 'lng']);
         done();
       });
 
