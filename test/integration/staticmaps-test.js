@@ -31,7 +31,7 @@ vows.describe('staticmaps').addBatch({
     ,
     URL: {
       topic: function(options){
-        var gm = new GoogleMapsAPI({'encode-polylines': false});
+        var gm = new GoogleMapsAPI({encode_polylines: false});
         return gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, false, 'roadmap', options.markers, options.styles, options.paths);
       },
       'returns the expected static map URL': function(result){
@@ -49,7 +49,7 @@ vows.describe('staticmaps').addBatch({
     ,
     'PNG data': {
       topic: function(options){
-        var gm = new GoogleMapsAPI({'encode-polylines': true});
+        var gm = new GoogleMapsAPI({encode_polylines: true});
         gm.staticMap('444 W Main St Lock Haven PA', 15, '500x400', this.callback, false, 'roadmap', options.markers, options.styles, options.paths);
       },
       'returns the expected static map PNG data': function(err, data){

@@ -66,7 +66,7 @@ var tooLongCount = tooLongForGoogle.split("|").length;
 vows.describe('elevationFromPath when path is too long').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
-      var gm = new GoogleMapsAPI({'encode-polylines': false});
+      var gm = new GoogleMapsAPI({encode_polylines: false});
       gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
     },
     'returns as a valid request': function(err, result){

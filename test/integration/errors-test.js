@@ -26,8 +26,8 @@ vows.describe('errors').addBatch({
   'Wrong Credentials': {
     topic: function(options) {
       var gm = new GoogleMapsAPI({
-        'google-client-id': 'clientID',
-        'google-private-key': 'WRONG-KEY'
+        google_client_id: 'clientID',
+        google_private_key: 'WRONG-KEY'
       });
       gm.geocode({ address: 'Hamburg' }, this.callback);
     },

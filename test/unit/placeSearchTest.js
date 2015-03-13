@@ -11,13 +11,13 @@ describe('placeSearch', function() {
 
   before(function() {
     var config = {
-      'key': 'xxxxxxx',
-      'google-client-id':   'test-client-id',
-      'stagger-time':       1000,
-      'encode-polylines':   false,
-      'secure':             true,
-      'proxy':              'http://127.0.0.1:9999',
-      'google-private-key': 'test-private-key'
+      key: 'xxxxxxx',
+      google_client_id:   'test-client-id',
+      stagger_time:       1000,
+      encode_polylines:   false,
+      secure:             true,
+      proxy:              'http://127.0.0.1:9999',
+      google_private_key: 'test-private-key'
     };
 
     var mockRequest = function(options, callback) {
@@ -54,12 +54,12 @@ describe('placeSearch', function() {
 
     it('should not accept calls without key', function(done){
       var config = {
-        'google-client-id':   'test-client-id',
-        'stagger-time':       1000,
-        'encode-polylines':   false,
-        'secure':             true,
-        'proxy':              'http://127.0.0.1:9999',
-        'google-private-key': 'test-private-key'
+        google_client_id:   'test-client-id',
+        stagger_time:       1000,
+        encode_polylines:   false,
+        secure:             true,
+        proxy:              'http://127.0.0.1:9999',
+        google_private_key: 'test-private-key'
       };
 
       var mockRequest = function(options, callback) {

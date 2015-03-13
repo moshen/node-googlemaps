@@ -42,13 +42,13 @@ npm install googlemaps
 
 ```javascript
 var config = {
-  'key': '<YOUR-KEY>',
-  'google-client-id':   '<YOUR-CLIENT-ID>', //optional
-  'stagger-time':       1000, // for elevationPath
-  'encode-polylines':   false,
-  'secure':             true, // use https
-  'proxy':              'http://127.0.0.1:9999', // optional, set a proxy for HTTP requests
-  'google-private-key': '<YOUR-PRIVATE-KEY>' // to use Google Maps for Work
+  key: '<YOUR-KEY>',
+  google_client_id:   '<YOUR-CLIENT-ID>', //optional
+  stagger_time:       1000, // for elevationPath
+  encode_polylines:   false,
+  secure:             true, // use https
+  proxy:              'http://127.0.0.1:9999', // optional, set a proxy for HTTP requests
+  google_private_key: '<YOUR-PRIVATE-KEY>' // to use Google Maps for Work
 };
 
 var gmAPI = new GoogleMapsAPI(config);

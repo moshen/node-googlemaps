@@ -47,27 +47,27 @@ describe('constructor', function() {
     it('should accept configurations', function() {
 
       var config = {
-        'key':                'xxxxxxxxxxxxxxxx',
-        'google-client-id':   'test-client-id',
-        'stagger-time':       1000,
-        'encode-polylines':   false,
-        'secure':             true,
-        'proxy':              'http://127.0.0.1:9999',
-        'google-private-key': 'test-private-key'
+        key:                'xxxxxxxxxxxxxxxx',
+        google_client_id:   'test-client-id',
+        stagger_time:       1000,
+        encode_polylines:   false,
+        secure:             true,
+        proxy:              'http://127.0.0.1:9999',
+        google_private_key: 'test-private-key'
       };
 
       var gmAPI = new GoogleMapsAPI( config );
 
       should.exist( gmAPI.config );
 
-      gmAPI.config['key'].should.equal( config['key'] );
-      gmAPI.config['google-client-id'].should.equal( config['google-client-id'] );
-      gmAPI.config['stagger-time'].should.equal( config['stagger-time'] );
-      gmAPI.config['encode-polylines'].should.equal( config['encode-polylines'] );
-      gmAPI.config['secure'].should.equal( config['secure'] );
-      gmAPI.config['proxy'].should.equal( config['proxy'] );
+      gmAPI.config.key.should.equal( config.key );
+      gmAPI.config.google_client_id.should.equal( config.google_client_id );
+      gmAPI.config.stagger_time.should.equal( config.stagger_time );
+      gmAPI.config.encode_polylines.should.equal( config.encode_polylines );
+      gmAPI.config.secure.should.equal( config.secure );
+      gmAPI.config.proxy.should.equal( config.proxy );
       
-      should.exist( gmAPI.config['google-private-key'] );
+      should.exist( gmAPI.config.google_private_key );
 
     });
 
@@ -102,10 +102,10 @@ describe('constructor', function() {
 
     });
 
-    it('should base64 encode google-private-key after normalizing', function() {
+    it('should base64 encode google_private_key after normalizing', function() {
 
       var config = {
-        'google-private-key': 'test-private_key'
+        google_private_key: 'test-private_key'
       };
 
       var normalizedGooglePrivateKey = 'test+private/key';
@@ -114,8 +114,8 @@ describe('constructor', function() {
 
       should.exist( gmAPI.config );
 
-      gmAPI.config['google-private-key'].should.be.instanceof( Buffer );
-      gmAPI.config['google-private-key'].should.eql( new Buffer( normalizedGooglePrivateKey, 'base64' ) );
+      gmAPI.config.google_private_key.should.be.instanceof( Buffer );
+      gmAPI.config.google_private_key.should.eql( new Buffer( normalizedGooglePrivateKey, 'base64' ) );
 
     });
 
@@ -126,19 +126,19 @@ describe('constructor', function() {
     it('should not return a singleton', function() {
 
       var config = {
-        'google-private-key': 'test-private_key'
+        google_private_key: 'test-private_key'
       };
 
       var gmAPI_1 = new GoogleMapsAPI( config );
 
       var config = {
-        'key': 'xxxxxxx',
-        'google-client-id':   'test-client-id',
-        'stagger-time':       1000,
-        'encode-polylines':   false,
-        'secure':             true,
-        'proxy':              'http://127.0.0.1:9999',
-        'google-private-key': 'test-private-key'
+        key: 'xxxxxxx',
+        google_client_id:   'test-client-id',
+        stagger_time:       1000,
+        encode_polylines:   false,
+        secure:             true,
+        proxy:              'http://127.0.0.1:9999',
+        google_private_key: 'test-private-key'
       };
 
       var gmAPI_2 = new GoogleMapsAPI( config );

@@ -1,13 +1,13 @@
 {
 
   "ACCEPTED_CONFIG_KEYS": {
-    "encode-polylines":   "boolean",
-    "google-client-id":   "string",
-    "google-private-key": "string",
+    "encode_polylines":   "boolean",
+    "google_client_id":   "string",
+    "google_private_key": "string",
     "key":                "string",
     "proxy":              "string",
     "secure":             "boolean",
-    "stagger-time":       "number"
+    "stagger_time":       "number"
   },
 
   "ACCEPTED_PARAMS": {
