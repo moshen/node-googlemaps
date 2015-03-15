@@ -83,22 +83,56 @@ Check out the [unit tests](./tree/new-major-version/test/unit/) for more APIs ex
 
 ```javascript
 var gmAPI = new GoogleMapsAPI();
-gmAPI.staticMap('444 W Main St Lock Haven PA', 15, '500x400', false, false, 'roadmap', markers, styles, paths);
+var params = {
+  center: '444 W Main St Lock Haven PA',
+  zoom: 15,
+  size: '500x400',
+  maptype: 'roadmap',
+  markers: [
+    {
+      location: '300 W Main St Lock Haven, PA',
+      label   : 'A',
+      color   : 'green',
+      shadow  : true
+    },
+    {
+      location: '444 W Main St Lock Haven, PA',
+      icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=cafe%7C996600'
+    }
+  ],
+  style: [
+    {
+      feature: 'road',
+      element: 'all',
+      rules: {
+        hue: '0x00ff00'
+      }
+    }
+  ],
+  path: [
+    {
+      color: '0x0000ff',
+      weight: '5',
+      points: [
+        '41.139817,-77.454439',
+        '41.138621,-77.451596'
+      ]
+    }
+  ]
+};
+gmAPI.staticMap(params); // return static map URL
+gmAPI.staticMap(params, function(err, binaryImage) {
+  // fetch asynchronously the binary image
+});
 ```
-This example prints the URL for the Static Map image: "http://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=%7Ccolor%3Ared%7Clabel%3AA%7Cicon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7Cshadow%3Afalse%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&style=%7Cfeature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&path=weight%3A5%7Ccolor%3A0x0000ff%7C41.139817%2C-77.454439%7C41.138621%2C-77.451596&sensor=false"
+This example prints the URL for the Static Map image: "https://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=color%3Agreen%7Clabel%3AA%7Cshadow%3Atrue%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=icon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&path=weight%3A5%7Ccolor%3A0x0000ff%7Cenc%3A%7BbbzFfyvwMnFwP&style=feature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00"
 
 By giving gm.staticMap an optional callback, you can retreive the static map PNG data:
 
-```javascript
-var gmAPI = new GoogleMapsAPI();
-gmAPI.staticMap('444 W Main St Lock Haven PA', 15, '500x400', function(err, data){
-      require('fs').writeFileSync('test_map.png', data, 'binary');
-    }, false, 'roadmap', markers, styles, paths);
-```
 
 You will get a map like:
 
-![Some Map](http://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=%7Ccolor%3Ared%7Clabel%3AA%7Cicon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7Cshadow%3Afalse%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&style=%7Cfeature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&path=weight%3A5%7Ccolor%3A0x0000ff%7C41.139817%2C-77.454439%7C41.138621%2C-77.451596&sensor=false)
+![Some Map](https://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=color%3Agreen%7Clabel%3AA%7Cshadow%3Atrue%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=icon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&path=weight%3A5%7Ccolor%3A0x0000ff%7Cenc%3A%7BbbzFfyvwMnFwP&style=feature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00)
 
 ### Further examples
 
@@ -120,6 +154,7 @@ Criticism/Suggestions/Patches/PullRequests are welcome.
 [![spatical](https://secure.gravatar.com/avatar/a7c5765a4a4dfbf697f728bd75223641?s=50)](https://github.com/spatical)
 
 ### v1.0.0 maintener 
+[![moshen](https://avatars0.githubusercontent.com/u/168513?v=3&s=50)](https://github.com/moshen)
 [![fabriziomoscon](https://avatars1.githubusercontent.com/u/721890?v=3&u=b5079f5258887f4cc9a6de1cbadee230bca8ecc1&s=50)](https://github.com/fabriziomoscon)
 
 Contributions and new issues are welcome!

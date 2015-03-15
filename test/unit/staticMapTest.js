@@ -29,7 +29,7 @@ describe('staticMap', function() {
 
   describe('failures', function() {
 
-    var invalidCallback = [null, undefined, false, 0, NaN, '', {}, [], new Object, new Date];
+    var invalidCallback = [false, 0, NaN, '', {}, [], new Object, new Date];
 
     var calls = invalidCallback.map(
       function(invalid) {
@@ -110,6 +110,8 @@ describe('staticMap', function() {
         err.message.should.equal('params.center is required');
         done();
       });
+
+      (function() {gmAPI.staticMap( params )}).should.throw('params.center is required');
     });
 
     var invalidZoom = [false, NaN, '', [], new Object, new Date, function() {}];
@@ -247,6 +249,7 @@ describe('staticMap', function() {
         err.message.should.equal('params.scale can be 4 only for GoogleMaps for work users');
         done();
       });
+      (function() {customGmAPI.staticMap( params )}).should.throw('params.scale can be 4 only for GoogleMaps for work users');
     });
 
     var invalidFormat = ['TIFF', 'bmp', 'mp3'];
