@@ -69,6 +69,20 @@
       "locations": "string",
       "path": "string",
       "samples": "string"
+    },
+    "static-map": {
+      "center":   "string",
+      "zoom":     "number",
+      "size":     "string",
+      "scale":    "number",
+      "format":   "string",
+      "maptype":  "string",
+      "language": "string",
+      "region":   "string",
+      "markers":  "array",
+      "path":     "array",
+      "visible":  "string",
+      "style":    "array"
     }
   },
 

@@ -34,7 +34,7 @@ npm install googlemaps
 
 [Google Maps Image API](https://developers.google.com/maps/documentation/imageapis/)
 
-* [Static maps](https://developers.google.com/maps/documentation/staticmaps/) - TO BE IMPROVED
+* [Static maps](https://developers.google.com/maps/documentation/staticmaps/)
 * [Street view](https://developers.google.com/maps/documentation/streetview/) - TO BE IMPROVED
 
 
