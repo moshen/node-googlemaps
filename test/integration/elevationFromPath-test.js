@@ -6,7 +6,11 @@ vows.describe('elevationFromPath').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
       var gm = new GoogleMapsAPI();
-      gm.elevationFromPath('43.07333,-89.4026|41.850033,-87.6500523', '10', this.callback, 'false');
+      var params = {
+        path: '43.07333,-89.4026|41.850033,-87.6500523',
+        samples: 10
+      };
+      gm.elevationFromPath(params, this.callback);
     },
     'returns as a valid request': function(err, result){
       assert.equal(result.status , 'OK');
@@ -67,7 +71,11 @@ vows.describe('elevationFromPath when path is too long').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
       var gm = new GoogleMapsAPI({encode_polylines: false});
-      gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
+      var params = {
+        path: tooLongForGoogle,
+        samples: tooLongCount
+      };
+      gm.elevationFromPath(params, this.callback);
     },
     'returns as a valid request': function(err, result){
       assert.equal(result.status , 'OK');
