@@ -83,7 +83,16 @@
       "path":     "array",
       "visible":  "string",
       "style":    "array"
+    },
+    "street-map": {
+      "location": "string",
+      "pano":     "string",
+      "size":     "string",
+      "heading":  "number",
+      "fov":      "number",
+      "pitch":    "number"
     }
+
   },
 
   "GOOGLEMAPS_ENDPOINTS": {

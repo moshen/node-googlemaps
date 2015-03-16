@@ -81,6 +81,8 @@ gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
 
 Check out the [unit tests](./tree/new-major-version/test/unit/) for more APIs examples.
 
+### Static Maps
+
 ```javascript
 var gmAPI = new GoogleMapsAPI();
 var params = {
@@ -133,6 +135,22 @@ By giving gm.staticMap an optional callback, you can retreive the static map PNG
 You will get a map like:
 
 ![Some Map](https://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=color%3Agreen%7Clabel%3AA%7Cshadow%3Atrue%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=icon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&path=weight%3A5%7Ccolor%3A0x0000ff%7Cenc%3A%7BbbzFfyvwMnFwP&style=feature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00)
+
+### Street view
+
+```javascript
+var gmAPI = new GoogleMapsAPI();
+var params = {
+  location: 'Duomo di Milano, Milan, Italy',
+  size: '1200x1600',
+  heading: 110,
+  pitch: 10,
+  fov: 40
+};
+var result = gmAPI.streetView(params);
+```
+
+![Milan](https://maps.googleapis.com/maps/api/streetview?location=Duomo%20di%20Milano%2C%20Milan%2C%20Italy&size=1200x1600&heading=110&fov=40&pitch=10)
 
 ### Further examples
 
