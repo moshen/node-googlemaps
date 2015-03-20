@@ -5,7 +5,7 @@ var parsePaths = require('../../../lib/utils/parsePaths');
 
 describe('parsePaths', function() {
 
-  describe('faulres', function() {
+  describe('failures', function() {
 
     var invalidPaths = [null, undefined, false, 0, NaN, '', {}, new Object, new Date, function() {}];
 

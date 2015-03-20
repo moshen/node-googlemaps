@@ -5,7 +5,7 @@ var parseStyles = require('../../../lib/utils/parseStyles');
 
 describe('parseStyles', function() {
 
-  describe('faulres', function() {
+  describe('failures', function() {
 
     var invalidStyles = [null, undefined, false, 0, NaN, '', {}, new Object, new Date, function() {}];
 

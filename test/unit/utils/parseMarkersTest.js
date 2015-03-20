@@ -5,7 +5,7 @@ var parseMarkers = require('../../../lib/utils/parseMarkers');
 
 describe('parseMarkers', function() {
 
-  describe('faulres', function() {
+  describe('failures', function() {
 
     var invalidMarkers = [null, undefined, false, 0, NaN, '', {}, new Object, new Date, function() {}];
 
