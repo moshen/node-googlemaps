@@ -27,7 +27,7 @@ vows.describe('streetview').addBatch({
       'returns the expected Street View Image data': checkJPEGHeader
     },
 
-    'With Optonal Parameters URL': {
+    'With Optional Parameters URL': {
       topic: function(options){
         return gm.streetView('600x300', '56.960654,-2.201815', false, false, "250", "90", "-10");
       },
@@ -36,7 +36,7 @@ vows.describe('streetview').addBatch({
       }
     },
 
-    'With Optonal Parameters Image data (jpeg)': {
+    'With Optional Parameters Image data (jpeg)': {
       topic: function(options){
         gm.streetView('600x300', '56.960654,-2.201815', this.callback, false, "250", "90", "-10");
       },
