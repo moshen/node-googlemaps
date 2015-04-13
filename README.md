@@ -44,9 +44,9 @@ TODO:
 
 Both examples print:
     {"status":"OK","results":[{"types":["postal_code"],"formatted_address":"Chicago, IL 60695, USA"...
-    
+
 For the Static Maps API, you can pass in all the required parameters as well as markers, styles, and paths using the formats outlined below.
-    
+
     markers = [
     	{ 'location': '300 W Main St Lock Haven, PA' },
     	{ 'location': '444 W Main St Lock Haven, PA',
@@ -58,13 +58,13 @@ For the Static Maps API, you can pass in all the required parameters as well as 
     ]
 
     styles = [
-    	{ 'feature': 'road', 'element': 'all', 'rules': 
+    	{ 'feature': 'road', 'element': 'all', 'rules':
     		{ 'hue': '0x00ff00' }
     	}
     ]
 
     paths = [
-    	{ 'color': '0x0000ff', 'weight': '5', 'points': 
+    	{ 'color': '0x0000ff', 'weight': '5', 'points':
     		[ '41.139817,-77.454439', '41.138621,-77.451596' ]
     	}
     ]
@@ -90,6 +90,17 @@ To set the configuration you call `gm.config(key, value)` or `gm.config({key: va
 ### Useful Configuration Options
 
 `proxy` - set a proxy for http requests
+
+`timeout` - Set a timeout in milliseconds on requests to Google. The behavior
+here is slightly confusing.
+
+  - A wall-clock timeout is set so the request will time out if the total
+  amount of time between initiating the request and the server returning a byte
+  of data exceeds the timeout amount.
+  - A timeout can also get triggered if the amount of time between any bytes
+  sent by the server exceeds the timeout value - the most common examples are
+  before any data is sent, or after the headers are sent but before the body is
+  sent.
 
 `stagger-time` - defaults to 200ms - stagger async call times when multiple requests are required
 
@@ -119,4 +130,3 @@ Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/
 [![grobot](https://secure.gravatar.com/avatar/ba3313effc329919b09bca67827bdf10?s=50)](https://github.com/grobot)
 [![regality](https://secure.gravatar.com/avatar/fe513a9e239cebde58187721d67b7505?s=50)](https://github.com/regality)
 [![spatical](https://secure.gravatar.com/avatar/a7c5765a4a4dfbf697f728bd75223641?s=50)](https://github.com/spatical)
-
