@@ -143,6 +143,22 @@ describe('direstions', function() {
       });
     });
 
+    it('should not accept a call with mode transit and invalid params.departure_time', function(done){
+      var params = {
+        origin: 'New York, NY, US',
+        destination: 'Los Angeles, CA, US',
+        mode: 'transit',
+        departure_time: Date.now()
+      };
+
+      gmAPI.directions( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('When specifying params.mode = transit either params.departure_time or params.arrival_time must be provided');
+        done();
+      });
+    });
+
     it('should not accept a call with mode transit and params.waypoints', function(done){
       var params = {
         origin: 'New York, NY, US',

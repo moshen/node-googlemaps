@@ -3,7 +3,6 @@
   "ACCEPTED_CONFIG_KEYS": {
     "encode_polylines":   "boolean",
     "google_client_id":   "string",
-    "google_private_key": "string",
     "key":                "string",
     "proxy":              "string",
     "secure":             "boolean",

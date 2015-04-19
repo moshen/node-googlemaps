@@ -51,35 +51,6 @@ describe('reverseGeocode', function() {
     calls.forEach( function(checkCall){
       checkCall();
     });
-    
-    it('should not accept calls without key', function(done){
-      var config = {
-        stagger_time:       1000,
-        encode_polylines:   false,
-        secure:             true,
-        proxy:              'http://127.0.0.1:9999'
-      };
-
-      var mockRequest = function(options, callback) {
-        var res = {
-          statusCode: 200
-        };
-        var data = JSON.stringify([]);
-        return callback(null, res, data);
-      };
-
-      var customGmAPI = new GoogleMapsAPI( config, mockRequest );
-
-      var params = {};
-      customGmAPI.reverseGeocode( params, function(err, results) {
-        should.not.exist(results);
-        should.exist(err);
-        err.message.should.equal('The reverse geocode API requires a key. You can add it to the config.');
-        done();
-      });
-
-    });
-
 
     var invalidParams = [null, undefined, false, 0, NaN, '', [], new Date, function() {}];
 
@@ -122,6 +93,43 @@ describe('reverseGeocode', function() {
   describe('success', function() {
 
     it('should return places', function(done){
+
+      var params = {
+        "latlng":        "51.1245,-0.0523",
+        "result_type":   "postal_code",
+        "language":      "en",
+        "location_type": "APPROXIMATE"
+      };
+
+      gmAPI.reverseGeocode(params, function(err, result){
+        should.not.exist(err);
+        should.exist(result);
+        result.status.should.equal('OK');
+        result.results.should.be.instanceof(Array);
+        should.exist(result.results[0]);
+        result.results[0].should.have.properties(['types', 'formatted_address', 'address_components', 'geometry']);
+        done();
+      });
+
+    });
+
+    it('should accept calls without key', function(done){
+      var config = {
+        stagger_time:       1000,
+        encode_polylines:   false,
+        secure:             true,
+        proxy:              'http://127.0.0.1:9999'
+      };
+
+      var mockRequest = function(options, callback) {
+        var res = {
+          statusCode: 200
+        };
+        var data = JSON.stringify(geocodeMoskResult);
+        return callback(null, res, data);
+      };
+
+      var customGmAPI = new GoogleMapsAPI( config, mockRequest );
 
       var params = {
         "latlng":        "51.1245,-0.0523",

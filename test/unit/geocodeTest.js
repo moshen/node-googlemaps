@@ -51,35 +51,6 @@ describe('geocode', function() {
     calls.forEach( function(checkCall){
       checkCall();
     });
-    
-    it('should not accept calls without key', function(done){
-      var config = {
-        stagger_time:       1000,
-        encode_polylines:   false,
-        secure:             true,
-        proxy:              'http://127.0.0.1:9999'
-      };
-
-      var mockRequest = function(options, callback) {
-        var res = {
-          statusCode: 200
-        };
-        var data = JSON.stringify([]);
-        return callback(null, res, data);
-      };
-
-      var customGmAPI = new GoogleMapsAPI( config, mockRequest );
-
-      var params = {};
-      customGmAPI.geocode( params, function(err, results) {
-        should.not.exist(results);
-        should.exist(err);
-        err.message.should.equal('The geocode API requires a key. You can add it to the config.');
-        done();
-      });
-
-    });
-
 
     var invalidParams = [null, undefined, false, 0, NaN, '', [], new Date, function() {}];
 
@@ -133,6 +104,44 @@ describe('geocode', function() {
       };
 
       gmAPI.geocode(params, function(err, result){
+        should.not.exist(err);
+        should.exist(result);
+        result.status.should.equal('OK');
+        result.results.should.be.instanceof(Array);
+        should.exist(result.results[0]);
+        result.results[0].should.have.properties(['types', 'formatted_address', 'address_components', 'geometry']);
+        done();
+      });
+
+    });
+
+    it('should accept calls without key', function(done){
+      var config = {
+        stagger_time:       1000,
+        encode_polylines:   false,
+        secure:             true,
+        proxy:              'http://127.0.0.1:9999'
+      };
+
+      var mockRequest = function(options, callback) {
+        var res = {
+          statusCode: 200
+        };
+        var data = JSON.stringify(geocodeMoskResult);
+        return callback(null, res, data);
+      };
+
+      var customGmAPI = new GoogleMapsAPI( config, mockRequest );
+
+      var params = {
+        "address":    "121, Curtain Road, EC2A 3AD, London UK",
+        "components": "components=country:GB",
+        "bounds":     "55,-1|54,1",
+        "language":   "en",
+        "region":     "uk"
+      };
+
+      customGmAPI.geocode( params, function(err, result) {
         should.not.exist(err);
         should.exist(result);
         result.status.should.equal('OK');

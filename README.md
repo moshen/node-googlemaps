@@ -141,16 +141,16 @@ You will get a map like:
 ```javascript
 var gmAPI = new GoogleMapsAPI();
 var params = {
-  location: 'Duomo di Milano, Milan, Italy',
+  location: '51.507868,-0.087689',
   size: '1200x1600',
-  heading: 110,
-  pitch: 10,
+  heading: 108.4,
+  pitch: 7,
   fov: 40
 };
 var result = gmAPI.streetView(params);
 ```
 
-![Milan](https://maps.googleapis.com/maps/api/streetview?location=Duomo%20di%20Milano%2C%20Milan%2C%20Italy&size=1200x1600&heading=110&fov=40&pitch=10)
+![London - Tower Bridge from London Bridge](https://maps.googleapis.com/maps/api/streetview?location=51.507868,-0.087689&size=1200x1600&heading=108.4&fov=40&pitch=7)
 
 ### Further examples
 
