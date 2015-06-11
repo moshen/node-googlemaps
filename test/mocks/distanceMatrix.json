@@ -1,0 +1,59 @@
+{
+  "destination_addresses" : [ "Los Angeles, CA, USA", "San Francisco, CA, USA" ],
+  "origin_addresses" : [ "New York, NY, USA", "Boston, MA, USA" ],
+  "rows" : [
+    {
+      "elements" : [
+        {
+          "distance" : {
+            "text" : "4,493 km",
+            "value" : 4493153
+          },
+          "duration" : {
+            "text" : "1 day 16 hours",
+            "value" : 144155
+          },
+          "status" : "OK"
+        },
+        {
+          "distance" : {
+            "text" : "4,679 km",
+            "value" : 4679331
+          },
+          "duration" : {
+            "text" : "1 day 18 hours",
+            "value" : 150516
+          },
+          "status" : "OK"
+        }
+      ]
+    },
+    {
+      "elements" : [
+        {
+          "distance" : {
+            "text" : "4,802 km",
+            "value" : 4801920
+          },
+          "duration" : {
+            "text" : "1 day 19 hours",
+            "value" : 154130
+          },
+          "status" : "OK"
+        },
+        {
+          "distance" : {
+            "text" : "4,988 km",
+            "value" : 4988098
+          },
+          "duration" : {
+            "text" : "1 day 21 hours",
+            "value" : 160491
+          },
+          "status" : "OK"
+        }
+      ]
+    }
+  ],
+  "status" : "OK"
+}

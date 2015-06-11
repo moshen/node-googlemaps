@@ -1,34 +1,35 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
+  GoogleMapsAPI = require('../../lib/index')
+  config = require('../simpleConfig');
+
 
 vows.describe('errors').addBatch({
   'No connection': {
     topic: function(options) {
-      gm.config('proxy', 'http://127.0.0.1:49151');
-      gm.geocode('Hamburg', this.callback);
-
-      // reset the proxy
-      gm.config('proxy', null);
+      devNullConfig = {
+        key: config.key,
+        proxy: 'https://127.0.0.1:49151'
+      }
+      var gm = new GoogleMapsAPI(devNullConfig);
+      gm.geocode({ address: 'Hamburg' }, this.callback);
     },
     'returns an error': function(err, result) {
       assert.isUndefined(result);
       assert.isObject(err);
     },
     'returns the error code ECONNREFUSED': function(err, result) {
-      assert.equal(err.code, 'ECONNREFUSED');
+      assert.equal(err.code, 'ECONNRESET');
     }
   },
 
   'Wrong Credentials': {
     topic: function(options) {
-      gm.config('google-client-id', 'clientID');
-      gm.config('google-private-key', 'WRONG-KEY');
-      gm.geocode('Hamburg', this.callback);
-
-      // reset credentials
-      gm.config('google-client-id', null);
-      gm.config('google-private-key', null);
+      var gm = new GoogleMapsAPI({
+        google_client_id: 'clientID',
+        google_private_key: 'WRONG-KEY'
+      });
+      gm.geocode({ address: 'Hamburg' }, this.callback);
     },
     'returns the expected street view URL': function(err, data) {
       assert.isUndefined(data);

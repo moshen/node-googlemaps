@@ -1,0 +1,108 @@
+{
+
+  "ACCEPTED_CONFIG_KEYS": {
+    "encode_polylines":   "boolean",
+    "google_client_id":   "string",
+    "key":                "string",
+    "proxy":              "string",
+    "secure":             "boolean",
+    "stagger_time":       "number"
+  },
+
+  "ACCEPTED_PARAMS": {
+    "place-search": {
+      "keyword":   "string",
+      "language":  "string",
+      "location":  "string",
+      "maxprice":  "number",
+      "minprice":  "number",
+      "name":      "string",
+      "opennow":   "boolean",
+      "pagetoken": "string",
+      "radius":    "number",
+      "rankby":    "string",
+      "sensor":    "string",
+      "types":     "string"
+    },
+    "place-details": {
+      "placeid":    "string",
+      "extensions": "string",
+      "language":   "string"
+    },
+    "geocode": {
+      "address":    "string",
+      "components": "string",
+      "bounds":     "string",
+      "language":   "string",
+      "region":     "string"
+    },
+    "reverse-geocode": {
+      "latlng":        "string",
+      "result_type":   "string",
+      "language":      "string",
+      "location_type": "string"
+    },
+    "distance-matrix": {
+      "origins":        "string",
+      "destinations":   "string",
+      "mode":           "string",
+      "language":       "string",
+      "avoid":          "string",
+      "units":          "string",
+      "departure_time": "date"
+    },
+    "directions": {
+      "origin":         "string",
+      "destination":    "string",
+      "mode":           "string",
+      "waypoints":      "string",
+      "alternatives":   "boolean",
+      "avoid":          "string",
+      "language":       "string",
+      "region":         "string",
+      "units":          "string",
+      "departure_time": "date",
+      "arrival_time":   "date"
+    },
+    "elevation": {
+      "locations": "string",
+      "path": "string",
+      "samples": "string"
+    },
+    "static-map": {
+      "center":   "string",
+      "zoom":     "number",
+      "size":     "string",
+      "scale":    "number",
+      "format":   "string",
+      "maptype":  "string",
+      "language": "string",
+      "region":   "string",
+      "markers":  "array",
+      "path":     "array",
+      "visible":  "string",
+      "style":    "array"
+    },
+    "street-map": {
+      "location": "string",
+      "pano":     "string",
+      "size":     "string",
+      "heading":  "number",
+      "fov":      "number",
+      "pitch":    "number"
+    }
+
+  },
+
+  "GOOGLEMAPS_ENDPOINTS": {
+    "directions":      "/maps/api/directions/json",
+    "distance-matrix": "/maps/api/distancematrix/json",
+    "elevation":       "/maps/api/elevation/json",
+    "geocode":         "/maps/api/geocode/json",
+    "place-details":   "/maps/api/place/details/json",
+    "place-search":    "/maps/api/place/nearbysearch/json",
+    "static-map":      "/maps/api/staticmap",
+    "street-view":     "/maps/api/streetview"
+  }
+
+}

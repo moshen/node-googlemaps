@@ -1,42 +1,16 @@
 var vows = require('vows'),
   assert = require('assert'),
-  gm = require('../lib/googlemaps');
-
-vows.describe('elevationFromLocations').addBatch({
-  'Simple elevationFromLocations request (41.850033,-87.6500523)': {
-    topic: function(){
-      gm.elevationFromLocations('41.850033,-87.6500523', this.callback, 'false');
-    },
-    'returns as a valid request': function(err, result){
-      assert.equal(result.status , 'OK');
-    },
-    'returns the expected elevation for Chicago': function(err, result){
-      assert.notEqual(result.results, false);
-      assert.notEqual(result.results.length, 0);
-      assert.equal(Math.round(result.results[0].elevation) , 179);
-    }
-  }
-}).export(module);
-
-/* Elevation from location query results
-{
-   "status":"OK",
-   "results":[
-      {
-         "location":{
-            "lat":41.850033,
-            "lng":-87.6500523
-         },
-         "elevation":178.6981049
-      }
-   ]
-}
-*/
+  GoogleMapsAPI = require('../../lib/index');
 
 vows.describe('elevationFromPath').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
-      gm.elevationFromPath('43.07333,-89.4026|41.850033,-87.6500523', '10', this.callback, 'false');
+      var gm = new GoogleMapsAPI();
+      var params = {
+        path: '43.07333,-89.4026|41.850033,-87.6500523',
+        samples: 10
+      };
+      gm.elevationFromPath(params, this.callback);
     },
     'returns as a valid request': function(err, result){
       assert.equal(result.status , 'OK');
@@ -52,6 +26,7 @@ vows.describe('elevationFromPath').addBatch({
     }
   }
 }).export(module);
+
 
 var tooLongForGoogle =
   "42.233167,-71.475141|42.231813,-71.477802|42.2325,-71.479332|42.235003,-71.478509|42.23663,-71.476585|42.236069,-71.474188|42.234782,-71.47375|42.233651,-71.472736|42.232583,-71.472161|42.231611,-71.472123|" +
@@ -95,95 +70,18 @@ var tooLongCount = tooLongForGoogle.split("|").length;
 vows.describe('elevationFromPath when path is too long').addBatch({
   'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
     topic: function(){
-      gm.config('encode-polylines', false);
-      gm.elevationFromPath(tooLongForGoogle, tooLongCount, this.callback, 'false');
+      var gm = new GoogleMapsAPI({encode_polylines: false});
+      var params = {
+        path: tooLongForGoogle,
+        samples: tooLongCount
+      };
+      gm.elevationFromPath(params, this.callback);
     },
     'returns as a valid request': function(err, result){
       assert.equal(result.status , 'OK');
     },
     'returns the expected number of samples': function(err, result){
       assert.equal(result.results.length , tooLongCount);
-      gm.config('encode-polylines', true);
     }
   }
 }).export(module);
-
-/* Elevation from path query results
-{
-   "status":"OK",
-   "results":[
-      {
-         "location":{
-            "lat":43.07333,
-            "lng":-89.4026
-         },
-         "elevation":271.6759949
-      },
-      {
-         "location":{
-            "lat":42.9387406,
-            "lng":-89.2044638
-         },
-         "elevation":259.8457336
-      },
-      {
-         "location":{
-            "lat":42.8038109,
-            "lng":-89.0071931
-         },
-         "elevation":269.4146118
-      },
-      {
-         "location":{
-            "lat":42.6685442,
-            "lng":-88.810782
-         },
-         "elevation":285.5769958
-      },
-      {
-         "location":{
-            "lat":42.5329433,
-            "lng":-88.6152249
-         },
-         "elevation":300.2436218
-      },
-      {
-         "location":{
-            "lat":42.3970114,
-            "lng":-88.4205162
-         },
-         "elevation":259.1387939
-      },
-      {
-         "location":{
-            "lat":42.2607515,
-            "lng":-88.2266502
-         },
-         "elevation":226.3040619
-      },
-      {
-         "location":{
-            "lat":42.1241665,
-            "lng":-88.0336213
-         },
-         "elevation":228.6080322
-      },
-      {
-         "location":{
-            "lat":41.9872593,
-            "lng":-87.8414239
-         },
-         "elevation":193.4155426
-      },
-      {
-         "location":{
-            "lat":41.850033,
-            "lng":-87.6500523
-         },
-         "elevation":178.6981049
-      }
-   ]
-}
-*/
-
-// vim: set expandtab sw=2:
