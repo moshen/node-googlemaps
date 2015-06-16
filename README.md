@@ -41,17 +41,25 @@ npm install googlemaps
 ### Usage
 
 ```javascript
-var config = {
+var publicConfig = {
   key: '<YOUR-KEY>',
-  google_client_id:   '<YOUR-CLIENT-ID>', //optional
   stagger_time:       1000, // for elevationPath
   encode_polylines:   false,
   secure:             true, // use https
-  proxy:              'http://127.0.0.1:9999', // optional, set a proxy for HTTP requests
-  google_private_key: '<YOUR-PRIVATE-KEY>' // to use Google Maps for Work
+  proxy:              'http://127.0.0.1:9999' // optional, set a proxy for HTTP requests
 };
+var gmAPI = new GoogleMapsAPI(publicConfig);
 
-var gmAPI = new GoogleMapsAPI(config);
+// or in case you are using Google Maps for Work
+var enterpriseConfig = {
+  google_client_id:   '<YOUR-CLIENT-ID>', // to use Google Maps for Work
+  google_private_key: '<YOUR-PRIVATE-KEY>', // to use Google Maps for Work
+  stagger_time:       1000, // for elevationPath
+  encode_polylines:   false,
+  secure:             true, // use https
+  proxy:              'http://127.0.0.1:9999' // optional, set a proxy for HTTP requests
+};
+var gmAPI = new GoogleMapsAPI(enterpriseConfig);
 
 // geocode API
 var geocodeParams = {
