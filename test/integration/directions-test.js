@@ -78,6 +78,25 @@ vows.describe('directions').addBatch({
       assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(1), -71.1);
       // TODO add more checks
     }
+  },
+  'Simple Directions (Public transport inside London with departure time': {
+    topic: function(){
+      var gm = new GoogleMapsAPI(config);
+      gm.directions({
+        origin: '51.4914638,-0.160386',
+        destination: '51.53170776367188,-0.1940658986568451',
+        mode: 'transit',
+        departure_time: new Date(2015, 6, 14, 12, 48, 47)
+      }, this.callback);
+    },
+    'returns as a valid request': function(err, result){
+      assert.ifError(err);
+      assert.equal(result.status, 'OK');
+    },
+    'returns expected lat/lng for London': function(err, result){
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(1) , 51.5);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(1) , -0.2);
+    }
   }
 
 }).export(module);
