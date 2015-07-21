@@ -68,6 +68,18 @@ describe('parsePaths', function() {
       result.should.equal(output);
     });
 
+    it('should use a pre-encoded polyline', function() {
+      var input = [
+        {
+          points: 'enc:hf|eFol{sZm@pD|@bA',
+          color: '0x0000ff',
+          weight: 5
+        }
+      ];
+      var output = "weight:5|color:0x0000ff|enc:hf|eFol{sZm@pD|@bA";
+      var result = parsePaths(input);
+      result.should.equal(output);
+    });
   });
 
 });
