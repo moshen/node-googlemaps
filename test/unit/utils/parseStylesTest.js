@@ -45,10 +45,13 @@ describe('parseStyles', function() {
         }
       ];
 
-      var output = "feature:road|element:all|hue:0x00ff00|feature:landscape|element:all|visibility:off";
+      var output = [
+          "feature:road|element:all|hue:0x00ff00",
+          "feature:landscape|element:all|visibility:off"
+      ];
 
       var result = parseStyles(input);
-      result.should.equal(output);
+      result.should.eql(output);
     });
 
   });
