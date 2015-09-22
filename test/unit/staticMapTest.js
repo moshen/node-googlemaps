@@ -337,12 +337,29 @@ describe('staticMap', function() {
         done();
       });
     });
-      
+
+    it('should accept a call without params.center and params.zoom in case there are markers', function(done){
+      var params = {
+        markers: [
+          { location: '444 W Main St Lock Haven PA' },
+          { location: 'Houston Texas, US' }
+        ],
+        size: '400x400',
+        maptype: 'terrain',
+        scale: 2
+      };
+      gmAPI.staticMap( params, function(err, binary) {
+        should.not.exist(err);
+        should.exist(binary);
+        done();
+      });
+    });
+
     it('should accept a call without params.center and params.zoom in case there are paths and markers', function(done){
       var params = {
         size: '500x400',
         maptype: 'satellite',
-           markers: [
+        markers: [
           { location: '444 W Main St Lock Haven PA' },
           { location: 'Houston Texas, US' }
         ],
@@ -361,23 +378,6 @@ describe('staticMap', function() {
             weight: 3
           }
         ]
-      };
-      gmAPI.staticMap( params, function(err, binary) {
-        should.not.exist(err);
-        should.exist(binary);
-        done();
-      });
-    });
-
-    it('should accept a call without params.center and params.zoom in case there are markers', function(done){
-      var params = {
-        markers: [
-          { location: '444 W Main St Lock Haven PA' },
-          { location: 'Houston Texas, US' }
-        ],
-        size: '400x400',
-        maptype: 'terrain',
-        scale: 2
       };
       gmAPI.staticMap( params, function(err, binary) {
         should.not.exist(err);
