@@ -310,6 +310,33 @@ describe('staticMap', function() {
   });
 
   describe('success', function() {
+      
+    it('should accept a call without params.center and params.zoom in case there are paths', function(done){
+      var params = {
+        size: '500x400',
+        maptype: 'satellite',
+        path: [
+          {
+            points: [
+              'Old Street Station, London, Uk',
+              'St Paul, London, Uk',
+              'Holborn Station, London, Uk',
+              'Embankment, London, Uk',
+              'London Bridge station, London, Uk',
+              'Bank Station, London, Uk',
+              'Old Street Station, London, Uk'
+            ],
+            color: '0x0000ff',
+            weight: 3
+          }
+        ]
+      };
+      gmAPI.staticMap( params, function(err, binary) {
+        should.not.exist(err);
+        should.exist(binary);
+        done();
+      });
+    });
 
     it('should accept a call without params.center and params.zoom in case there are markers', function(done){
       var params = {
@@ -320,6 +347,37 @@ describe('staticMap', function() {
         size: '400x400',
         maptype: 'terrain',
         scale: 2
+      };
+      gmAPI.staticMap( params, function(err, binary) {
+        should.not.exist(err);
+        should.exist(binary);
+        done();
+      });
+    });
+
+    it('should accept a call without params.center and params.zoom in case there are paths and markers', function(done){
+      var params = {
+        size: '500x400',
+        maptype: 'satellite',
+        markers: [
+          { location: '444 W Main St Lock Haven PA' },
+          { location: 'Houston Texas, US' }
+        ],
+        path: [
+          {
+            points: [
+              'Old Street Station, London, Uk',
+              'St Paul, London, Uk',
+              'Holborn Station, London, Uk',
+              'Embankment, London, Uk',
+              'London Bridge station, London, Uk',
+              'Bank Station, London, Uk',
+              'Old Street Station, London, Uk'
+            ],
+            color: '0x0000ff',
+            weight: 3
+          }
+        ]
       };
       gmAPI.staticMap( params, function(err, binary) {
         should.not.exist(err);
