@@ -1,31 +1,35 @@
-var vows = require('vows'),
-  assert = require('assert'),
+var should = require('should'),
   GoogleMapsAPI = require('../../lib/index');
 
-vows.describe('elevationFromPath').addBatch({
-  'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
-    topic: function(){
+describe('elevationFromPath', function() {
+  describe('Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)', function() {
+    var result;
+    before(function(done){
       var gm = new GoogleMapsAPI();
       var params = {
         path: '43.07333,-89.4026|41.850033,-87.6500523',
         samples: 10
       };
-      gm.elevationFromPath(params, this.callback);
-    },
-    'returns as a valid request': function(err, result){
-      assert.equal(result.status , 'OK');
-    },
-    'returns the expected number of samples': function(err, result){
-      assert.notEqual(result.results, false);
-      assert.equal(result.results.length , 10);
-    },
-    'returns the expected elevation for Chicago': function(err, result){
-      if (err) throw err;
+      gm.elevationFromPath(params, function(err, data) {
+        should.ifError(err);
+        result = data;
+        done();
+      });
+    });
+
+    it('should return as a valid request', function() {
+      should.equal(result.status , 'OK');
+    });
+    it('should return the expected number of samples', function() {
+      should.notEqual(result.results, false);
+      should.equal(result.results.length , 10);
+    });
+    it('should return the expected elevation for Chicago', function() {
       if (!result || !result.results || !result.results.length) return;
-      assert.equal(Math.round(result.results[9].elevation) , 179);
-    }
-  }
-}).export(module);
+      should.equal(Math.round(result.results[9].elevation) , 179);
+    });
+  });
+});
 
 
 var tooLongForGoogle =
@@ -67,21 +71,27 @@ var tooLongForGoogle =
 
 var tooLongCount = tooLongForGoogle.split("|").length;
 
-vows.describe('elevationFromPath when path is too long').addBatch({
-  'Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)': {
-    topic: function(){
+describe('elevationFromPath when path is too long', function() {
+  describe('Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)', function() {
+    var result;
+    before(function(done){
       var gm = new GoogleMapsAPI({encode_polylines: false});
       var params = {
         path: tooLongForGoogle,
         samples: tooLongCount
       };
-      gm.elevationFromPath(params, this.callback);
-    },
-    'returns as a valid request': function(err, result){
-      assert.equal(result.status , 'OK');
-    },
-    'returns the expected number of samples': function(err, result){
-      assert.equal(result.results.length , tooLongCount);
-    }
-  }
-}).export(module);
+      gm.elevationFromPath(params, function(err, data) {
+        should.ifError(err);
+        result = data;
+        done();
+      });
+    });
+
+    it('should return as a valid request', function() {
+      should.equal(result.status , 'OK');
+    });
+    it('should return the expected number of samples', function() {
+      should.equal(result.results.length , tooLongCount);
+    });
+  });
+});
