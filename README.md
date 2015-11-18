@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/moshen/node-googlemaps.svg)](https://travis-ci.org/moshen/node-googlemaps)
+[![Build Status](https://travis-ci.org/moshen/node-googlemaps.svg?branch=master)](https://travis-ci.org/moshen/node-googlemaps)
 
 # Google Maps API for Node.js
 
