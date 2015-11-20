@@ -129,21 +129,6 @@ describe('distanceMatrix', function() {
       });
     });
 
-    it('should not accept a call with params.mode: transit', function(done){
-      var params = {
-        origins: 'New York, NY, US|Boston, MA, US',
-        destinations: 'Los Angeles, CA, US|San Francisco, CA, US',
-        mode: 'transit'
-      };
-
-      gmAPI.distance( params, function(err, results) {
-        should.not.exist(results);
-        should.exist(err);
-        err.message.should.equal('Invalid transport mode: transit. Valid params.mode are [driving|walking|bicycling]');
-        done();
-      });
-    });
-
     it('should not accept a call with params.avoid: desert', function(done){
       var params = {
         origins: 'New York, NY, US|Boston, MA, US',
