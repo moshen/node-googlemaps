@@ -49,7 +49,8 @@
       "language":       "string",
       "avoid":          "string",
       "units":          "string",
-      "departure_time": "date"
+      "departure_time": "date",
+      "traffic_model":  "string"
     },
     "directions": {
       "origin":         "string",
@@ -62,7 +63,8 @@
       "region":         "string",
       "units":          "string",
       "departure_time": "date",
-      "arrival_time":   "date"
+      "arrival_time":   "date",
+      "traffic_model":  "string"
     },
     "elevation": {
       "locations": "string",
