@@ -6,6 +6,9 @@ var distanceMatrixMockResult = require('../mocks/distanceMatrix');
 
 var gmAPI;
 
+var makeTrafficModelDate = function() {
+  return new Date((new Date()).getTime() + 3600000)
+}
 
 describe('distanceMatrix', function() {
 
@@ -129,21 +132,6 @@ describe('distanceMatrix', function() {
       });
     });
 
-    it('should not accept a call with params.mode: transit', function(done){
-      var params = {
-        origins: 'New York, NY, US|Boston, MA, US',
-        destinations: 'Los Angeles, CA, US|San Francisco, CA, US',
-        mode: 'transit'
-      };
-
-      gmAPI.distance( params, function(err, results) {
-        should.not.exist(results);
-        should.exist(err);
-        err.message.should.equal('Invalid transport mode: transit. Valid params.mode are [driving|walking|bicycling]');
-        done();
-      });
-    });
-
     it('should not accept a call with params.avoid: desert', function(done){
       var params = {
         origins: 'New York, NY, US|Boston, MA, US',
@@ -170,6 +158,56 @@ describe('distanceMatrix', function() {
         should.not.exist(results);
         should.exist(err);
         err.message.should.equal('Invalid params.units: natural. Valid params.units are [metric|imperial]');
+        done();
+      });
+    });
+
+    it('should not accept a call with params.traffic_model and params.mode: transit', function(done){
+      var params = {
+        origins: 'New York, NY, US|Boston, MA, US',
+        destinations: 'Los Angeles, CA, US|San Francisco, CA, US',
+        mode: 'transit',
+        departure_time: makeTrafficModelDate(),
+        traffic_model: 'pessimistic'
+      };
+
+      gmAPI.distance( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('params.traffic_model can only be specified when params.mode = ["driving"|null]');
+        done();
+      });
+    });
+
+    it('should not accept a call with params.traffic_model and without params.departure_time', function(done){
+      var params = {
+        origins: 'New York, NY, US|Boston, MA, US',
+        destinations: 'Los Angeles, CA, US|San Francisco, CA, US',
+        mode: 'driving',
+        traffic_model: 'pessimistic'
+      };
+
+      gmAPI.distance( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('params.departure_time must be set and be after current time when params.traffic_model is set');
+        done();
+      });
+    });
+
+    it('should not accept a call with params.traffic_model: carmageddon', function(done){
+      var params = {
+        origins: 'New York, NY, US|Boston, MA, US',
+        destinations: 'Los Angeles, CA, US|San Francisco, CA, US',
+        mode: 'driving',
+        departure_time: makeTrafficModelDate(),
+        traffic_model: 'carmageddon'
+      };
+
+      gmAPI.distance( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('Invalid params.traffic_model: carmageddon. Valid params.traffic_model are [best_guess|pessimistic|optimistic]');
         done();
       });
     });
@@ -271,6 +309,30 @@ describe('distanceMatrix', function() {
         origins: 'New York, NY, US|Boston, MA, US',
         destinations: 'Los Angeles, CA, US|San Francisco, CA, US',
         units: 'metric'
+      };
+
+      gmAPI.distance(params, function(err, result){
+        should.not.exist(err);
+        should.exist(result);
+        result.status.should.equal('OK');
+        result.should.have.properties([
+          'origin_addresses',
+          'destination_addresses',
+          'rows'
+        ]);
+        done();
+      });
+
+    });
+
+    it('should return the distance matrix with traffic_model', function(done){
+
+      var params = {
+        origins: 'New York, NY, US|Boston, MA, US',
+        destinations: 'Los Angeles, CA, US|San Francisco, CA, US',
+        mode: 'driving',
+        departure_time: makeTrafficModelDate(),
+        traffic_model: 'pessimistic'
       };
 
       gmAPI.distance(params, function(err, result){

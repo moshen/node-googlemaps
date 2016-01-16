@@ -6,8 +6,11 @@ var direstionsMockResult = require('../mocks/direction');
 
 var gmAPI;
 
+var makeTrafficModelDate = function() {
+  return new Date((new Date()).getTime() + 3600000)
+}
 
-describe('direstions', function() {
+describe('directions', function() {
 
   before(function() {
     var config = {
@@ -222,6 +225,56 @@ describe('direstions', function() {
       });
     });
 
+    it('should not accept a call with params.traffic_model and params.mode: transit', function(done){
+      var params = {
+        origin: 'New York, NY, US',
+        destination: 'Los Angeles, CA, US',
+        mode: 'transit',
+        departure_time: makeTrafficModelDate(),
+        traffic_model: 'pessimistic'
+      };
+
+      gmAPI.directions( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('params.traffic_model can only be specified when params.mode = ["driving"|null]');
+        done();
+      });
+    });
+
+    it('should not accept a call with params.traffic_model and without params.departure_time', function(done){
+      var params = {
+        origin: 'New York, NY, US',
+        destination: 'Los Angeles, CA, US',
+        mode: 'driving',
+        traffic_model: 'pessimistic'
+      };
+
+      gmAPI.directions( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('params.departure_time must be set and be after current time when params.traffic_model is set');
+        done();
+      });
+    });
+
+    it('should not accept a call with params.traffic_model: carmageddon', function(done){
+      var params = {
+        origin: 'New York, NY, US',
+        destination: 'Los Angeles, CA, US',
+        mode: 'driving',
+        departure_time: makeTrafficModelDate(),
+        traffic_model: 'carmageddon'
+      };
+
+      gmAPI.directions( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('Invalid params.traffic_model: carmageddon. Valid params.traffic_model are [best_guess|pessimistic|optimistic]');
+        done();
+      });
+    });
+
   });
 
   describe('success', function() {
@@ -413,6 +466,28 @@ describe('direstions', function() {
         origin: 'New York, NY, US',
         destination: 'Los Angeles, CA, US',
         waypoints: 'optimize:true|via:Boston,MA,US|San Francisco,CA,US'
+      };
+
+      gmAPI.directions(params, function(err, result){
+        should.not.exist(err);
+        should.exist(result);
+        result.status.should.equal('OK');
+        result.should.have.property('routes');
+        should.exist(result.routes[0]);
+        result.routes[0].should.have.properties(['summary', 'legs']);
+        done();
+      });
+
+    });
+
+    it('should return directions with traffic_model', function(done){
+
+      var params = {
+        origin: 'New York, NY, US',
+        destination: 'Los Angeles, CA, US',
+        mode: 'driving',
+        departure_time: makeTrafficModelDate(),
+        traffic_model: 'pessimistic'
       };
 
       gmAPI.directions(params, function(err, result){
