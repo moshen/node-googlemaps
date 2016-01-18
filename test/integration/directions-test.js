@@ -37,7 +37,7 @@ vows.describe('directions').addBatch({
     },
     'returns expected lat/lng for Chicago': function(err, result){
       assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(3) , 43.073);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(3) , -89.404);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(3) , -89.402);
     }
   },
   'Simple Directions (From: Madison, Wi To: Chicago, Il) with mode driving, departure time and traffic_model': {
