@@ -12,7 +12,9 @@
     "map",
     "geo",
     "google",
-    "api"
+    "api",
+    "google maps",
+    "node google maps"
   ],
   "repository": {
     "type": "git",
