@@ -13,7 +13,9 @@
     "geo",
     "google",
     "api",
+    "googlemaps",
     "google maps",
+    "google-maps",
     "node google maps"
   ],
   "repository": {
