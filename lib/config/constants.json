@@ -85,6 +85,11 @@
       "visible":  "string",
       "style":    "array"
     },
+    "timezone": {
+      "location": "string",
+      "timestamp":"number",
+      "language": "string"
+    },
     "street-map": {
       "location": "string",
       "pano":     "string",
@@ -104,6 +109,7 @@
     "place-details":   "/maps/api/place/details/json",
     "place-search":    "/maps/api/place/nearbysearch/json",
     "static-map":      "/maps/api/staticmap",
+    "timezone":        "/maps/api/timezone/json",
     "street-view":     "/maps/api/streetview"
   }
 
