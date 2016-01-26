@@ -2,12 +2,12 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/index');
 
-var elevationFromLocationsMockResult = require('../mocks/elevationFromLocations');
+var timezoneMockResult = require('../mocks/timezone');
 
 var gmAPI;
 
 
-describe('elevationFromLocations', function() {
+describe('timezone', function() {
 
   before(function() {
     var config = {
@@ -24,7 +24,7 @@ describe('elevationFromLocations', function() {
       var res = {
         statusCode: 200
       };
-      var data = JSON.stringify(elevationFromLocationsMockResult);
+      var data = JSON.stringify(timezoneMockResult);
       return callback(null, res, data);
     };
 
@@ -42,7 +42,7 @@ describe('elevationFromLocations', function() {
             var validParams = {
 
             };
-            (function() { gmAPI.elevationFromLocations( validParams, invalid ) }).should.throw();
+            (function() { gmAPI.timezone( validParams, invalid ) }).should.throw();
           });
         } 
       }
@@ -71,10 +71,10 @@ describe('elevationFromLocations', function() {
       var customGmAPI = new GoogleMapsAPI( config, mockRequest );
 
       var params = {};
-      customGmAPI.elevationFromLocations( params, function(err, results) {
+      customGmAPI.timezone( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('The elevation API requires a key. You can add it to the config.');
+        err.message.should.equal('The timezone API requires a key. You can add it to the config.');
         done();
       });
 
@@ -87,7 +87,7 @@ describe('elevationFromLocations', function() {
       function(invalid) {
         return function() {
           it('should not accept ' + invalid + ' as params', function(done){
-              gmAPI.elevationFromLocations( invalid, function(err, results) {
+              gmAPI.timezone( invalid, function(err, results) {
                 should.not.exist(results);
                 should.exist(err);
                 err.message.should.equal('params must be an object');
@@ -102,15 +102,28 @@ describe('elevationFromLocations', function() {
       checkCall();
     });
 
-    it('should not accept a call without params.locations', function(done){
+    it('should not accept a call without params.location', function(done){
       var params = {
 
       };
 
-      gmAPI.elevationFromLocations( params, function(err, results) {
+      gmAPI.timezone( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('params.locations is required');
+        err.message.should.equal('params.location is required');
+        done();
+      });
+    });
+
+    it('should not accept a call without params.timestamp', function(done){
+      var params = {
+        location: '-33.86,151.20'
+      };
+
+      gmAPI.timezone( params, function(err, results) {
+        should.not.exist(results);
+        should.exist(err);
+        err.message.should.equal('params.timestamp is required');
         done();
       });
     });
@@ -120,20 +133,18 @@ describe('elevationFromLocations', function() {
 
   describe('success', function() {
 
-    it('should return places', function(done){
+    it('should return timezone', function(done){
 
       var params = {
-        locations: '41.850033,-87.6500523'
+        location: '-33.86,151.20',
+        timestamp: 1234567890
       };
 
-      gmAPI.elevationFromLocations(params, function(err, result){
+      gmAPI.timezone(params, function(err, result){
         should.not.exist(err);
         should.exist(result);
         result.status.should.equal('OK');
-        result.results.should.be.instanceof(Array);
-        should.exist(result.results[0]);
-        result.results[0].should.have.properties(['location', 'elevation']);
-        result.results[0].location.should.have.properties(['lat', 'lng']);
+        result.should.have.properties(['dstOffset', 'rawOffset', 'timeZoneId', 'timeZoneName']);
         done();
       });
 
