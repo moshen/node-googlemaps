@@ -17,8 +17,8 @@ vows.describe('directions').addBatch({
       assert.equal(result.status, 'OK');
     },
     'returns expected lat/lng for Chicago': function(err, result){
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(3) , 43.073);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(3) , -89.402);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(2) , 43.07);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(2) , -89.40);
     }
   },
   'Simple Directions (From: Madison, Wi To: Chicago, Il) with mode driving and departure time': {
@@ -36,8 +36,28 @@ vows.describe('directions').addBatch({
       assert.equal(result.status, 'OK');
     },
     'returns expected lat/lng for Chicago': function(err, result){
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(3) , 43.073);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(3) , -89.402);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(2) , 43.07);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(2) , -89.40);
+    }
+  },
+  'Simple Directions (From: Madison, Wi To: Chicago, Il) with mode driving, departure time and traffic_model': {
+    topic: function(){
+      var gm = new GoogleMapsAPI(config);
+      gm.directions({
+        origin: 'Madison , Wi, USA',
+        destination: 'Chicago, Il, USA',
+        mode: 'driving',
+        departure_time: new Date(new Date() * 1.0001),
+        traffic_model: 'pessimistic'
+      }, this.callback);
+    },
+    'returns as a valid request': function(err, result){
+      assert.ifError(err);
+      assert.equal(result.status, 'OK');
+    },
+    'returns expected lat/lng for Chicago': function(err, result){
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(2) , 43.07);
+      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(2) , -89.40);
     }
   },
   'Simple Directions (From: Waterloo station, London, UK To: Camden Town station, London, UK) with mode transit and departure time': {
