@@ -27,7 +27,7 @@ describe('parseStyles', function() {
 
   describe('success', function() {
 
-    it('should transform an array of styles into a string', function() {
+    it('should transform an array of styles into an array of strings', function() {
       var input = [
         {
           'feature': 'road',
@@ -45,10 +45,13 @@ describe('parseStyles', function() {
         }
       ];
 
-      var output = "feature:road|element:all|hue:0x00ff00|feature:landscape|element:all|visibility:off";
+      var output = [
+          "feature:road|element:all|hue:0x00ff00",
+          "feature:landscape|element:all|visibility:off"
+      ];
 
       var result = parseStyles(input);
-      result.should.equal(output);
+      result.should.eql(output);
     });
 
   });
