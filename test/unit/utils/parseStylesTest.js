@@ -27,7 +27,7 @@ describe('parseStyles', function() {
 
   describe('success', function() {
 
-    it('should transform an array of styles into a string', function() {
+    it('should transform an array of styles into an array of strings', function() {
       var input = [
         {
           'feature': 'road',
