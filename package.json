@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "main": "lib/index",
   "description": "A simple way to query the Google Maps API from Node.js",
+  "license": "MIT",
   "author": {
     "name": "Colin Kennedy",
     "email": "moshen.colin@gmail.com",
