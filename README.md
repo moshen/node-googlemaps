@@ -25,7 +25,7 @@ npm install googlemaps
 * [Distance matrix](https://developers.google.com/maps/documentation/distancematrix/)
 * [Elevation](https://developers.google.com/maps/documentation/elevation/) - TO BE IMPROVED
 * [Geocoding and reverse geocoding](https://developers.google.com/maps/documentation/geocoding)
-* [Time zone](https://developers.google.com/maps/documentation/timezone) - NOT IMPLEMENTED YET
+* [Time zone](https://developers.google.com/maps/documentation/timezone)
 
 [Google Places API](https://developers.google.com/places/) - NOT COMPLETED
 
