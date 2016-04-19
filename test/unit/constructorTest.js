@@ -47,14 +47,15 @@ describe('constructor', function() {
     it('should accept configurations', function() {
 
       var config = {
-        key:                'xxxxxxxxxxxxxxxx',
-        google_client_id:   'test-client-id',
-        google_api_url:     'localhost',
-        stagger_time:       1000,
-        encode_polylines:   false,
-        secure:             true,
-        proxy:              'http://127.0.0.1:9999',
-        google_private_key: 'test-private-key'
+        key:                    'xxxxxxxxxxxxxxxx',
+        google_client_id:       'test-client-id',
+        google_api_url:         'http://localhost:3000',
+        google_secure_api_url:  'https://localhost:3443',
+        stagger_time:           1000,
+        encode_polylines:       false,
+        secure:                 true,
+        proxy:                  'http://127.0.0.1:9999',
+        google_private_key:     'test-private-key'
       };
 
       var gmAPI = new GoogleMapsAPI( config );
