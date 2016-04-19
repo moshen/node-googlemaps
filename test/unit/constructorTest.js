@@ -65,6 +65,7 @@ describe('constructor', function() {
       gmAPI.config.key.should.equal( config.key );
       gmAPI.config.google_client_id.should.equal( config.google_client_id );
       gmAPI.config.google_api_url.should.equal( config.google_api_url );
+      gmAPI.config.google_secure_api_url.should.equal( config.google_secure_api_url );
       gmAPI.config.stagger_time.should.equal( config.stagger_time );
       gmAPI.config.encode_polylines.should.equal( config.encode_polylines );
       gmAPI.config.secure.should.equal( config.secure );
