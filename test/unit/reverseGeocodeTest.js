@@ -40,11 +40,11 @@ describe('reverseGeocode', function() {
         return function() {
           it('should not accept ' + invalid + ' as callback', function() {
             var validParams = {
-              
+
             };
             (function() { gmAPI.reverseGeocode( validParams, invalid ) }).should.throw();
           });
-        } 
+        }
       }
     );
 
@@ -65,7 +65,7 @@ describe('reverseGeocode', function() {
                 done();
               });
           });
-        } 
+        }
       }
     );
 
@@ -73,7 +73,7 @@ describe('reverseGeocode', function() {
       checkCall();
     });
 
-    it('should not accept a call without params.address', function(done){
+    it('should not accept a call without params.latlng and params.place_id', function(done){
       var params = {
         "result_type":   "postal_code",
         "language":      "en",
@@ -83,7 +83,7 @@ describe('reverseGeocode', function() {
       gmAPI.reverseGeocode( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('params.latlng is required');
+        err.message.should.equal('params.latlng/params.place_id is required');
         done();
       });
     });
