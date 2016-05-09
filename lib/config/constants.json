@@ -38,6 +38,7 @@
     },
     "reverse-geocode": {
       "latlng":        "string",
+      "place_id":      "string",
       "result_type":   "string",
       "language":      "string",
       "location_type": "string"
