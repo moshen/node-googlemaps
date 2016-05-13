@@ -144,6 +144,18 @@ You will get a map like:
 
 ![Some Map](https://maps.googleapis.com/maps/api/staticmap?center=444%20W%20Main%20St%20Lock%20Haven%20PA&zoom=15&size=500x400&maptype=roadmap&markers=color%3Agreen%7Clabel%3AA%7Cshadow%3Atrue%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&markers=icon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&path=weight%3A5%7Ccolor%3A0x0000ff%7Cenc%3A%7BbbzFfyvwMnFwP&style=feature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00)
 
+For custom markers using the `icon` parameter, a little-known `scale` parameter is also available that makes it possible to use high-resolution custom images on devices  with retina displays. Set it to 2 and use it together with a `@2x` *http-only* image URL (Google's API does not support custom marker images served over https), such as:
+
+```
+{
+  location: '999 Example Road, Earth',
+  icon: 'http://example.com/path/to/custom-marker@2x.png',
+  scale: 2
+}
+```
+
+Credits to [this answer on SO](http://stackoverflow.com/questions/10336646/how-can-i-use-high-resolution-custom-markers-with-the-scale-parameter-in-google/17130379#17130379).
+
 ### Street view
 
 ```javascript
