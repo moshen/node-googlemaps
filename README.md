@@ -2,6 +2,8 @@
 
 # Google Maps API for Node.js
 
+Based on https://github.com/moshen/node-googlemaps
+
 This library implements the following Google Maps APIs, and can be also used by Google Maps for Work users.
 
 * [Maps API Web Services](https://developers.google.com/maps/documentation/webservices/)
