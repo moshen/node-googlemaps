@@ -54,6 +54,7 @@ var gmAPI = new GoogleMapsAPI(publicConfig);
 var enterpriseConfig = {
   google_client_id:   '<YOUR-CLIENT-ID>', // to use Google Maps for Work
   google_private_key: '<YOUR-PRIVATE-KEY>', // to use Google Maps for Work
+  google_channel:     '<YOUR-CHANNEL>' // to use Google Maps for Work application usage tracking
   stagger_time:       1000, // for elevationPath
   encode_polylines:   false,
   secure:             true, // use https
@@ -85,7 +86,7 @@ var reverseGeocodeParams = {
 gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
   console.log(result);
 });
-``` 
+```
 
 Check out the [unit tests](./tree/new-major-version/test/unit/) for more APIs examples.
 
@@ -191,7 +192,7 @@ Criticism/Suggestions/Patches/PullRequests are welcome.
 [![regality](https://secure.gravatar.com/avatar/fe513a9e239cebde58187721d67b7505?s=50)](https://github.com/regality)
 [![spatical](https://secure.gravatar.com/avatar/a7c5765a4a4dfbf697f728bd75223641?s=50)](https://github.com/spatical)
 
-### v1.0.0 maintener 
+### v1.0.0 maintener
 [![moshen](https://avatars0.githubusercontent.com/u/168513?v=3&s=50)](https://github.com/moshen)
 [![fabriziomoscon](https://avatars1.githubusercontent.com/u/721890?v=3&u=b5079f5258887f4cc9a6de1cbadee230bca8ecc1&s=50)](https://github.com/fabriziomoscon)
 

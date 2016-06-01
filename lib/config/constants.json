@@ -3,6 +3,7 @@
   "ACCEPTED_CONFIG_KEYS": {
     "encode_polylines":   "boolean",
     "google_client_id":   "string",
+    "google_channel":     "string",
     "key":                "string",
     "proxy":              "string",
     "secure":             "boolean",

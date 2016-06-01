@@ -16,6 +16,7 @@ describe('assignParams', function() {
       var config = {
         key: 'xxxxxxx',
         google_client_id:   'test-client-id',
+        google_channel:     'test-channel',
         stagger_time:       1000,
         encode_polylines:   false,
         secure:             true,
@@ -27,6 +28,7 @@ describe('assignParams', function() {
 
       result.key.should.equal(config.key);
       result.google_client_id.should.equal(config.google_client_id);
+      result.google_channel.should.equal(config.google_channel);
       result.stagger_time.should.equal(config.stagger_time);
       result.encode_polylines.should.equal(config.encode_polylines);
       result.secure.should.equal(config.secure);
