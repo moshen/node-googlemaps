@@ -51,6 +51,7 @@
       "avoid":          "string",
       "units":          "string",
       "departure_time": "date",
+      "arrival_time":   "date",
       "traffic_model":  "string"
     },
     "directions": {
