@@ -30,6 +30,15 @@
       "extensions": "string",
       "language":   "string"
     },
+    "place-autocomplete": {
+      "input":    "string",
+      "offset":   "number",
+      "location": "string",
+      "radius":   "number",
+      "language": "string",
+      "types":    "string",
+      "components":"string"
+    },
     "geocode": {
       "address":    "string",
       "components": "string",
@@ -111,6 +120,7 @@
     "geocode":         "/maps/api/geocode/json",
     "place-details":   "/maps/api/place/details/json",
     "place-search":    "/maps/api/place/nearbysearch/json",
+    "place-autocomplete":"/maps/api/place/autocomplete/json",
     "static-map":      "/maps/api/staticmap",
     "timezone":        "/maps/api/timezone/json",
     "street-view":     "/maps/api/streetview"
