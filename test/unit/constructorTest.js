@@ -32,7 +32,7 @@ describe('constructor', function() {
             should.exist( gmAPI.request );
             gmAPI.request.should.be.instanceof(Function);
           });
-        } 
+        }
       }
     );
 
@@ -47,13 +47,15 @@ describe('constructor', function() {
     it('should accept configurations', function() {
 
       var config = {
-        key:                'xxxxxxxxxxxxxxxx',
-        google_client_id:   'test-client-id',
-        stagger_time:       1000,
-        encode_polylines:   false,
-        secure:             true,
-        proxy:              'http://127.0.0.1:9999',
-        google_private_key: 'test-private-key'
+        key:                    'xxxxxxxxxxxxxxxx',
+        google_client_id:       'test-client-id',
+        google_api_url:         'http://localhost:3000',
+        google_secure_api_url:  'https://localhost:3443',
+        stagger_time:           1000,
+        encode_polylines:       false,
+        secure:                 true,
+        proxy:                  'http://127.0.0.1:9999',
+        google_private_key:     'test-private-key'
       };
 
       var gmAPI = new GoogleMapsAPI( config );
@@ -62,11 +64,13 @@ describe('constructor', function() {
 
       gmAPI.config.key.should.equal( config.key );
       gmAPI.config.google_client_id.should.equal( config.google_client_id );
+      gmAPI.config.google_api_url.should.equal( config.google_api_url );
+      gmAPI.config.google_secure_api_url.should.equal( config.google_secure_api_url );
       gmAPI.config.stagger_time.should.equal( config.stagger_time );
       gmAPI.config.encode_polylines.should.equal( config.encode_polylines );
       gmAPI.config.secure.should.equal( config.secure );
       gmAPI.config.proxy.should.equal( config.proxy );
-      
+
       should.exist( gmAPI.config.google_private_key );
 
     });
