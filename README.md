@@ -89,6 +89,34 @@ gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
 
 Check out the [unit tests](./tree/new-major-version/test/unit/) for more APIs examples.
 
+### Mocking responses
+
+Sometimes it is desirable (such as in CI or locally) to mock out the google API endpoints so that you don't end up hammering Google's servers, or using up all your account quota. In this instance you can override the default API urls with your own mocked ones.
+
+```
+const config = {
+  google_api_url:         'http://localhost:3000/fixture', // optional, mock the google API endpoint for dev/test
+  google_secure_api_url:  'https://localhost:3443/fixture' // optional, mock the google API endpoint (HTTPS)
+}
+
+var gmAPI = new GoogleMapsAPI(config);
+```
+
+If you use a proxy or some other way to grab a real response from google, and serve it from the URLS you specify above, you can create a deterministic map lookup for testing purposes (i.e. no matter what you enter, you will always get the same result). My mock server (using (hapijs)[http://hapijs.com/]) looks a bit like this:
+
+```
+server.route({
+  path: '/fixture/maps/api/directions/json',
+  method: 'GET',
+  handler: function(request, reply) {
+    const route = require('./my-real-saved-gmaps-response.json');
+    reply(route);
+  }
+});
+```
+
+- note the 'path' in the route config, this is what googlemaps will call when you make a directions request.
+
 ### Static Maps
 
 ```javascript
