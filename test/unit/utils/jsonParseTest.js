@@ -31,7 +31,7 @@ describe('jsonParser', function() {
       var parser = jsonParser(function(err, jsonObj) {
         should.not.exist(jsonObj);
         should.exist(err);
-        err.message.should.equal('Unexpected token i in JSON at position 0');
+        err.message.should.startWith('Unexpected token i');
       });
 
       parser(null, 'i am an invalid json string');
