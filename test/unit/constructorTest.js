@@ -32,7 +32,7 @@ describe('constructor', function() {
             should.exist( gmAPI.request );
             gmAPI.request.should.be.instanceof(Function);
           });
-        } 
+        }
       }
     );
 
@@ -49,6 +49,7 @@ describe('constructor', function() {
       var config = {
         key:                'xxxxxxxxxxxxxxxx',
         google_client_id:   'test-client-id',
+        google_channel:     'test-channel',
         stagger_time:       1000,
         encode_polylines:   false,
         secure:             true,
@@ -62,11 +63,12 @@ describe('constructor', function() {
 
       gmAPI.config.key.should.equal( config.key );
       gmAPI.config.google_client_id.should.equal( config.google_client_id );
+      gmAPI.config.google_channel.should.equal( config.google_channel );
       gmAPI.config.stagger_time.should.equal( config.stagger_time );
       gmAPI.config.encode_polylines.should.equal( config.encode_polylines );
       gmAPI.config.secure.should.equal( config.secure );
       gmAPI.config.proxy.should.equal( config.proxy );
-      
+
       should.exist( gmAPI.config.google_private_key );
 
     });
