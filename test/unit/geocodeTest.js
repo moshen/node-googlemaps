@@ -73,9 +73,8 @@ describe('geocode', function() {
       checkCall();
     });
 
-    it('should not accept a call without params.address', function(done){
+    it('should not accept a call without params.address and params.components', function(done){
       var params = {
-        "components": "components=country:GB",
         "bounds":     "55,-1|54,1",
         "language":   "en",
         "region":     "uk"
@@ -84,11 +83,10 @@ describe('geocode', function() {
       gmAPI.geocode( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('params.address is required');
+        err.message.should.equal('params.address/params.components is required');
         done();
       });
     });
-
   });
 
   describe('success', function() {
