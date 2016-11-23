@@ -25,6 +25,20 @@
       "sensor":    "string",
       "types":     "string"
     },
+    "place-text": {
+      "location":  "string",
+      "radius":    "string",
+      "language":  "string",
+      "maxprice":  "number",
+      "minprice":  "number",
+      "opennow":   "boolean",
+      "pagetoken": "string",
+      "sensor":    "string",
+      "type":      "string",
+      "types":     "string",
+      "zagatselected": "string",
+      "query":     "string"
+    },
     "place-details": {
       "placeid":    "string",
       "extensions": "string",
@@ -120,6 +134,7 @@
     "geocode":         "/maps/api/geocode/json",
     "place-details":   "/maps/api/place/details/json",
     "place-search":    "/maps/api/place/nearbysearch/json",
+    "place-text":      "/maps/api/place/textsearch/json",
     "place-autocomplete":"/maps/api/place/autocomplete/json",
     "static-map":      "/maps/api/staticmap",
     "timezone":        "/maps/api/timezone/json",
