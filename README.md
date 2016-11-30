@@ -176,7 +176,7 @@ var result = gmAPI.streetView(params);
 
 ### Further examples
 
-Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/master/test/) and the [Google Maps API docs](http://code.google.com/apis/maps/documentation/webservices/index.html) for further usage information.
+Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/master/test/) and the [Google Maps API docs](https://developers.google.com/maps/documentation/javascript/) for further usage information.
 
 
 ### Contributions
