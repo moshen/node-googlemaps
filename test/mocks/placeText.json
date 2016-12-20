@@ -1,0 +1,266 @@
+{
+   "html_attributions" : [],
+   "results" : [
+      {
+         "formatted_address" : "123 Main St, Watertown, MA 02472, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 42.3675294,
+               "lng" : -71.18696609999999
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.36771109999999,
+                  "lng" : -71.186888
+               },
+               "southwest" : {
+                  "lat" : 42.36698430000001,
+                  "lng" : -71.18720039999999
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "b2ac1cc162773261571dd4b939b2e6c7ce4cb09c",
+         "name" : "123 Main St",
+         "place_id" : "ChIJ3aqMmgZ444kRgD5YevF7_tc",
+         "reference" : "CmRbAAAAssz6TCFzM3FV6ZaU5ril9WYbgjHQxdp7VfVVg7Rdb4qOI8Ob6yWFOFLgC6Ex8deFut70NMfXqYp-r6cmpaiSD-9-6Sbw5KE35It3S5LlkQu3cTMOTs_omOgW-2qChVKoEhCTENKNU1oYKnBcmCd1JqMXGhRiSaVq4GQeDWPe4TfKlozto_ECYg",
+         "types" : [ "street_address" ]
+      },
+      {
+         "formatted_address" : "123 Main St, Houston, TX 77002, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 29.7635345,
+               "lng" : -95.35963629999999
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 29.7635391,
+                  "lng" : -95.35961305000002
+               },
+               "southwest" : {
+                  "lat" : 29.7635207,
+                  "lng" : -95.35964404999999
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "5f26687254d1309972162e0dde248d3be18f8814",
+         "name" : "123 Main St",
+         "place_id" : "EiMxMjMgTWFpbiBTdCwgSG91c3RvbiwgVFggNzcwMDIsIFVTQQ",
+         "reference" : "CpQBjAAAADhLy8cT0aDj8xu41dkwMyckGJ5U3SIMsHr_M4SxmtQ_Zeb5BkbxoKYlck1ontA8H1QWEFJj2jpIIi535vgAwxrS5in3lynC3hdyVFPWaGwxDIWnbpulqNN5AQ4NVVd3jQaFi0hjj8nal-wCTG7T3ulTthOY3jrAcVaPJrqrGHwSW2JcUny3HQB9P9zCt6vLwhIQ5Rmlw-epaZD8w93SgXD41BoUzXoTth8GXSwABtk2xJHTJR1djF4",
+         "types" : [ "street_address" ]
+      },
+      {
+         "formatted_address" : "Union Station, 123 Main St, Winnipeg, MB R3C, Canada",
+         "geometry" : {
+            "location" : {
+               "lat" : 49.888946,
+               "lng" : -97.13428669999999
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 49.88899315,
+                  "lng" : -97.13406134999998
+               },
+               "southwest" : {
+                  "lat" : 49.88880455,
+                  "lng" : -97.13496275
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "9f476b0a0c73f4cefc3d76640e4081d2a4cc5582",
+         "name" : "Union Station",
+         "photos" : [
+            {
+               "height" : 2988,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/115029188666264556802/photos\"\u003eThiago Glaser\u003c/a\u003e"
+               ],
+               "photo_reference" : "CoQBdwAAABQbmtVHDIKlrm2bqTo7AEWVE2AaEjW7n1Sy_QQSNhrQko0mz83R8fZTeEmC4PNXRwWAgkkj5mRvbVsp24c1lpvmbCy0ljY5elQ37pxtQTqoWOgU2km-IYP0XurdPJ4AXrsp0SYmoAr1muMxWOVsYODutQyHmRorYfBxjxWOUg1_EhCqZHqsRXaZBEzDZAH-5NoDGhRS1gXEmd-MfFcPQLf2G62lF0zeFA",
+               "width" : 5312
+            }
+         ],
+         "place_id" : "ChIJl2Ei1lFx6lIRKnnP1xso1VE",
+         "reference" : "CmRbAAAAF1HdQd_hz22LA5Cr8a0kZZdfddcelS2itMPwLKEGoIjsT8bWsB1T1AxD1IU0nty6MoLpUgxRq3HeEHGbzHXK05cyS9TFKDouLNacCppImZAMzahJYxXvHvFmnQXCZeHeEhCrtQ2fn7WeMOVlKC-taKwlGhS34eMhm65saY1psyMY1NuCFqCXMg",
+         "types" : [ "premise" ]
+      },
+      {
+         "formatted_address" : "123 Main St, Freeport, ME 04032, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 43.8584869,
+               "lng" : -70.10259769999999
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 43.85883459999999,
+                  "lng" : -70.1023115
+               },
+               "southwest" : {
+                  "lat" : 43.85837099999999,
+                  "lng" : -70.10269309999998
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "9428546d10a61234fba244b45238588f9ddcb1fc",
+         "name" : "123 Main St",
+         "place_id" : "ChIJoywv0kB-skwRdDY4U24fkQk",
+         "reference" : "CmRbAAAA0Zz_NpqIIvjmSRxp9JpPJlXwKE8c2ub47eNTp_jFpQO84VUcoGeuUhVmwJho808b4YTati_vFytBivNyF4rAo4bvOqcV83b_W--s8xomIrdnsWfKWxfpHVRyyCct-En3EhDzwokIGW4WBQUPB-oitL7_GhSWAOSBImYz-VQGIsxfKA8BzyWvqw",
+         "types" : [ "premise" ]
+      },
+      {
+         "formatted_address" : "123 Main St, Buffalo, NY 14203, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 42.8794916,
+               "lng" : -78.8762237
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.87949305000001,
+                  "lng" : -78.87619624999999
+               },
+               "southwest" : {
+                  "lat" : 42.87948725,
+                  "lng" : -78.87623284999999
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "2b1853893256dd42e800b861905adebdffa3270b",
+         "name" : "123 Main St",
+         "place_id" : "EiMxMjMgTWFpbiBTdCwgQnVmZmFsbywgTlkgMTQyMDMsIFVTQQ",
+         "reference" : "CpQBjAAAADSbDxCayKavthboUlK3WARwoyKTpJHT3kMXXZZURm5I2DTanVR8s_Xrgnm3rDPfVYwFshCeIkoyOkpomicM1iN0qoroRFdkaAt_lSp006zvoASLdWeTVOtIzmyEkKGpYDwo7KOMGx5lW26fC5EwdJyvyIFcIQM-vWuA5mr5kn7l0gaySuggMyq_Xja9UE37wxIQ33v3ydCRzDb6Z2jUyPvncRoU55Gs4q79NPeG7mRqm7W0utnOFWI",
+         "types" : [ "street_address" ]
+      },
+      {
+         "formatted_address" : "123 Main St, Malden, MA 02148, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 42.4194162,
+               "lng" : -71.0655816
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.41943715000001,
+                  "lng" : -71.06548905000001
+               },
+               "southwest" : {
+                  "lat" : 42.41935335,
+                  "lng" : -71.06585924999999
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "186dcc54c57bb6a6efe86a0408e3b8ae3415de22",
+         "name" : "123 Main St",
+         "place_id" : "ChIJkyZ3b29x44kR8Hp7wld-Nt8",
+         "reference" : "CmRbAAAAcdOo8-H4gM06PwFkz24IE06QLTBIwkkdW6MVQ7qBIjN8pHz97VWqftIRvqMqKzrDVaKZ8HRkpTQg1VgzMgZSXM6hs9O-dhgiQOdJjb9MPlqEAP824aWAHPHyyxc4XzNcEhDra-Az3tqUdQ0EV9w6m8JYGhTZ5T7VX1AwB2KNKwofsqHFHStvoA",
+         "types" : [ "street_address" ]
+      },
+      {
+         "formatted_address" : "123 Main St, Everett, MA 02149, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 42.40504,
+               "lng" : -71.061201
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.40505695,
+                  "lng" : -71.06106674999999
+               },
+               "southwest" : {
+                  "lat" : 42.40498915000001,
+                  "lng" : -71.06160375
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "1071b7d9f7978efbbfde9c33616ea97cea4ba502",
+         "name" : "123 Main St",
+         "place_id" : "ChIJ9XddBw5x44kRnI-PRCnVioM",
+         "reference" : "CmRbAAAAkEqdkaHjVOF4N0O-VyUH22wKXGLnhiiDY_J1-q7jxcgdRD8Vg6UhnfA2R1UyL5-7UzSxFzjKLfvibrkTsxFdWVgPoX46yWYQLI76EDYv7tTQ0OaSvP-n02EaS0x6x2-qEhCePn8yD3PQHL3TDn43QOmhGhT5L4nJRLPnpzKHoZkdiAeXSJVNDQ",
+         "types" : [ "street_address" ]
+      },
+      {
+         "formatted_address" : "123 Main St, Bradley Beach, NJ 07720, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 40.19982400000001,
+               "lng" : -74.01917299999999
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.19984544999999,
+                  "lng" : -74.01911509999999
+               },
+               "southwest" : {
+                  "lat" : 40.19981164999999,
+                  "lng" : -74.0192739
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "175d0a46a49937026640a64df01172fa385b9871",
+         "name" : "123 Main St",
+         "place_id" : "ChIJQ0L4GtInwokRfiRexmzUyHY",
+         "reference" : "CmRbAAAA8UigsiHDU-SkUVZV6z7H5XLc6Kc0WXFQlLwaUTypdebEgEtNcOXvFtA1pyp6fzZqPdzhthwbmsL7GfUzeX1dHG0s5hDVlSM5VzluGDYAS8k2vCLReSJCGlQVmZ2iiLISEhBdNNufu5UwwtrHJc7JPMxvGhSTuJJyf9Ry9jShniSfnyNQubkhLA",
+         "types" : [ "street_address" ]
+      },
+      {
+         "formatted_address" : "123 Main St, Avon-By-The-Sea, NJ 07717, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 40.189532,
+               "lng" : -74.022966
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.189556,
+                  "lng" : -74.02259565
+               },
+               "southwest" : {
+                  "lat" : 40.18946,
+                  "lng" : -74.02308944999999
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "e2eba97cd13ba4c467cf3cf396e6581d5795fb59",
+         "name" : "123 Main St",
+         "place_id" : "ChIJGwISDNwnwokRgDXkOpwktys",
+         "reference" : "CmRbAAAAylNt-QUOl1PNhpfjO6EipNGpuRAMq4VV4xiDBX0DmtVK2nd_9XNaVoimoajOfWTZ1QvaC3SUAbDxXqfGvarB4zABgYtOFhXjtR8RuYLpW-RpHZKaH2p4AFRJByE086SUEhBhrG9N8pkgJgXU4H2Ofb1CGhRl1LGB_aLsu-pxsgn8g1FCUCyWlQ",
+         "types" : [ "street_address" ]
+      },
+      {
+         "formatted_address" : "123 Main Street, Orange, CA 92868, Estados Unidos",
+         "geometry" : {
+            "location" : {
+               "lat" : 33.7887834,
+               "lng" : -117.86705
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 33.7887882,
+                  "lng" : -117.8670278
+               },
+               "southwest" : {
+                  "lat" : 33.788769,
+                  "lng" : -117.8670574
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "e308847794508c41367ce167a43f12b17354732b",
+         "name" : "123 Main Street",
+         "place_id" : "EiYxMjMgTWFpbiBTdHJlZXQsIE9yYW5nZSwgQ0EgOTI4NjgsIFVTQQ",
+         "reference" : "CpQBjwAAAOsS6_495AZClZiwbgy9T_fv2UMMEgmnioOwwmiDV_p0I5szt6wbTpA-Y1B3nHVFxhhpg2aTcUhKDJoP5iZ1ZK97KqeOnk0n_ZrAUJ5X5UZogk3eDItYa2JJqRJ2DQFDnZrO14wOqzDS5dA1iMv7Qo_mYjhPv2b_a6xI77JjqWHzFVbTsZLeeJNGL6R7MD2v9hIQHPKJ0he_52NIoMq7IPa3uxoUYoozsfS13Z3RnxlzZFLu1z6L5rU",
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}
