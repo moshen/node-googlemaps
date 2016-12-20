@@ -127,6 +127,19 @@
 
   },
 
+  "MAX_REQUEST_LENGTHS": {
+    "directions":         2048,
+    "distance-matrix":    2048,
+    "elevation":          -1,
+    "geocode":            2048,
+    "place-details":      2048,
+    "place-search":       2048,
+    "place-autocomplete": 2048,
+    "static-map":         2048,
+    "timezone":           2048,
+    "street-view":        2048
+  },
+
   "GOOGLEMAPS_ENDPOINTS": {
     "directions":        "/maps/api/directions/json",
     "distance-matrix":   "/maps/api/distancematrix/json",
