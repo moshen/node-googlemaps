@@ -2,12 +2,12 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/index');
 
-var placeSearchMoskResult = require('../mocks/placeSearch');
+var placeSearchMoskResult = require('../mocks/placeSearchNearby');
 
 var gmAPI;
 
 
-describe('placeSearch', function() {
+describe('placeSearchNearby', function() {
 
   before(function() {
     var config = {
@@ -76,7 +76,7 @@ describe('placeSearch', function() {
       customGmAPI.placeSearch( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('The placeSearch API requires a key. You can add it to the config.');
+        err.message.should.equal('The placeSearchNearby API requires a key. You can add it to the config.');
         done();
       });
 

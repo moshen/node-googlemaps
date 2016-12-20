@@ -2,7 +2,7 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/index');
 
-var direstionsMockResult = require('../mocks/direction');
+var directionsMockResult = require('../mocks/direction');
 
 var gmAPI;
 
@@ -28,7 +28,7 @@ describe('directions', function() {
       var res = {
         statusCode: 200
       };
-      var data = JSON.stringify(direstionsMockResult);
+      var data = JSON.stringify(directionsMockResult);
       return callback(null, res, data);
     };
 

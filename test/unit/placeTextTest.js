@@ -2,11 +2,11 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/index');
 
-var direstionsMockResult = require('../mocks/placeText');
+var placeSearchTextMockResult = require('../mocks/placeSearchText');
 
 var gmAPI;
 
-describe('placeText', function() {
+describe('placeSearchText', function() {
 
   before(function() {
     var config = {
@@ -23,7 +23,7 @@ describe('placeText', function() {
       var res = {
         statusCode: 200
       };
-      var data = JSON.stringify(direstionsMockResult);
+      var data = JSON.stringify(placeSearchTextMockResult);
       return callback(null, res, data);
     };
 
@@ -70,10 +70,10 @@ describe('placeText', function() {
       var customGmAPI = new GoogleMapsAPI( config, mockRequest );
 
       var params = {};
-      customGmAPI.placeText( params, function(err, results) {
+      customGmAPI.placeSearchText( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
-        err.message.should.equal('The placeTextSearch API requires a key. You can add it to the config.');
+        err.message.should.equal('The placeSearchText API requires a key. You can add it to the config.');
         done();
       });
     });
@@ -84,7 +84,7 @@ describe('placeText', function() {
       function(invalid) {
         return function() {
           it('should not accept ' + invalid + ' as params', function(done){
-              gmAPI.placeText( invalid, function(err, results) {
+              gmAPI.placeSearchText( invalid, function(err, results) {
                 should.not.exist(results);
                 should.exist(err);
                 err.message.should.equal('params must be an object');
@@ -104,7 +104,7 @@ describe('placeText', function() {
         radius: 10000
       };
 
-      gmAPI.placeText( params, function(err, results) {
+      gmAPI.placeSearchText( params, function(err, results) {
         should.not.exist(results);
         should.exist(err);
         err.message.should.equal('params.query is required');
@@ -122,7 +122,7 @@ describe('placeText', function() {
         query: '123+main+street'
       };
 
-      gmAPI.placeText(params, function(err, result){
+      gmAPI.placeSearchText(params, function(err, result){
         should.not.exist(err);
         should.exist(result);
         result.status.should.equal('OK');
@@ -138,7 +138,7 @@ describe('placeText', function() {
         query: '123+main+street'
       };
 
-      gmAPI.placeText(params, function(err, result){
+      gmAPI.placeSearchText(params, function(err, result){
         should.not.exist(err);
         should.exist(result);
         result.status.should.equal('OK');
@@ -154,7 +154,7 @@ describe('placeText', function() {
         query: '123+main+street'
       };
 
-      gmAPI.placeText(params, function(err, result){
+      gmAPI.placeSearchText(params, function(err, result){
         should.not.exist(err);
         should.exist(result);
         result.status.should.equal('OK');

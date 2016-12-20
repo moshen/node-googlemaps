@@ -2,13 +2,13 @@ var  assert = require('assert'),
   GoogleMapsAPI = require('../../lib/index')
   config = require('../simpleConfig');
 
-describe('placeText', function() {
+describe('placeSearchText', function() {
   var gm = new GoogleMapsAPI(config);
 
   describe('Search for restaurants near Sydney.', function() {
     var result;
     before(function(done){
-      gm.placeText({
+      gm.placeSearchText({
         query: 'restaurants+in+Sydney',
       }, function(err, data) {
         assert.ifError(err);
@@ -30,7 +30,7 @@ describe('placeText', function() {
   describe('Search for an incomplete address, in this case, a street address that does not include a city or state or country', function() {
     var result;
     before(function(done){
-      gm.placeText({
+      gm.placeSearchText({
         query: '123+main+street',
       }, function(err, data) {
         assert.ifError(err);
@@ -51,7 +51,7 @@ describe('placeText', function() {
   describe('Search for the same incomplete addres, and includes location and radius parameters to bias the results to a region of interest.', function() {
     var result;
     before(function(done){
-      gm.placeText({
+      gm.placeSearchText({
         query: '123+main+street',
         location: '42.3675294,-71.186966',
         radius: 10000
