@@ -32,6 +32,7 @@ npm install googlemaps
 * [Place search](https://developers.google.com/places/documentation/search)
 * [Place details](https://developers.google.com/places/documentation/details)
 * [Place autocomplete](https://developers.google.com/places/web-service/autocomplete)
+* [Place text search](https://developers.google.com/places/web-service/search#TextSearchRequests)
 
 [Google Maps Image API](https://developers.google.com/maps/documentation/imageapis/)
 

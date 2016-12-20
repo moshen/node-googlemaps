@@ -25,7 +25,7 @@
       "sensor":    "string",
       "types":     "string"
     },
-    "place-text": {
+    "place-search-text": {
       "location":  "string",
       "radius":    "string",
       "language":  "string",
@@ -128,17 +128,17 @@
   },
 
   "GOOGLEMAPS_ENDPOINTS": {
-    "directions":      "/maps/api/directions/json",
-    "distance-matrix": "/maps/api/distancematrix/json",
-    "elevation":       "/maps/api/elevation/json",
-    "geocode":         "/maps/api/geocode/json",
-    "place-details":   "/maps/api/place/details/json",
-    "place-search":    "/maps/api/place/nearbysearch/json",
-    "place-text":      "/maps/api/place/textsearch/json",
+    "directions":        "/maps/api/directions/json",
+    "distance-matrix":   "/maps/api/distancematrix/json",
+    "elevation":         "/maps/api/elevation/json",
+    "geocode":           "/maps/api/geocode/json",
+    "place-details":     "/maps/api/place/details/json",
+    "place-search":      "/maps/api/place/nearbysearch/json",
+    "place-search-text": "/maps/api/place/textsearch/json",
     "place-autocomplete":"/maps/api/place/autocomplete/json",
-    "static-map":      "/maps/api/staticmap",
-    "timezone":        "/maps/api/timezone/json",
-    "street-view":     "/maps/api/streetview"
+    "static-map":        "/maps/api/staticmap",
+    "timezone":          "/maps/api/timezone/json",
+    "street-view":       "/maps/api/streetview"
   }
 
 }
