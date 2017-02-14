@@ -1,159 +1,159 @@
 {
   "ACCEPTED_CONFIG_KEYS": {
-    "encode_polylines":   "boolean",
-    "google_client_id":   "string",
-    "google_channel":     "string",
-    "key":                "string",
-    "proxy":              "string",
-    "secure":             "boolean",
-    "stagger_time":       "number"
+    "encode_polylines": "boolean",
+    "google_client_id": "string",
+    "google_channel": "string",
+    "key": "string",
+    "proxy": "string",
+    "secure": "boolean",
+    "stagger_time": "number"
   },
 
   "ACCEPTED_PARAMS": {
     "place-search-nearby": {
-      "keyword":   "string",
-      "language":  "string",
-      "location":  "string",
-      "maxprice":  "number",
-      "minprice":  "number",
-      "name":      "string",
-      "opennow":   "boolean",
+      "keyword": "string",
+      "language": "string",
+      "location": "string",
+      "maxprice": "number",
+      "minprice": "number",
+      "name": "string",
+      "opennow": "boolean",
       "pagetoken": "string",
-      "radius":    "number",
-      "rankby":    "string",
-      "sensor":    "string",
-      "types":     "string"
+      "radius": "number",
+      "rankby": "string",
+      "sensor": "string",
+      "types": "string"
     },
     "place-search-text": {
-      "location":      "string",
-      "radius":        "string",
-      "language":      "string",
-      "maxprice":      "number",
-      "minprice":      "number",
-      "opennow":       "boolean",
-      "pagetoken":     "string",
-      "sensor":        "string",
-      "type":          "string",
-      "types":         "string",
+      "location": "string",
+      "radius": "string",
+      "language": "string",
+      "maxprice": "number",
+      "minprice": "number",
+      "opennow": "boolean",
+      "pagetoken": "string",
+      "sensor": "string",
+      "type": "string",
+      "types": "string",
       "zagatselected": "string",
-      "query":         "string"
+      "query": "string"
     },
     "place-details": {
-      "placeid":    "string",
+      "placeid": "string",
       "extensions": "string",
-      "language":   "string"
+      "language": "string"
     },
     "place-autocomplete": {
-      "input":      "string",
-      "offset":     "number",
-      "location":   "string",
-      "radius":     "number",
-      "language":   "string",
-      "types":      "string",
+      "input": "string",
+      "offset": "number",
+      "location": "string",
+      "radius": "number",
+      "language": "string",
+      "types": "string",
       "components": "string"
     },
     "geocode": {
-      "address":    "string",
+      "address": "string",
       "components": "string",
-      "bounds":     "string",
-      "language":   "string",
-      "region":     "string"
+      "bounds": "string",
+      "language": "string",
+      "region": "string"
     },
     "reverse-geocode": {
-      "latlng":        "string",
-      "place_id":      "string",
-      "result_type":   "string",
-      "language":      "string",
+      "latlng": "string",
+      "place_id": "string",
+      "result_type": "string",
+      "language": "string",
       "location_type": "string"
     },
     "distance-matrix": {
-      "origins":        "string",
-      "destinations":   "string",
-      "mode":           "string",
-      "language":       "string",
-      "avoid":          "string",
-      "units":          "string",
+      "origins": "string",
+      "destinations": "string",
+      "mode": "string",
+      "language": "string",
+      "avoid": "string",
+      "units": "string",
       "departure_time": "date",
-      "arrival_time":   "date",
-      "traffic_model":  "string"
+      "arrival_time": "date",
+      "traffic_model": "string"
     },
     "directions": {
-      "origin":         "string",
-      "destination":    "string",
-      "mode":           "string",
-      "waypoints":      "string",
-      "alternatives":   "boolean",
-      "avoid":          "string",
-      "language":       "string",
-      "region":         "string",
-      "units":          "string",
+      "origin": "string",
+      "destination": "string",
+      "mode": "string",
+      "waypoints": "string",
+      "alternatives": "boolean",
+      "avoid": "string",
+      "language": "string",
+      "region": "string",
+      "units": "string",
       "departure_time": "date",
-      "arrival_time":   "date",
-      "traffic_model":  "string"
+      "arrival_time": "date",
+      "traffic_model": "string"
     },
     "elevation": {
       "locations": "string",
-      "path":      "string",
-      "samples":   "string"
+      "path": "string",
+      "samples": "string"
     },
     "static-map": {
-      "center":   "string",
-      "zoom":     "number",
-      "size":     "string",
-      "scale":    "number",
-      "format":   "string",
-      "maptype":  "string",
+      "center": "string",
+      "zoom": "number",
+      "size": "string",
+      "scale": "number",
+      "format": "string",
+      "maptype": "string",
       "language": "string",
-      "region":   "string",
-      "markers":  "array",
-      "path":     "array",
-      "visible":  "string",
-      "style":    "array"
+      "region": "string",
+      "markers": "array",
+      "path": "array",
+      "visible": "string",
+      "style": "array"
     },
     "timezone": {
-      "location":  "string",
+      "location": "string",
       "timestamp": "number",
-      "language":  "string"
+      "language": "string"
     },
     "street-view": {
       "location": "string",
-      "pano":     "string",
-      "size":     "string",
-      "heading":  "number",
-      "fov":      "number",
-      "pitch":    "number"
+      "pano": "string",
+      "size": "string",
+      "heading": "number",
+      "fov": "number",
+      "pitch": "number"
     }
 
   },
 
   "MAX_REQUEST_LENGTHS": {
-    "directions":          2048,
-    "distance-matrix":     2048,
-    "elevation":           -1,
-    "geocode":             2048,
-    "place-details":       2048,
+    "directions": 2048,
+    "distance-matrix": 2048,
+    "elevation": -1,
+    "geocode": 2048,
+    "place-details": 2048,
     "place-search-nearby": 2048,
-    "place-search-text":   2048,
-    "place-autocomplete":  2048,
-    "reverse-geocode":     2048,
-    "static-map":          2048,
-    "timezone":            2048,
-    "street-view":         2048
+    "place-search-text": 2048,
+    "place-autocomplete": 2048,
+    "reverse-geocode": 2048,
+    "static-map": 8096,
+    "timezone": 2048,
+    "street-view": 2048
   },
 
   "GOOGLEMAPS_ENDPOINTS": {
-    "directions":          "/maps/api/directions/json",
-    "distance-matrix":     "/maps/api/distancematrix/json",
-    "elevation":           "/maps/api/elevation/json",
-    "geocode":             "/maps/api/geocode/json",
-    "place-details":       "/maps/api/place/details/json",
+    "directions": "/maps/api/directions/json",
+    "distance-matrix": "/maps/api/distancematrix/json",
+    "elevation": "/maps/api/elevation/json",
+    "geocode": "/maps/api/geocode/json",
+    "place-details": "/maps/api/place/details/json",
     "place-search-nearby": "/maps/api/place/nearbysearch/json",
-    "place-search-text":   "/maps/api/place/textsearch/json",
-    "place-autocomplete":  "/maps/api/place/autocomplete/json",
-    "reverse-geocode":     "/maps/api/geocode/json",
-    "static-map":          "/maps/api/staticmap",
-    "timezone":            "/maps/api/timezone/json",
-    "street-view":         "/maps/api/streetview"
+    "place-search-text": "/maps/api/place/textsearch/json",
+    "place-autocomplete": "/maps/api/place/autocomplete/json",
+    "reverse-geocode": "/maps/api/geocode/json",
+    "static-map": "/maps/api/staticmap",
+    "timezone": "/maps/api/timezone/json",
+    "street-view": "/maps/api/streetview"
   }
 
 }
