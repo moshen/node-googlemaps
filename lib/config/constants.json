@@ -22,6 +22,7 @@
       "radius":    "number",
       "rankby":    "string",
       "sensor":    "string",
+      "type":      "string",
       "types":     "string"
     },
     "place-search-text": {
