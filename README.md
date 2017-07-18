@@ -115,10 +115,10 @@ var params = {
   ],
   style: [
     {
-      feature: 'road',
-      element: 'all',
-      rules: {
-        hue: '0x00ff00'
+      featureType: 'road',
+      elementType: 'all',
+      styles: {
+        color: '0x00ff00'
       }
     }
   ],
