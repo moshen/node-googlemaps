@@ -127,18 +127,18 @@
   },
 
   "MAX_REQUEST_LENGTHS": {
-    "directions":          2048,
-    "distance-matrix":     2048,
+    "directions":          8192,
+    "distance-matrix":     8192,
     "elevation":           -1,
-    "geocode":             2048,
-    "place-details":       2048,
-    "place-search-nearby": 2048,
-    "place-search-text":   2048,
-    "place-autocomplete":  2048,
-    "reverse-geocode":     2048,
-    "static-map":          2048,
-    "timezone":            2048,
-    "street-view":         2048
+    "geocode":             8192,
+    "place-details":       8192,
+    "place-search-nearby": 8192,
+    "place-search-text":   8192,
+    "place-autocomplete":  8192,
+    "reverse-geocode":     8192,
+    "static-map":          8192,
+    "timezone":            8192,
+    "street-view":         8192
   },
 
   "GOOGLEMAPS_ENDPOINTS": {

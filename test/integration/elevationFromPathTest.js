@@ -1,11 +1,12 @@
-var should = require('should'),
-  GoogleMapsAPI = require('../../lib/index');
+var should = require('should');
+var GoogleMapsAPI = require('../../lib/index');
+var config = require('../simpleConfig');
 
 describe('elevationFromPath', function() {
   describe('Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)', function() {
     var result;
     before(function(done){
-      var gm = new GoogleMapsAPI();
+      var gm = new GoogleMapsAPI(config);
       var params = {
         path: '43.07333,-89.4026|41.850033,-87.6500523',
         samples: 10
@@ -18,11 +19,11 @@ describe('elevationFromPath', function() {
     });
 
     it('should return as a valid request', function() {
-      should.equal(result.status , 'OK');
+      should.equal(result.status, 'OK');
     });
     it('should return the expected number of samples', function() {
       should.notEqual(result.results, false);
-      should.equal(result.results.length , 10);
+      should.equal(result.results.length, 10);
     });
     it('should return the expected elevation for Chicago', function() {
       if (!result || !result.results || !result.results.length) return;
@@ -75,7 +76,8 @@ describe('elevationFromPath when path is too long', function() {
   describe('Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)', function() {
     var result;
     before(function(done){
-      var gm = new GoogleMapsAPI({encode_polylines: false});
+      var newConfig = Object.assign({ encode_polylines: false }, config);
+      var gm = new GoogleMapsAPI(newConfig);
       var params = {
         path: tooLongForGoogle,
         samples: tooLongCount
@@ -88,10 +90,10 @@ describe('elevationFromPath when path is too long', function() {
     });
 
     it('should return as a valid request', function() {
-      should.equal(result.status , 'OK');
+      should.equal(result.status, 'OK');
     });
     it('should return the expected number of samples', function() {
-      should.equal(result.results.length , tooLongCount);
+      should.equal(result.results.length, tooLongCount);
     });
   });
 });

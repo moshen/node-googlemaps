@@ -21,8 +21,8 @@ describe('placeSearchText', function() {
       assert.equal(result.status, 'OK');
     });
     it('should return expected lat/lng for Sydney', function() {
-      assert.equal(result.results[0].geometry.location.lat.toFixed(3) , -33.875);
-      assert.equal(result.results[0].geometry.location.lng.toFixed(3) , 151.205);
+      assert.equal(result.results[0].geometry.location.lat.toFixed(3) , -33.876);
+      assert.equal(result.results[0].geometry.location.lng.toFixed(3) , 151.206);
     });
 
   });
@@ -43,8 +43,8 @@ describe('placeSearchText', function() {
       assert.equal(result.status, 'OK');
     });
     it('should return expected lat/lng for Estados Unidos', function() {
-      assert.equal(result.results[0].geometry.location.lat.toFixed(3) , 42.368);
-      assert.equal(result.results[0].geometry.location.lng.toFixed(3) , -71.187);
+      assert.equal(result.results[0].geometry.location.lat.toFixed(3) , 45.535);
+      assert.equal(result.results[0].geometry.location.lng.toFixed(3) , -74.997);
     })
   });
 
