@@ -2,7 +2,7 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/index');
 
-var simpleConfig = require('../simpleConfig');
+var TEST_KEY = 'xxxxxxx';
 
 var gmAPI;
 
@@ -11,7 +11,7 @@ describe('staticMap', function() {
 
   before(function() {
     var config = {
-      key:              simpleConfig.key,
+      key:              TEST_KEY,
       encode_polylines: false,
       secure:           true
     };

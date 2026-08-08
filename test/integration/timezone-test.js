@@ -1,5 +1,5 @@
 var GoogleMapsAPI = require('../../lib/index');
-var config = require('../simpleConfig');
+var config = require('../integrationConfig');
 var should = require('should');
 
 describe('timezone', function() {

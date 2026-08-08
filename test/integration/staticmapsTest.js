@@ -1,6 +1,6 @@
 var should = require('should'),
   GoogleMapsAPI = require('../../lib/index')
-  config = require('../simpleConfig');
+  config = require('../integrationConfig');
 
 describe('staticmaps', function() {
   describe('Complex static map (Lock Haven, PA)', function() {

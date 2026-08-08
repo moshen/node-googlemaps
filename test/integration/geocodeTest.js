@@ -1,6 +1,6 @@
 var should = require('should'),
   GoogleMapsAPI = require('../../lib/index'),
-  config = require('../simpleConfig');
+  config = require('../integrationConfig');
 
 describe('geocode', function() {
   var gm = new GoogleMapsAPI(config);

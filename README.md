@@ -180,6 +180,27 @@ var result = gmAPI.streetView(params);
 Please refer to the code, [tests](http://github.com/moshen/node-googlemaps/tree/master/test/) and the [Google Maps API docs](https://developers.google.com/maps/web-services/) for further usage information.
 
 
+### Tests
+
+The unit tests run offline with no credentials:
+
+```
+npm test
+```
+
+The integration tests make real requests to the Google Maps API and require a
+valid, billing-enabled API key. Provide it via the `GOOGLE_MAPS_API_KEY`
+environment variable (no key is committed to this repository):
+
+```
+GOOGLE_MAPS_API_KEY=your-key-here npm run integration-test
+```
+
+`GOOGLE_MAPS_SECURE` may be set to `false` to use http (defaults to `true` /
+https). For local development you may instead create a git-ignored
+`test/simpleConfig.json` of the form `{"key": "...", "secure": true}`.
+
+
 ### Contributions
 Criticism/Suggestions/Patches/PullRequests are welcome.
 

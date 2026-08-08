@@ -1,6 +1,6 @@
 var  assert = require('assert'),
   GoogleMapsAPI = require('../../lib/index')
-  config = require('../simpleConfig');
+  config = require('../integrationConfig');
 
 describe('placeSearchText', function() {
   var gm = new GoogleMapsAPI(config);
