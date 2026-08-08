@@ -51,14 +51,19 @@ describe('staticmaps', function() {
         path: options.path
       };
 
+      function redactKey(url) {
+        return url.replace(/key=[^&]+/, 'key=REDACTED');
+      }
+
       it('should return the expected static map URL', function(){
-        should.equal(gm.staticMap(params), "https://maps.googleapis.com/maps/api/staticmap?"+
+        var expected = "https://maps.googleapis.com/maps/api/staticmap?"+
                               "center=444%20W%20Main%20St%20Lock%20Haven%20PA&"+
                               "zoom=15&size=500x400&maptype=roadmap&"+
                               "markers=color%3Agreen%7Clabel%3AA%7Cshadow%3Atrue%7C300%20W%20Main%20St%20Lock%20Haven%2C%20PA&"+
                               "markers=icon%3Ahttp%3A%2F%2Fchart.apis.google.com%2Fchart%3Fchst%3Dd_map_pin_icon%26chld%3Dcafe%257C996600%7C444%20W%20Main%20St%20Lock%20Haven%2C%20PA&"+
                               "path=weight%3A5%7Ccolor%3A0x0000ff%7Cenc%3A%7BbbzFfyvwMnFwP&"+
-                              "style=feature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&key=AIzaSyD68KmxQFlbJuxJ6r2DLBBNmK4aY7z5xpo");
+                              "style=feature%3Aroad%7Celement%3Aall%7Chue%3A0x00ff00&key="+config.key;
+        should.equal(redactKey(gm.staticMap(params)), redactKey(expected));
       });
     });
 

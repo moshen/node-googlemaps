@@ -2,8 +2,11 @@ var should = require('should'),
   GoogleMapsAPI = require('../../lib/index')
   config = require('../integrationConfig');
 
+function redactKey(url) {
+  return url.replace(/key=[^&]+/, 'key=REDACTED');
+}
+
 function checkJPEGHeader(data){
-  console.log(typeof data);
   // Look for the JPEG header only
   var buf = new Buffer(data, 'binary');
   should.equal(buf.toString('hex').substr(0,4), 'ffd8');
@@ -22,7 +25,7 @@ describe('streetview', function() {
       var result = gm.streetView(params);
 
       it('should return the expected street view URL', function() {
-        should.equal(result, "https://maps.googleapis.com/maps/api/streetview?location=56.960654%2C-2.201815&size=600x300&key="+config.key);
+        should.equal(redactKey(result), redactKey("https://maps.googleapis.com/maps/api/streetview?location=56.960654%2C-2.201815&size=600x300&key="+config.key));
       });
     });
 
@@ -57,7 +60,7 @@ describe('streetview', function() {
       var result = gm.streetView(params);
 
       it('should return the expected street view URL', function() {
-        should.equal(result, "https://maps.googleapis.com/maps/api/streetview?location=56.960654%2C-2.201815&size=600x300&heading=250&fov=90&pitch=-10&key="+config.key);
+        should.equal(redactKey(result), redactKey("https://maps.googleapis.com/maps/api/streetview?location=56.960654%2C-2.201815&size=600x300&heading=250&fov=90&pitch=-10&key="+config.key));
       });
     });
 
