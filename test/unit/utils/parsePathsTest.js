@@ -38,7 +38,7 @@ describe('parsePaths', function() {
 
   describe('success', function() {
 
-    it('should transform an array of paths into a string', function() {
+    it('should transform an array of paths into an array of strings', function() {
       var input = [
         {
           points: [
@@ -63,9 +63,12 @@ describe('parsePaths', function() {
         }
       ];
 
-      var output = "weight:5|color:0x0000ff|40.737102,-73.990318|40.749825,-73.987963|40.752946,-73.987384|40.755823,-73.986397|weight:5|color:0x00000000|fillcolor:0xFFFF0033|8th+Avenue+%26+34th+St,New+York,NY|8th+Avenue+%26+42nd+St,New+York,NY|Park+Ave+%26+42nd+St,New+York,NY,NY|Park+Ave+%26+34th+St,New+York,NY,NY";
+      var output = [
+        "weight:5|color:0x0000ff|40.737102,-73.990318|40.749825,-73.987963|40.752946,-73.987384|40.755823,-73.986397",
+        "weight:5|color:0x00000000|fillcolor:0xFFFF0033|8th+Avenue+%26+34th+St,New+York,NY|8th+Avenue+%26+42nd+St,New+York,NY|Park+Ave+%26+42nd+St,New+York,NY,NY|Park+Ave+%26+34th+St,New+York,NY,NY"
+      ];
       var result = parsePaths(input);
-      result.should.equal(output);
+      result.should.eql(output);
     });
 
   });
