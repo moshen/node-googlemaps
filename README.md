@@ -67,7 +67,7 @@ var gmAPI = new GoogleMapsAPI(enterpriseConfig);
 // geocode API
 var geocodeParams = {
   "address":    "121, Curtain Road, EC2A 3AD, London UK",
-  "components": "components=country:GB",
+  "components": "country:GB",
   "bounds":     "55,-1|54,1",
   "language":   "en",
   "region":     "uk"
