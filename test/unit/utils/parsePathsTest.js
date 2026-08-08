@@ -31,7 +31,7 @@ describe('parsePaths', function() {
         }
       ];
 
-      (function() { parsePaths(input).should.throw('Each path must have an array of points') });
+      (function() { parsePaths(input).should.throw('Each path must have a property points (array of points) or a property enc (encoded polyline)') });
     });
 
   });
@@ -66,6 +66,22 @@ describe('parsePaths', function() {
       var output = [
         "weight:5|color:0x0000ff|40.737102,-73.990318|40.749825,-73.987963|40.752946,-73.987384|40.755823,-73.986397",
         "weight:5|color:0x00000000|fillcolor:0xFFFF0033|8th+Avenue+%26+34th+St,New+York,NY|8th+Avenue+%26+42nd+St,New+York,NY|Park+Ave+%26+42nd+St,New+York,NY,NY|Park+Ave+%26+34th+St,New+York,NY,NY"
+      ];
+      var result = parsePaths(input);
+      result.should.eql(output);
+    });
+
+    it('should accept a pre-encoded polyline via the enc property', function() {
+      var input = [
+        {
+          color: '0x0000ff',
+          weight: 5,
+          enc: '{bbzFfyvwMnFwP'
+        }
+      ];
+
+      var output = [
+        'weight:5|color:0x0000ff|enc:{bbzFfyvwMnFwP'
       ];
       var result = parsePaths(input);
       result.should.eql(output);
