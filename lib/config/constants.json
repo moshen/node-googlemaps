@@ -137,7 +137,7 @@
     "place-search-text":   2048,
     "place-autocomplete":  2048,
     "reverse-geocode":     2048,
-    "static-map":          2048,
+    "static-map":          8192,
     "timezone":            2048,
     "street-view":         2048
   },
