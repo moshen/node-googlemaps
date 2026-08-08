@@ -2,7 +2,7 @@ var should = require('should');
 
 var GoogleMapsAPI = require('../../lib/index');
 
-var simpleConfig = require('../simpleConfig');
+var TEST_KEY = 'xxxxxxx';
 
 var gmAPI;
 
@@ -11,7 +11,7 @@ describe('streetView', function() {
 
   before(function() {
     var config = {
-      key:              simpleConfig.key,
+      key:              TEST_KEY,
       encode_polylines: false,
       secure:           true
     };
@@ -240,7 +240,7 @@ describe('streetView', function() {
         fov: 40
       };
       var result = gmAPI.streetView(params);
-      result.should.equal('https://maps.googleapis.com/maps/api/streetview?location=Duomo%20di%20Milano%2C%20Milan%2C%20Italy&size=1200x1600&heading=110&fov=40&pitch=10&key='+simpleConfig.key);
+      result.should.equal('https://maps.googleapis.com/maps/api/streetview?location=Duomo%20di%20Milano%2C%20Milan%2C%20Italy&size=1200x1600&heading=110&fov=40&pitch=10&key='+TEST_KEY);
     });
 
   });

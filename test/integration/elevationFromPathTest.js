@@ -1,11 +1,12 @@
 var should = require('should'),
-  GoogleMapsAPI = require('../../lib/index');
+  GoogleMapsAPI = require('../../lib/index'),
+  config = require('../integrationConfig');
 
 describe('elevationFromPath', function() {
   describe('Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)', function() {
     var result;
     before(function(done){
-      var gm = new GoogleMapsAPI();
+      var gm = new GoogleMapsAPI(config);
       var params = {
         path: '43.07333,-89.4026|41.850033,-87.6500523',
         samples: 10
@@ -75,7 +76,7 @@ describe('elevationFromPath when path is too long', function() {
   describe('Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)', function() {
     var result;
     before(function(done){
-      var gm = new GoogleMapsAPI({encode_polylines: false});
+      var gm = new GoogleMapsAPI(Object.assign({}, config, {encode_polylines: false}));
       var params = {
         path: tooLongForGoogle,
         samples: tooLongCount

@@ -1,6 +1,6 @@
 var should = require('should'),
   GoogleMapsAPI = require('../../lib/index')
-  config = require('../simpleConfig');
+  config = require('../integrationConfig');
 
 function checkJPEGHeader(data){
   console.log(typeof data);

@@ -1,6 +1,6 @@
 var should = require('should'),
   GoogleMapsAPI = require('../../lib/index'),
-  config = require('../simpleConfig');
+  config = require('../integrationConfig');
 
 describe('reverseGeocode', function() {
   describe('Simple reverse geocode (41.850033 , -87.6500523)', function() {

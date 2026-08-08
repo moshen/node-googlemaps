@@ -1,6 +1,6 @@
 var should = require('should'),
   GoogleMapsAPI = require('../../lib/index')
-  config = require('../simpleConfig');
+  config = require('../integrationConfig');
 
 describe('errors', function() {
   describe('No connection', function() {
