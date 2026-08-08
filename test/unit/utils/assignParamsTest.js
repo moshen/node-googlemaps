@@ -38,6 +38,12 @@ describe('assignParams', function() {
       should.not.exist(result.google_private_key);
     });
 
+    it('should accept the string "now" as a date-typed param', function() {
+      var accepted = { departure_time: 'date' };
+      var result = assignParams({}, { departure_time: 'now' }, accepted);
+      result.departure_time.should.equal('now');
+    });
+
   });
 
 });
