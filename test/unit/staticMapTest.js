@@ -494,6 +494,35 @@ describe('staticMap', function() {
 
     });
 
+    it('should surface X-StaticMap-API-Warning header as a non-fatal error', function(done){
+      var config = {
+        key:              TEST_KEY,
+        encode_polylines: false,
+        secure:           true
+      };
+      var mockRequest = function(options, callback) {
+        var res = {
+          statusCode: 200,
+          headers: { 'x-staticmap-api-warning': 'invalid marker color' }
+        };
+        var data = new Buffer("binary image", "utf-8");
+        return callback(null, res, data);
+      };
+      var warnGmAPI = new GoogleMapsAPI( config, mockRequest );
+      var params = {
+        center: 'London, UK',
+        zoom: 14,
+        size: '500x400'
+      };
+      warnGmAPI.staticMap( params, function(err, binary) {
+        should.exist(err);
+        err.isWarning.should.be.true();
+        err.message.should.equal('invalid marker color');
+        should.exist(binary);
+        done();
+      });
+    });
+
   });
 
 });
