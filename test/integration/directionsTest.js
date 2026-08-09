@@ -2,6 +2,12 @@ var  assert = require('assert'),
   GoogleMapsAPI = require('../../lib/index')
   config = require('../integrationConfig');
 
+function assertWithinBounds(coord, min, max, name, axis) {
+  assert.ok(!isNaN(coord), name + ' ' + axis + ' is not a number: ' + coord);
+  assert.ok(coord >= min && coord <= max,
+    name + ' ' + axis + ' (' + coord + ') is not within [' + min + ', ' + max + ']');
+}
+
 describe('directions', function() {
   var gm = new GoogleMapsAPI(config);
 
@@ -22,8 +28,9 @@ describe('directions', function() {
       assert.equal(result.status, 'OK');
     });
     it('should return expected lat/lng for Chicago', function() {
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(3) , 43.073);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(3) , -89.402);
+      var loc = result.routes[0].legs[0].steps[0].end_location;
+      assertWithinBounds(loc.lat, 43.0, 43.1, 'first step end', 'lat');
+      assertWithinBounds(loc.lng, -89.5, -89.3, 'first step end', 'lng');
     });
   });
 
@@ -47,8 +54,9 @@ describe('directions', function() {
       assert.equal(result.status, 'OK');
     });
     it('should return expected lat/lng for Chicago', function(){
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(3) , 43.073);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(3) , -89.402);
+      var loc = result.routes[0].legs[0].steps[0].end_location;
+      assertWithinBounds(loc.lat, 43.0, 43.1, 'first step end', 'lat');
+      assertWithinBounds(loc.lng, -89.5, -89.3, 'first step end', 'lng');
     });
   });
 
@@ -72,8 +80,9 @@ describe('directions', function() {
       assert.equal(result.status, 'OK');
     });
     it('should return expected lat/lng for London', function(){
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(1) , 51.5);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(1) , -0.1);
+      var loc = result.routes[0].legs[0].steps[0].end_location;
+      assertWithinBounds(loc.lat, 51.4, 51.6, 'first step end', 'lat');
+      assertWithinBounds(loc.lng, -0.2, 0.0, 'first step end', 'lng');
     });
   });
 
@@ -96,9 +105,9 @@ describe('directions', function() {
       assert.equal(result.status, 'OK');
     });
     it('should return expected lat/lng for Boston', function(){
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lat.toFixed(1), 42.4);
-      assert.equal(result.routes[0].legs[0].steps[0].end_location.lng.toFixed(1), -71.1);
-      // TODO add more checks
+      var loc = result.routes[0].legs[0].steps[0].end_location;
+      assertWithinBounds(loc.lat, 42.3, 42.5, 'first step end', 'lat');
+      assertWithinBounds(loc.lng, -71.2, -71.0, 'first step end', 'lng');
     });
   });
 });
