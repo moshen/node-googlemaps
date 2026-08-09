@@ -76,7 +76,17 @@ describe('staticmaps', function() {
           format: 'png',
           size: '500x400',
           maptype: 'roadmap',
-          markers: options.markers,
+          markers: [
+            {
+              location: '300 W Main St Lock Haven, PA',
+              label   : 'A',
+              color   : 'green'
+            },
+            {
+              location: '444 W Main St Lock Haven, PA',
+              color   : 'red'
+            }
+          ],
           style: options.style,
           path: options.path
         };
