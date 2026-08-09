@@ -2,7 +2,7 @@
   "name": "googlemaps",
   "version": "1.12.0",
   "main": "lib/index",
-  "description": "A simple way to query the Google Maps API from Node.js",
+  "description": "DEPRECATED: This package is no longer maintained. Please use @googlemaps/google-maps-services-js instead.",
   "license": "MIT",
   "author": {
     "name": "Colin Kennedy",
@@ -17,12 +17,15 @@
     "googlemaps",
     "google maps",
     "google-maps",
-    "node google maps"
+    "node google maps",
+    "deprecated",
+    "google-maps-services"
   ],
   "repository": {
     "type": "git",
     "url": "http://github.com/moshen/node-googlemaps"
   },
+  "deprecated": "This package is no longer maintained. Please use @googlemaps/google-maps-services-js (https://github.com/googlemaps/google-maps-services-js) instead.",
   "devDependencies": {
     "mocha": "^2.4.5",
     "should": "^8.2.2"

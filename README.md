@@ -2,6 +2,8 @@
 
 # Google Maps API for Node.js
 
+> **DEPRECATED:** This package is no longer maintained. Please use Google's official Node.js client library [`@googlemaps/google-maps-services-js`](https://github.com/googlemaps/google-maps-services-js) instead.
+
 This library implements the following Google Maps APIs, and can be also used by Google Maps for Work users.
 
 * [Maps API Web Services](https://developers.google.com/maps/documentation/webservices/)
