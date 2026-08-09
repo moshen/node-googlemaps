@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/moshen/node-googlemaps.svg?branch=master)](https://travis-ci.org/moshen/node-googlemaps)
+[![CI](https://github.com/moshen/node-googlemaps/actions/workflows/ci.yml/badge.svg)](https://github.com/moshen/node-googlemaps/actions/workflows/ci.yml)
 
 # Google Maps API for Node.js
 
@@ -91,6 +91,34 @@ gmAPI.reverseGeocode(reverseGeocodeParams, function(err, result){
 ```
 
 Check out the [unit tests](./tree/new-major-version/test/unit/) for more APIs examples.
+
+### Optional configuration
+
+The following config keys control behavior that was added as bug fixes but
+could break existing callers. Each defaults to the old (pre-fix) behavior
+so existing code keeps working unless you opt in.
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `static_map_binary` | boolean | `false` | When `true`, `staticMap` returns image data as a `Buffer` instead of a string. Use this if you save the image to a file (the old string output produced unusable files). |
+| `static_map_warnings` | boolean | `false` | When `true`, Google's `X-StaticMap-API-Warning` response header is surfaced as a non-fatal error (`err.isWarning = true`) in the `staticMap` callback, alongside the image data. By default warnings are silently ignored. |
+| `places_default_radius` | boolean | `true` | When `true`, `placeSearch` defaults `radius` to 50000 meters (the max) if omitted and `rankby=prominence`. Set to `false` to omit the radius entirely (Google ranks differently without it). |
+| `google_api_url` | string | `http://maps.googleapis.com` | Override the base API URL forHTTP requests. Useful for mocking in tests. |
+| `google_secure_api_url` | string | `https://maps.googleapis.com` | Override the base API URL for HTTPS requests. |
+
+### Mocking responses
+
+To mock the Google API endpoints for local development or CI, override the
+base URLs in your config:
+
+```javascript
+var config = {
+  key:                  '<YOUR-KEY>',
+  google_api_url:       'http://localhost:3000/fixture',
+  google_secure_api_url: 'https://localhost:3443/fixture'
+};
+var gmAPI = new GoogleMapsAPI(config);
+```
 
 ### Static Maps
 

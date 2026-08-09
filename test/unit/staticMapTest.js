@@ -496,9 +496,10 @@ describe('staticMap', function() {
 
     it('should surface X-StaticMap-API-Warning header as a non-fatal error', function(done){
       var config = {
-        key:              TEST_KEY,
-        encode_polylines: false,
-        secure:           true
+        key:                   TEST_KEY,
+        encode_polylines:      false,
+        secure:                true,
+        static_map_warnings:   true
       };
       var mockRequest = function(options, callback) {
         var res = {
@@ -519,6 +520,86 @@ describe('staticMap', function() {
         err.isWarning.should.be.true();
         err.message.should.equal('invalid marker color');
         should.exist(binary);
+        done();
+      });
+    });
+
+    it('should silently ignore X-StaticMap-API-Warning header by default', function(done){
+      var config = {
+        key:                   TEST_KEY,
+        encode_polylines:      false,
+        secure:                true
+      };
+      var mockRequest = function(options, callback) {
+        var res = {
+          statusCode: 200,
+          headers: { 'x-staticmap-api-warning': 'invalid marker color' }
+        };
+        var data = new Buffer("binary image", "utf-8");
+        return callback(null, res, data);
+      };
+      var defaultGmAPI = new GoogleMapsAPI( config, mockRequest );
+      var params = {
+        center: 'London, UK',
+        zoom: 14,
+        size: '500x400'
+      };
+      defaultGmAPI.staticMap( params, function(err, binary) {
+        should.not.exist(err);
+        should.exist(binary);
+        done();
+      });
+    });
+
+    it('should return a Buffer when static_map_binary is true', function(done){
+      var config = {
+        key:                  TEST_KEY,
+        encode_polylines:     false,
+        secure:               true,
+        static_map_binary:    true
+      };
+      var mockRequest = function(options, callback) {
+        var res = { statusCode: 200, headers: {} };
+        var data = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+        return callback(null, res, data);
+      };
+      var binaryGmAPI = new GoogleMapsAPI( config, mockRequest );
+      var params = {
+        center: 'London, UK',
+        zoom: 14,
+        size: '500x400'
+      };
+      binaryGmAPI.staticMap( params, function(err, data) {
+        should.not.exist(err);
+        should.exist(data);
+        Buffer.isBuffer(data).should.be.true();
+        done();
+      });
+    });
+
+    it('should return a string when static_map_binary is false (default)', function(done){
+      var config = {
+        key:                  TEST_KEY,
+        encode_polylines:     false,
+        secure:               true,
+        static_map_binary:    false
+      };
+      var mockRequest = function(options, callback) {
+        var res = { statusCode: 200, headers: {} };
+        var data = "binary image as string";
+        return callback(null, res, data);
+      };
+      var stringGmAPI = new GoogleMapsAPI( config, mockRequest );
+      var params = {
+        center: 'London, UK',
+        zoom: 14,
+        size: '500x400'
+      };
+      stringGmAPI.staticMap( params, function(err, data) {
+        should.not.exist(err);
+        should.exist(data);
+        (typeof data).should.equal('string');
+        Buffer.isBuffer(data).should.be.false();
         done();
       });
     });

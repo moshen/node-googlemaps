@@ -152,6 +152,48 @@ describe('placeSearchNearby', function() {
 
     });
 
+    it('should default radius to 50km when places_default_radius is true', function(done){
+      var capturedUri;
+      var mockRequest = function(options, callback) {
+        capturedUri = options.uri;
+        var res = { statusCode: 200 };
+        var data = JSON.stringify(placeSearchMoskResult);
+        return callback(null, res, data);
+      };
+      var cfg = {
+        key: 'xxxxxxx',
+        secure: true,
+        places_default_radius: true
+      };
+      var customGm = new GoogleMapsAPI(cfg, mockRequest);
+      customGm.placeSearch({ location: 'London' }, function(err) {
+        should.not.exist(err);
+        capturedUri.should.match(/radius=50000/);
+        done();
+      });
+    });
+
+    it('should not set a default radius when places_default_radius is false', function(done){
+      var capturedUri;
+      var mockRequest = function(options, callback) {
+        capturedUri = options.uri;
+        var res = { statusCode: 200 };
+        var data = JSON.stringify(placeSearchMoskResult);
+        return callback(null, res, data);
+      };
+      var cfg = {
+        key: 'xxxxxxx',
+        secure: true,
+        places_default_radius: false
+      };
+      var customGm = new GoogleMapsAPI(cfg, mockRequest);
+      customGm.placeSearch({ location: 'London' }, function(err) {
+        should.not.exist(err);
+        capturedUri.should.not.match(/radius=/);
+        done();
+      });
+    });
+
   });
 
 });
