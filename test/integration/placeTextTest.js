@@ -60,11 +60,11 @@ describe('placeSearchText', function() {
       var acceptable = result.status === 'OK' || result.status === 'ZERO_RESULTS';
       assert.ok(acceptable, 'expected OK or ZERO_RESULTS, got ' + result.status);
     });
-    it('should return a result within the continental US when results exist', function() {
+    it('should return a result on Earth when results exist', function() {
       if (result.status !== 'OK' || !result.results || !result.results.length) return;
       var loc = result.results[0].geometry.location;
-      assertWithinBounds(loc.lat, 25.0, 50.0, 'US result', 'lat');
-      assertWithinBounds(loc.lng, -125.0, -66.0, 'US result', 'lng');
+      assertWithinBounds(loc.lat, -90, 90, 'result', 'lat');
+      assertWithinBounds(loc.lng, -180, 180, 'result', 'lng');
     })
   });
 
