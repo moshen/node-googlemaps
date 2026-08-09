@@ -74,6 +74,8 @@
       "language":       "string",
       "avoid":          "string",
       "units":          "string",
+      "transit_mode":          "string",
+      "transit_routing_preference": "string",
       "departure_time": "date",
       "arrival_time":   "date",
       "traffic_model":  "string"
@@ -88,6 +90,8 @@
       "language":       "string",
       "region":         "string",
       "units":          "string",
+      "transit_mode":          "string",
+      "transit_routing_preference": "string",
       "departure_time": "date",
       "arrival_time":   "date",
       "traffic_model":  "string"
