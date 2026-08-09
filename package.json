@@ -1,6 +1,6 @@
 {
   "name": "googlemaps",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "main": "lib/index",
   "description": "DEPRECATED: This package is no longer maintained. Please use @googlemaps/google-maps-services-js instead.",
   "license": "MIT",
