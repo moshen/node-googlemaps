@@ -54,6 +54,39 @@ describe('parseStyles', function() {
       result.should.eql(output);
     });
 
+    it('should support Google\'s newer style format (featureType/elementType/stylers)', function() {
+      var input = [
+        {
+          'elementType': 'geometry',
+          'stylers': [
+            { 'color': '#1d2c4d' }
+          ]
+        },
+        {
+          'featureType': 'administrative.country',
+          'elementType': 'geometry.stroke',
+          'stylers': [
+            { 'color': '#4b6878' }
+          ]
+        },
+        {
+          'featureType': 'water',
+          'stylers': [
+            { 'visibility': 'off' }
+          ]
+        }
+      ];
+
+      var output = [
+        'element:geometry|color:0x1d2c4d',
+        'feature:administrative.country|element:geometry.stroke|color:0x4b6878',
+        'feature:water|visibility:off'
+      ];
+
+      var result = parseStyles(input);
+      result.should.eql(output);
+    });
+
   });
 
 });
